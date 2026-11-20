@@ -1,0 +1,4756 @@
+{
+  "exams": [
+    {
+      "id": "sp26-b5-fe",
+      "title": "PRM393 - SP26 - B5 - FE",
+      "shortTitle": "SP26 - B5 - FE",
+      "folder": "PRM393 - SP26 - B5 - FE",
+      "questions": [
+        {
+          "uid": "sp26-b5-fe-q001",
+          "number": 1,
+          "file": "SP26 - B5 - FE_001.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget pattern protects authenticated routes?",
+          "code": null,
+          "options": {
+            "A": "Navigator",
+            "B": "Guard",
+            "C": "Route protection",
+            "D": "Middleware"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Flutter (ví dụ với AutoRoute hoặc wrapper widget tự định nghĩa), pattern dùng để kiểm tra trạng thái đăng nhập và bảo vệ các route cần xác thực được gọi là Guard (AuthGuard / RouteGuard), trong khi 'Route protection' chỉ là cụm từ mô tả chức năng chung."
+        },
+        {
+          "uid": "sp26-b5-fe-q002",
+          "number": 2,
+          "file": "SP26 - B5 - FE_002.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why are tests important for refactoring?",
+          "code": null,
+          "options": {
+            "A": "Reduce UI work",
+            "B": "Ensure changes don't break functionality",
+            "C": "Improve animations",
+            "D": "Change layout"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Kiểm thử tự động (automated tests) đóng vai trò như lưới an toàn khi refactoring, giúp đảm bảo việc tái cấu trúc mã nguồn không làm hỏng các chức năng hiện có (tránh lỗi hồi quy)."
+        },
+        {
+          "uid": "sp26-b5-fe-q003",
+          "number": 3,
+          "file": "SP26 - B5 - FE_003.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the role of BuildContext in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Store application data",
+            "B": "Locate widgets in the widget tree",
+            "C": "Manage navigation history",
+            "D": "Render UI pixels"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "BuildContext là tham chiếu đại diện cho vị trí của một widget (cụ thể là Element tương ứng) trong cây widget (widget tree), giúp tra cứu các widget tổ tiên như Theme, MediaQuery hoặc Navigator."
+        },
+        {
+          "uid": "sp26-b5-fe-q004",
+          "number": 4,
+          "file": "SP26 - B5 - FE_004.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What role does the Flutter framework play in application development?",
+          "code": null,
+          "options": {
+            "A": "It manages database servers",
+            "B": "It provides UI components and rendering logic",
+            "C": "It replaces the operating system",
+            "D": "It runs backend business logic"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Flutter là một UI toolkit/framework cung cấp hệ thống các thành phần giao diện (widgets), bố cục, animation và logic kết xuất (rendering pipeline) để xây dựng ứng dụng đa nền tảng."
+        },
+        {
+          "uid": "sp26-b5-fe-q005",
+          "number": 5,
+          "file": "SP26 - B5 - FE_005.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "How is the Flutter UI constructed internally?",
+          "code": null,
+          "options": {
+            "A": "Using XML layout files",
+            "B": "Using HTML and CSS",
+            "C": "Using a hierarchical widget tree",
+            "D": "Using native UI components only"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong Flutter, toàn bộ giao diện người dùng được xây dựng theo hướng khai báo (declarative) thông qua cấu trúc cây phân cấp các widget (hierarchical widget tree), không dùng XML hay HTML/CSS."
+        },
+        {
+          "uid": "sp26-b5-fe-q006",
+          "number": 6,
+          "file": "SP26 - B5 - FE_006.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget enables custom scroll effects in Flutter?",
+          "code": null,
+          "options": {
+            "A": "ListView",
+            "B": "SingleChildScrollView",
+            "C": "CustomScrollView",
+            "D": "Column"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "CustomScrollView cho phép kết hợp nhiều Sliver (như SliverAppBar, SliverList, SliverGrid) trong cùng một vùng cuộn để tạo các hiệu ứng cuộn tùy chỉnh phức tạp."
+        },
+        {
+          "uid": "sp26-b5-fe-q007",
+          "number": 7,
+          "file": "SP26 - B5 - FE_007.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which practice improves rendering performance?",
+          "code": null,
+          "options": {
+            "A": "Large widget trees",
+            "B": "Splitting widgets",
+            "C": "Global state",
+            "D": "Frequent rebuilds"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Chia nhỏ các widget lớn thành các widget con độc lập (splitting widgets, kết hợp từ khóa const) giúp khoanh vùng phạm vi cần rebuild khi state thay đổi, từ đó cải thiện hiệu năng hiển thị."
+        },
+        {
+          "uid": "sp26-b5-fe-q008",
+          "number": 8,
+          "file": "SP26 - B5 - FE_008.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does an integration test verify?",
+          "code": null,
+          "options": {
+            "A": "Single function",
+            "B": "Widget rendering",
+            "C": "End-to-end app behavior",
+            "D": "Theme consistency"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Integration test kiểm tra hoạt động tổng thể từ đầu đến cuối (end-to-end) của ứng dụng và sự phối hợp giữa nhiều thành phần/màn hình trên thiết bị thật hoặc trình giả lập."
+        },
+        {
+          "uid": "sp26-b5-fe-q009",
+          "number": 9,
+          "file": "SP26 - B5 - FE_009.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is separating UI and state logic recommended?",
+          "code": null,
+          "options": {
+            "A": "Reduce code size",
+            "B": "Improve maintainability",
+            "C": "Faster execution",
+            "D": "Better animations"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tách biệt giao diện (UI) và logic quản lý trạng thái tuân theo nguyên lý phân tách trách nhiệm (Separation of Concerns), giúp mã nguồn dễ bảo trì, mở rộng và kiểm thử độc lập."
+        },
+        {
+          "uid": "sp26-b5-fe-q010",
+          "number": 10,
+          "file": "SP26 - B5 - FE_010.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "When does Flutter rebuild the widget tree?",
+          "code": null,
+          "options": {
+            "A": "On every frame",
+            "B": "When state changes",
+            "C": "Only when app restarts",
+            "D": "Only during hot restart"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Flutter đánh dấu dirty và gọi lại hàm build() cho các widget bị ảnh hưởng khi trạng thái thay đổi (ví dụ qua setState, InheritedWidget hoặc các công cụ quản lý state), không tự động rebuild ở mọi frame."
+        },
+        {
+          "uid": "sp26-b5-fe-q011",
+          "number": 11,
+          "file": "SP26 - B5 - FE_011.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which concept does BLoC heavily rely on?",
+          "code": null,
+          "options": {
+            "A": "Future",
+            "B": "Stream",
+            "C": "Animation",
+            "D": "Theme"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Mô hình BLoC (Business Logic Component) dựa chủ yếu vào lập trình phản ứng với Stream trong Dart: nhận các sự kiện đầu vào và phát ra luồng trạng thái (Stream of States) để UI lắng nghe."
+        },
+        {
+          "uid": "sp26-b5-fe-q012",
+          "number": 12,
+          "file": "SP26 - B5 - FE_012.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is version control critical?",
+          "code": null,
+          "options": {
+            "A": "UI changes",
+            "B": "Track and manage code changes",
+            "C": "Improve animations",
+            "D": "Store data"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Hệ thống quản lý phiên bản (như Git) giữ vai trò thiết yếu trong phát triển phần mềm vì giúp theo dõi, quản lý lịch sử thay đổi mã nguồn, khôi phục khi gặp lỗi và cộng tác nhóm an toàn."
+        },
+        {
+          "uid": "sp26-b5-fe-q013",
+          "number": 13,
+          "file": "SP26 - B5 - FE_013.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is immutability important in BLoC states?",
+          "code": null,
+          "options": {
+            "A": "UI speed",
+            "B": "Predictable state changes",
+            "C": "Memory usage",
+            "D": "Theme control"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tính bất biến (immutability) đảm bảo mỗi lần cập nhật trạng thái trong BLoC luôn tạo ra một đối tượng State mới thay vì sửa đổi trực tiếp đối tượng cũ, giúp quá trình chuyển đổi trạng thái minh bạch, dễ dự đoán và tránh lỗi side-effect."
+        },
+        {
+          "uid": "sp26-b5-fe-q014",
+          "number": 14,
+          "file": "SP26 - B5 - FE_014.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Flutter plugin provides SQLite support?",
+          "code": null,
+          "options": {
+            "A": "hive",
+            "B": "moor",
+            "C": "sqflite",
+            "D": "shared_preferences"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "sqflite là plugin chuẩn cung cấp hỗ trợ cơ sở dữ liệu quan hệ SQLite trực tiếp trong Flutter (hive là NoSQL, shared_preferences lưu key-value đơn giản, còn moor/drift là thư viện ORM bậc cao xây dựng bên trên SQLite)."
+        },
+        {
+          "uid": "sp26-b5-fe-q015",
+          "number": 15,
+          "file": "SP26 - B5 - FE_015.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main benefit of using Maps in Dart?",
+          "code": null,
+          "options": {
+            "A": "Storing values without keys",
+            "B": "Storing key-value pairs",
+            "C": "Rendering UI components",
+            "D": "Managing asynchronous tasks"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Map trong Dart là cấu trúc dữ liệu lưu trữ tập hợp các cặp khóa - giá trị (key-value pairs), cho phép truy xuất, thêm và cập nhật giá trị nhanh chóng thông qua khóa duy nhất."
+        },
+        {
+          "uid": "sp26-b5-fe-q016",
+          "number": 16,
+          "file": "SP26 - B5 - FE_016.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which tool helps analyze UI performance in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Inspector",
+            "B": "DevTools",
+            "C": "Emulator",
+            "D": "Hot reload"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Flutter DevTools là bộ công cụ chuyên dụng để đo lường và phân tích hiệu năng UI (thời gian dựng frame, hiện tượng giật lag/jank, CPU, bộ nhớ), trong khi Widget Inspector chỉ là một tab con tập trung vào kiểm tra bố cục cây widget."
+        },
+        {
+          "uid": "sp26-b5-fe-q017",
+          "number": 17,
+          "file": "SP26 - B5 - FE_017.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does a Dart class primarily represent?",
+          "code": null,
+          "options": {
+            "A": "A UI widget only",
+            "B": "A blueprint for creating objects",
+            "C": "A database table",
+            "D": "A network request"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong lập trình hướng đối tượng với Dart, class đóng vai trò là bản thiết kế (blueprint) định nghĩa các thuộc tính và phương thức để tạo ra các đối tượng (objects)."
+        },
+        {
+          "uid": "sp26-b5-fe-q018",
+          "number": 18,
+          "file": "SP26 - B5 - FE_018.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the purpose of SliverAppBar?",
+          "code": null,
+          "options": {
+            "A": "Static app bar",
+            "B": "Scrollable flexible app bar",
+            "C": "Bottom navigation",
+            "D": "Drawer control"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "SliverAppBar dùng trong CustomScrollView để tạo thanh tiêu đề linh hoạt có thể mở rộng, thu nhỏ, ẩn đi hoặc ghim cố định theo thao tác cuộn của người dùng."
+        },
+        {
+          "uid": "sp26-b5-fe-q019",
+          "number": 19,
+          "file": "SP26 - B5 - FE_019.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is Hive mainly used for?",
+          "code": null,
+          "options": {
+            "A": "Remote database",
+            "B": "Lightweight local NoSQL storage",
+            "C": "State management",
+            "D": "Routing"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Hive là thư viện cơ sở dữ liệu NoSQL lưu trữ cục bộ (local key-value storage) gọn nhẹ và tốc độ cao, được viết thuần bằng Dart cho ứng dụng Flutter."
+        },
+        {
+          "uid": "sp26-b5-fe-q020",
+          "number": 20,
+          "file": "SP26 - B5 - FE_020.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which HTTP header is commonly used for authorization?",
+          "code": null,
+          "options": {
+            "A": "Content-Type",
+            "B": "Accept",
+            "C": "Authorization",
+            "D": "Cache-Control"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Header 'Authorization' (thường đi kèm Bearer token hoặc Basic credentials) là chuẩn HTTP được sử dụng phổ biến để gửi thông tin xác thực và phân quyền tới API server."
+        },
+        {
+          "uid": "sp26-b5-fe-q021",
+          "number": 21,
+          "file": "SP26 - B5 - FE_021.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does TextEditingController manage?",
+          "code": null,
+          "options": {
+            "A": "Theme",
+            "B": "Text input value",
+            "C": "Validation rules",
+            "D": "Layout constraints"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "TextEditingController quản lý giá trị văn bản nhập vào (text input value), vị trí con trỏ/vùng chọn và thông báo các thay đổi của TextField hoặc TextFormField."
+        },
+        {
+          "uid": "sp26-b5-fe-q022",
+          "number": 22,
+          "file": "SP26 - B5 - FE_022.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is Dart considered suitable for Flutter development?",
+          "code": null,
+          "options": {
+            "A": "It is only used for backend systems",
+            "B": "It supports both UI and application logic efficiently",
+            "C": "It replaces native languages",
+            "D": "It does not support asynchronous programming"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Dart rất phù hợp cho Flutter vì hỗ trợ hiệu quả cả việc xây dựng giao diện khai báo lẫn xử lý logic ứng dụng nhờ biên dịch JIT (Hot Reload) và AOT (hiệu năng native cao) cùng cơ chế bất đồng bộ mạnh mẽ."
+        },
+        {
+          "uid": "sp26-b5-fe-q023",
+          "number": 23,
+          "file": "SP26 - B5 - FE_023.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does the build() method return in a widget?",
+          "code": null,
+          "options": {
+            "A": "A screen",
+            "B": "A widget tree describing the UI",
+            "C": "Application state",
+            "D": "Rendered pixels"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Phương thức build() trả về một đối tượng Widget (cây widget con) mô tả phần giao diện người dùng tương ứng với trạng thái và cấu hình hiện tại của widget đó."
+        },
+        {
+          "uid": "sp26-b5-fe-q024",
+          "number": 24,
+          "file": "SP26 - B5 - FE_024.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What represents the output of a BLoC?",
+          "code": null,
+          "options": {
+            "A": "Events",
+            "B": "Widgets",
+            "C": "States",
+            "D": "Controllers"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong mô hình BLoC, đầu vào (input) là các Events được gửi từ UI, còn đầu ra (output) là luồng các States được phát ra (emit) để UI cập nhật giao diện."
+        },
+        {
+          "uid": "sp26-b5-fe-q025",
+          "number": 25,
+          "file": "SP26 - B5 - FE_025.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is Cubit in BLoC?",
+          "code": null,
+          "options": {
+            "A": "UI widget",
+            "B": "Simplified BLoC without events",
+            "C": "Database layer",
+            "D": "Animation helper"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Cubit là phiên bản rút gọn của BLoC trong hệ sinh thái flutter_bloc, cho phép kích hoạt thay đổi và emit trạng thái (State) trực tiếp thông qua các phương thức (functions) mà không cần tạo lớp Event."
+        },
+        {
+          "uid": "sp26-b5-fe-q026",
+          "number": 26,
+          "file": "SP26 - B5 - FE_026.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which activity is typically performed after creating a new Flutter project?",
+          "code": null,
+          "options": {
+            "A": "Deploying to app stores",
+            "B": "Running the default app on a device",
+            "C": "Configuring authentication",
+            "D": "Optimizing database queries"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Sau khi khởi tạo dự án Flutter mới, bước kiểm tra cơ bản đầu tiên thường là chạy thử ứng dụng mặc định (counter app) trên thiết bị thật hoặc máy ảo để xác nhận môi trường hoạt động tốt."
+        },
+        {
+          "uid": "sp26-b5-fe-q027",
+          "number": 27,
+          "file": "SP26 - B5 - FE_027.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which practice improves deployment security?",
+          "code": null,
+          "options": {
+            "A": "Debug builds",
+            "B": "Secure signing keys",
+            "C": "Hardcoding secrets",
+            "D": "Skipping validation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Bảo mật khóa ký ứng dụng (secure signing keys / keystore) giúp đảm bảo tính toàn vẹn và xác thực danh tính nhà phát triển khi phát hành ứng dụng lên chợ ứng dụng."
+        },
+        {
+          "uid": "sp26-b5-fe-q028",
+          "number": 28,
+          "file": "SP26 - B5 - FE_028.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is Chapter 14 considered optional (Plus)?",
+          "code": null,
+          "options": {
+            "A": "Deployment is UI logic",
+            "B": "Apps can be tested without publishing",
+            "C": "It replaces authentication",
+            "D": "It handles APIs"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong giáo trình PRM393, Chương 14 (triển khai/phát hành ứng dụng lên store) được xem là phần mở rộng (Plus) vì ứng dụng hoàn toàn có thể chạy và kiểm thử trực tiếp trên máy ảo hoặc thiết bị thật mà không cần xuất bản lên store."
+        },
+        {
+          "uid": "sp26-b5-fe-q029",
+          "number": 29,
+          "file": "SP26 - B5 - FE_029.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the primary purpose of ThemeData in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Manage navigation",
+            "B": "Define application-wide visual styles",
+            "C": "Handle state changes",
+            "D": "Control animations"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "ThemeData trong Flutter dùng để định nghĩa thống nhất màu sắc, kiểu chữ và phong cách giao diện (visual styles) cho toàn bộ ứng dụng."
+        },
+        {
+          "uid": "sp26-b5-fe-q030",
+          "number": 30,
+          "file": "SP26 - B5 - FE_030.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which method is used to update the UI when state changes?",
+          "code": null,
+          "options": {
+            "A": "build()",
+            "B": "setState()",
+            "C": "initState()",
+            "D": "dispose()"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong StatefulWidget, gọi setState() thông báo cho Flutter framework rằng trạng thái nội bộ đã thay đổi để kích hoạt gọi lại hàm build() cập nhật UI."
+        },
+        {
+          "uid": "sp26-b5-fe-q031",
+          "number": 31,
+          "file": "SP26 - B5 - FE_031.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Flutter package is commonly used for simple key-value storage?",
+          "code": null,
+          "options": {
+            "A": "sqflite",
+            "B": "shared_preferences",
+            "C": "provider",
+            "D": "http"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Package shared_preferences được dùng phổ biến để lưu trữ dữ liệu cục bộ đơn giản dạng cặp khóa - giá trị (key-value). sqflite dùng cho CSDL quan hệ SQLite, provider cho quản lý state, còn http để gọi mạng."
+        },
+        {
+          "uid": "sp26-b5-fe-q032",
+          "number": 32,
+          "file": "SP26 - B5 - FE_032.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should architecture be decided early?",
+          "code": null,
+          "options": {
+            "A": "Avoid UI work",
+            "B": "Reduce refactoring cost",
+            "C": "Improve animations",
+            "D": "Change theme"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Quyết định kiến trúc phần mềm sớm ngay từ đầu dự án giúp tổ chức mã nguồn rõ ràng, dễ mở rộng và giảm đáng kể chi phí tái cấu trúc (refactoring cost) khi ứng dụng lớn dần."
+        },
+        {
+          "uid": "sp26-b5-fe-q033",
+          "number": 33,
+          "file": "SP26 - B5 - FE_033.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is pagination used for?",
+          "code": null,
+          "options": {
+            "A": "UI animation",
+            "B": "Handling large datasets efficiently",
+            "C": "Theme management",
+            "D": "Authentication"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Phân trang (pagination) chia dữ liệu lớn thành từng phần nhỏ để tải và hiển thị dần, giúp tiết kiệm băng thông, bộ nhớ và tăng hiệu năng khi xử lý tập dữ liệu lớn."
+        },
+        {
+          "uid": "sp26-b5-fe-q034",
+          "number": 34,
+          "file": "SP26 - B5 - FE_034.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget helps avoid rebuilding unchanged UI parts?",
+          "code": null,
+          "options": {
+            "A": "Container",
+            "B": "RepaintBoundary",
+            "C": "Column",
+            "D": "FutureBuilder"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong các lựa chọn đã cho, RepaintBoundary là widget tối ưu hiệu năng hiển thị bằng cách tách biệt vùng vẽ (layer) để tránh cập nhật/vẽ lại không cần thiết các phần UI không thay đổi."
+        },
+        {
+          "uid": "sp26-b5-fe-q035",
+          "number": 35,
+          "file": "SP26 - B5 - FE_035.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget is used to handle asynchronous API responses in UI?",
+          "code": null,
+          "options": {
+            "A": "FutureBuilder",
+            "B": "ListView",
+            "C": "Provider",
+            "D": "Form"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "FutureBuilder lắng nghe một đối tượng Future (như kết quả trả về từ lời gọi API bất đồng bộ) và tự động dựng lại giao diện theo trạng thái đang tải, thành công hoặc lỗi."
+        },
+        {
+          "uid": "sp26-b5-fe-q036",
+          "number": 36,
+          "file": "SP26 - B5 - FE_036.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Dart feature helps organize code into reusable libraries?",
+          "code": null,
+          "options": {
+            "A": "Widgets",
+            "B": "Packages and imports",
+            "C": "Hot reload",
+            "D": "Layout constraints"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Hệ thống packages và cơ chế import của ngôn ngữ Dart giúp đóng gói, chia sẻ và tái sử dụng mã nguồn dưới dạng các thư viện độc lập."
+        },
+        {
+          "uid": "sp26-b5-fe-q037",
+          "number": 37,
+          "file": "SP26 - B5 - FE_037.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is refresh token used for?",
+          "code": null,
+          "options": {
+            "A": "UI refresh",
+            "B": "Extend session without re-login",
+            "C": "Theme update",
+            "D": "Navigation reset"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Refresh token dùng để xin cấp lại access token mới khi access token hết hạn, giúp duy trì phiên đăng nhập của người dùng mà không bắt họ phải đăng nhập lại."
+        },
+        {
+          "uid": "sp26-b5-fe-q038",
+          "number": 38,
+          "file": "SP26 - B5 - FE_038.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is rebuild scope optimization in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Reducing widget tree depth",
+            "B": "Limiting rebuild to affected widgets",
+            "C": "Caching API responses",
+            "D": "Using global state"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tối ưu hóa phạm vi rebuild (rebuild scope optimization) trong Flutter là việc thu hẹp phạm vi gọi lại build() sao cho chỉ những widget thực sự bị ảnh hưởng bởi thay đổi state mới được dựng lại."
+        },
+        {
+          "uid": "sp26-b5-fe-q039",
+          "number": 39,
+          "file": "SP26 - B5 - FE_039.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is BLoC suitable for large teams?",
+          "code": null,
+          "options": {
+            "A": "Less code",
+            "B": "Standardized architecture",
+            "C": "Faster builds",
+            "D": "UI reuse"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "BLoC cung cấp kiến trúc tách biệt rõ ràng, chuẩn hoá luồng Event/State, giúp các nhóm lớn dễ phối hợp và bảo trì."
+        },
+        {
+          "uid": "sp26-b5-fe-q040",
+          "number": 40,
+          "file": "SP26 - B5 - FE_040.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget reacts to async data from local storage?",
+          "code": null,
+          "options": {
+            "A": "FutureBuilder",
+            "B": "StreamBuilder",
+            "C": "ListView",
+            "D": "Provider"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Đọc dữ liệu bất đồng bộ một lần từ local storage (như SharedPreferences/SQLite) trả về Future, nên dùng FutureBuilder để hiển thị UI theo trạng thái Future."
+        },
+        {
+          "uid": "sp26-b5-fe-q041",
+          "number": 41,
+          "file": "SP26 - B5 - FE_041.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is a token in authentication systems?",
+          "code": null,
+          "options": {
+            "A": "UI key",
+            "B": "Temporary access credential",
+            "C": "Database ID",
+            "D": "Theme value"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Token (ví dụ JWT/Bearer token) là thông tin xác thực truy cập tạm thời cấp cho client sau khi đăng nhập thành công."
+        },
+        {
+          "uid": "sp26-b5-fe-q042",
+          "number": 42,
+          "file": "SP26 - B5 - FE_042.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does a Tween define?",
+          "code": null,
+          "options": {
+            "A": "Animation speed",
+            "B": "Value range for animation",
+            "C": "UI layout",
+            "D": "State logic"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tween (in-between) định nghĩa khoảng giá trị bắt đầu (begin) và kết thúc (end) cho animation."
+        },
+        {
+          "uid": "sp26-b5-fe-q043",
+          "number": 43,
+          "file": "SP26 - B5 - FE_043.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Dart feature allows defining reusable, type-safe components?",
+          "code": null,
+          "options": {
+            "A": "Mixins",
+            "B": "Generics",
+            "C": "Futures",
+            "D": "Streams"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Generics (<T>) trong Dart cho phép viết các class/hàm tái sử dụng cho nhiều kiểu dữ liệu mà vẫn đảm bảo an toàn kiểu (type-safe)."
+        },
+        {
+          "uid": "sp26-b5-fe-q044",
+          "number": 44,
+          "file": "SP26 - B5 - FE_044.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget animates between two widgets?",
+          "code": null,
+          "options": {
+            "A": "AnimatedSwitcher",
+            "B": "AnimatedOpacity",
+            "C": "AnimatedAlign",
+            "D": "AnimatedSize"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "AnimatedSwitcher tự động tạo hiệu ứng chuyển đổi (cross-fade/transition) khi widget con thay đổi từ widget cũ sang widget mới."
+        },
+        {
+          "uid": "sp26-b5-fe-q045",
+          "number": 45,
+          "file": "SP26 - B5 - FE_045.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should setState() be called sparingly?",
+          "code": null,
+          "options": {
+            "A": "It increases app size",
+            "B": "It may trigger unnecessary rebuilds",
+            "C": "It blocks UI thread",
+            "D": "It causes memory leaks"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Gọi setState() không cần thiết hoặc ở phạm vi quá rộng sẽ khiến widget và cây con bị rebuild dư thừa, giảm hiệu năng."
+        },
+        {
+          "uid": "sp26-b5-fe-q046",
+          "number": 46,
+          "file": "SP26 - B5 - FE_046.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is test isolation?",
+          "code": null,
+          "options": {
+            "A": "Running all tests together",
+            "B": "Independence of test cases",
+            "C": "UI separation",
+            "D": "Mocking only"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Test isolation đảm bảo mỗi test case chạy độc lập, không phụ thuộc trạng thái dùng chung hay thứ tự chạy của test khác."
+        },
+        {
+          "uid": "sp26-b5-fe-q047",
+          "number": 47,
+          "file": "SP26 - B5 - FE_047.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does crossAxisAlignment control?",
+          "code": null,
+          "options": {
+            "A": "Vertical alignment in Column",
+            "B": "Horizontal alignment in Column",
+            "C": "Child order",
+            "D": "Widget size"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Column, trục chính (mainAxis) là chiều dọc nên trục phụ (crossAxis) điều khiển căn chỉnh theo chiều ngang (Horizontal alignment)."
+        },
+        {
+          "uid": "sp26-b5-fe-q048",
+          "number": 48,
+          "file": "SP26 - B5 - FE_048.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which tool is commonly used for version control?",
+          "code": null,
+          "options": {
+            "A": "SVN",
+            "B": "Git",
+            "C": "FTP",
+            "D": "ZIP"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Git là hệ thống quản lý phiên bản phân tán (version control) phổ biến nhất hiện nay trong phát triển phần mềm."
+        }
+      ]
+    },
+    {
+      "id": "sp26-fe",
+      "title": "PRM393 - SP26 - FE",
+      "shortTitle": "SP26 - FE",
+      "folder": "PRM393 - SP26 - FE",
+      "questions": [
+        {
+          "uid": "sp26-fe-q001",
+          "number": 1,
+          "file": "SP26 - FE_001.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is clean architecture beneficial?",
+          "code": null,
+          "options": {
+            "A": "Fewer files",
+            "B": "Easier maintenance and testing",
+            "C": "Better UI",
+            "D": "Faster builds"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Clean Architecture phân tách rõ ràng các tầng (Presentation, Domain, Data), giúp ứng dụng dễ bảo trì, mở rộng và kiểm thử độc lập từng thành phần."
+        },
+        {
+          "uid": "sp26-fe-q002",
+          "number": 2,
+          "file": "SP26 - FE_002.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is Dart primarily designed for in the Flutter ecosystem?",
+          "code": null,
+          "options": {
+            "A": "Database management",
+            "B": "User interface development",
+            "C": "General-purpose programming with UI focus",
+            "D": "Network security"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Dart là ngôn ngữ lập trình đa mục đích được tối ưu hóa cho việc xây dựng giao diện người dùng (client-optimized, general-purpose language with UI focus), đảm nhiệm cả logic nghiệp vụ lẫn xây dựng UI trong hệ sinh thái Flutter."
+        },
+        {
+          "uid": "sp26-fe-q003",
+          "number": 3,
+          "file": "SP26 - FE_003.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is secure authentication critical in mobile apps?",
+          "code": null,
+          "options": {
+            "A": "UI quality",
+            "B": "Protect user data",
+            "C": "Reduce code",
+            "D": "Improve speed"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Xác thực bảo mật (secure authentication) đảm bảo chỉ người dùng hợp lệ mới truy cập được tài khoản và tài nguyên, từ đó bảo vệ dữ liệu người dùng."
+        },
+        {
+          "uid": "sp26-fe-q004",
+          "number": 4,
+          "file": "SP26 - FE_004.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which HTTP method is typically used to retrieve data?",
+          "code": null,
+          "options": {
+            "A": "POST",
+            "B": "PUT",
+            "C": "GET",
+            "D": "DELETE"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong giao thức HTTP/REST API, phương thức GET được dùng để truy xuất (retrieve) dữ liệu từ server mà không làm thay đổi trạng thái tài nguyên."
+        },
+        {
+          "uid": "sp26-fe-q005",
+          "number": 5,
+          "file": "SP26 - FE_005.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What happens if a non-nullable variable is not initialized in Dart?",
+          "code": null,
+          "options": {
+            "A": "The app runs normally",
+            "B": "A runtime exception occurs",
+            "C": "A compile-time error occurs",
+            "D": "The value becomes null automatically"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Với cơ chế Sound Null Safety của Dart, biến non-nullable (không khai báo 'late') nếu không được gán giá trị khởi tạo trước khi sử dụng sẽ gây lỗi ngay lúc biên dịch (compile-time error)."
+        },
+        {
+          "uid": "sp26-fe-q006",
+          "number": 6,
+          "file": "SP26 - FE_006.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which command builds a release APK?",
+          "code": null,
+          "options": {
+            "A": "flutter run",
+            "B": "flutter build apk",
+            "C": "flutter doctor",
+            "D": "flutter clean"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Lệnh 'flutter build apk' mặc định biên dịch ứng dụng Flutter sang gói cài đặt Android APK ở chế độ release."
+        },
+        {
+          "uid": "sp26-fe-q007",
+          "number": 7,
+          "file": "SP26 - FE_007.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget allows overlapping of its child widgets?",
+          "code": null,
+          "options": {
+            "A": "Column",
+            "B": "Row",
+            "C": "Stack",
+            "D": "Expanded"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Widget Stack cho phép xếp chồng (overlap) các widget con lên nhau theo trục Z, thường kết hợp với Positioned hoặc Align."
+        },
+        {
+          "uid": "sp26-fe-q008",
+          "number": 8,
+          "file": "SP26 - FE_008.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which platforms can Flutter applications target using a single codebase?",
+          "code": null,
+          "options": {
+            "A": "Android only",
+            "B": "iOS only",
+            "C": "Android, iOS, web, and desktop",
+            "D": "Web servers only"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Flutter là framework đa nền tảng cho phép xây dựng ứng dụng cho Android, iOS, Web và Desktop (Windows, macOS, Linux) chỉ từ một codebase duy nhất."
+        },
+        {
+          "uid": "sp26-fe-q009",
+          "number": 9,
+          "file": "SP26 - FE_009.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main risk of improper state management?",
+          "code": null,
+          "options": {
+            "A": "UI inconsistency",
+            "B": "Longer compile time",
+            "C": "Package conflicts",
+            "D": "Build errors"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Quản lý state không đúng cách khiến dữ liệu giữa các màn hình/widget không đồng bộ, dẫn đến hiển thị giao diện sai lệch (UI inconsistency)."
+        },
+        {
+          "uid": "sp26-fe-q010",
+          "number": 10,
+          "file": "SP26 - FE_010.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does CurvedAnimation provide?",
+          "code": null,
+          "options": {
+            "A": "Layout control",
+            "B": "Animation curve behavior",
+            "C": "State updates",
+            "D": "Navigation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "CurvedAnimation áp dụng đường cong chuyển động phi tuyến tính (như Curves.easeIn, Curves.bounceOut) lên một Animation gốc để tạo hiệu ứng gia tốc tự nhiên."
+        },
+        {
+          "uid": "sp26-fe-q011",
+          "number": 11,
+          "file": "SP26 - FE_011.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "How can data be passed to a new screen?",
+          "code": null,
+          "options": {
+            "A": "Using global variables",
+            "B": "Via constructor arguments",
+            "C": "Using ThemeData",
+            "D": "Using Scaffold"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Flutter, cách chuẩn và trực tiếp nhất để truyền dữ liệu sang màn hình (widget) mới khi điều hướng bằng Navigator.push là truyền qua tham số hàm tạo (constructor arguments) hoặc RouteSettings.arguments."
+        },
+        {
+          "uid": "sp26-fe-q012",
+          "number": 12,
+          "file": "SP26 - FE_012.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the purpose of parsing JSON?",
+          "code": null,
+          "options": {
+            "A": "Encrypt data",
+            "B": "Convert JSON into Dart objects",
+            "C": "Send requests",
+            "D": "Cache responses"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Parsing JSON (ví dụ dùng jsonDecode và factory fromJson) giúp chuyển đổi chuỗi văn bản JSON nhận từ API thành cấu trúc Map/List và các đối tượng Dart (Dart objects) có kiểu dữ liệu an toàn."
+        },
+        {
+          "uid": "sp26-fe-q013",
+          "number": 13,
+          "file": "SP26 - FE_013.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which phase involves gathering requirements?",
+          "code": null,
+          "options": {
+            "A": "Implementation",
+            "B": "Design",
+            "C": "Analysis",
+            "D": "Testing"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong quy trình phát triển phần mềm (SDLC), giai đoạn Analysis (Requirements Gathering & Analysis) chịu trách nhiệm thu thập và phân tích các yêu cầu từ khách hàng/người dùng."
+        },
+        {
+          "uid": "sp26-fe-q014",
+          "number": 14,
+          "file": "SP26 - FE_014.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Flutter tool helps debug network requests?",
+          "code": null,
+          "options": {
+            "A": "DevTools",
+            "B": "Inspector",
+            "C": "Emulator",
+            "D": "Hot reload"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Flutter DevTools cung cấp tab Network chuyên dụng để theo dõi và gỡ lỗi lưu lượng mạng (HTTP/HTTPS, WebSocket), trong khi Flutter Inspector dùng để kiểm tra cây widget và bố cục."
+        },
+        {
+          "uid": "sp26-fe-q015",
+          "number": 15,
+          "file": "SP26 - FE_015.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Dart feature supports object-oriented programming?",
+          "code": null,
+          "options": {
+            "A": "Widgets",
+            "B": "Classes and objects",
+            "C": "Hot reload",
+            "D": "Layout builders"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Dart là ngôn ngữ hướng đối tượng thuần túy, hỗ trợ lập trình hướng đối tượng (OOP) thông qua lớp và đối tượng (classes and objects), kế thừa, mixin và đa hình."
+        },
+        {
+          "uid": "sp26-fe-q016",
+          "number": 16,
+          "file": "SP26 - FE_016.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which approach helps reduce unnecessary widget rebuilds?",
+          "code": null,
+          "options": {
+            "A": "Using global variables",
+            "B": "Fine-grained state updates",
+            "C": "Hot restart",
+            "D": "Large widgets"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Cập nhật state ở phạm vi nhỏ, chi tiết (fine-grained state updates — ví dụ tách nhỏ widget, dùng Consumer/Selector/ValueListenableBuilder) giúp chỉ rebuild đúng phần UI thay đổi thay vì toàn bộ màn hình."
+        },
+        {
+          "uid": "sp26-fe-q017",
+          "number": 17,
+          "file": "SP26 - FE_017.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which action best demonstrates Flutter's reactive UI model?",
+          "code": null,
+          "options": {
+            "A": "Manually updating UI elements",
+            "B": "Rebuilding UI in response to state changes",
+            "C": "Editing layout XML",
+            "D": "Calling native APIs"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Mô hình UI phản ứng (reactive/declarative UI: UI = f(state)) của Flutter tự động xây dựng lại (rebuild) cây widget tương ứng mỗi khi state thay đổi, thay vì thao tác cập nhật từng phần tử UI thủ công."
+        },
+        {
+          "uid": "sp26-fe-q018",
+          "number": 18,
+          "file": "SP26 - FE_018.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why are const widgets recommended?",
+          "code": null,
+          "options": {
+            "A": "They improve readability",
+            "B": "They reduce rebuild cost",
+            "C": "They add state",
+            "D": "They handle navigation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Widget khai báo với từ khóa 'const' được tạo hằng số ngay lúc biên dịch (canonicalized instance), giúp Flutter tái sử dụng instance cũ và bỏ qua việc rebuild lại cây con đó khi widget cha rebuild."
+        },
+        {
+          "uid": "sp26-fe-q019",
+          "number": 19,
+          "file": "SP26 - FE_019.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should animations be disposed properly?",
+          "code": null,
+          "options": {
+            "A": "Improve UI",
+            "B": "Prevent memory leaks",
+            "C": "Speed up builds",
+            "D": "Fix layout"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "AnimationController đăng ký Ticker và các listener để lắng nghe từng khung hình; gọi dispose() khi State bị hủy sẽ giải phóng tài nguyên và ngăn ngừa rò rỉ bộ nhớ (memory leaks)."
+        },
+        {
+          "uid": "sp26-fe-q020",
+          "number": 20,
+          "file": "SP26 - FE_020.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Flutter test focuses on UI components?",
+          "code": null,
+          "options": {
+            "A": "Unit test",
+            "B": "Widget test",
+            "C": "Integration test",
+            "D": "Load test"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Widget test (component test) tập trung kiểm thử giao diện và tương tác của một hoặc một nhóm widget riêng lẻ mà không cần chạy toàn bộ ứng dụng trên thiết bị thật/máy ảo."
+        },
+        {
+          "uid": "sp26-fe-q021",
+          "number": 21,
+          "file": "SP26 - FE_021.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should database operations be asynchronous?",
+          "code": null,
+          "options": {
+            "A": "Simplify syntax",
+            "B": "Avoid blocking UI thread",
+            "C": "Reduce code",
+            "D": "Improve theme"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Thao tác đọc/ghi cơ sở dữ liệu là tác vụ I/O tốn thời gian; thực hiện bất đồng bộ (async/await, Future) giúp tránh làm nghẽn luồng giao diện chính (UI isolate/thread) gây giật lag hoặc đơ màn hình."
+        },
+        {
+          "uid": "sp26-fe-q022",
+          "number": 22,
+          "file": "SP26 - FE_022.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is Chapter 13 considered optional (Plus)?",
+          "code": null,
+          "options": {
+            "A": "It replaces core concepts",
+            "B": "Apps can work without deep optimization",
+            "C": "It manages navigation",
+            "D": "It handles authentication"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong giáo trình PRM393, Chapter 13 (chuyên đề nâng cao về tối ưu hóa hiệu năng chuyên sâu) được xếp là phần mở rộng (Plus/Optional) vì các ứng dụng cơ bản vẫn hoạt động đầy đủ chức năng mà chưa cần tối ưu hóa sâu."
+        },
+        {
+          "uid": "sp26-fe-q023",
+          "number": 23,
+          "file": "SP26 - FE_023.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget applies a theme to an entire Flutter application?",
+          "code": null,
+          "options": {
+            "A": "Scaffold",
+            "B": "Theme",
+            "C": "MaterialApp",
+            "D": "Container"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "MaterialApp là widget gốc cấu hình thuộc tính 'theme' và 'darkTheme' áp dụng xuyên suốt toàn bộ ứng dụng Flutter, trong khi widget Theme dùng để áp dụng hoặc ghi đè theme cục bộ cho một nhánh widget con."
+        },
+        {
+          "uid": "sp26-fe-q024",
+          "number": 24,
+          "file": "SP26 - FE_024.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the purpose of SliverAppBar?",
+          "code": null,
+          "options": {
+            "A": "Static app bar",
+            "B": "Scrollable flexible app bar",
+            "C": "Bottom navigation",
+            "D": "Drawer control"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "SliverAppBar dùng bên trong CustomScrollView để tạo thanh tiêu đề linh hoạt có thể cuộn, thu phóng (expand/collapse), ghim (pinned) hoặc nổi (floating) theo thao tác cuộn của người dùng."
+        },
+        {
+          "uid": "sp26-fe-q025",
+          "number": 25,
+          "file": "SP26 - FE_025.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget is best used to add fixed empty space?",
+          "code": null,
+          "options": {
+            "A": "Padding",
+            "B": "Expanded",
+            "C": "SizedBox",
+            "D": "Container"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "SizedBox (ví dụ const SizedBox(height: 16) hoặc width: 8) là widget nhẹ và tối ưu nhất trong Flutter để chèn một khoảng trống có kích thước cố định giữa các widget."
+        },
+        {
+          "uid": "sp26-fe-q026",
+          "number": 26,
+          "file": "SP26 - FE_026.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which package supports BLoC architecture?",
+          "code": null,
+          "options": {
+            "A": "provider",
+            "B": "flutter_bloc",
+            "C": "sqflite",
+            "D": "http"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Package `flutter_bloc` là thư viện chuyên dụng để triển khai kiến trúc BLoC (Events & States) trong Flutter, cung cấp các widget như `BlocProvider`, `BlocBuilder`, `BlocListener`."
+        },
+        {
+          "uid": "sp26-fe-q027",
+          "number": 27,
+          "file": "SP26 - FE_027.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Flutter widget reacts to authentication state changes?",
+          "code": null,
+          "options": {
+            "A": "FutureBuilder",
+            "B": "StreamBuilder",
+            "C": "ListView",
+            "D": "Form"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "`StreamBuilder` lắng nghe luồng sự kiện liên tục (như `authStateChanges()` từ Firebase Auth) và tự động rebuild giao diện mỗi khi trạng thái đăng nhập/đăng xuất thay đổi."
+        },
+        {
+          "uid": "sp26-fe-q028",
+          "number": 28,
+          "file": "SP26 - FE_028.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is technical debt?",
+          "code": null,
+          "options": {
+            "A": "UI lag",
+            "B": "Future cost of poor design decisions",
+            "C": "Memory usage",
+            "D": "API limit"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Technical debt (nợ kỹ thuật) là chi phí phát sinh trong tương lai để sửa chữa, bảo trì hoặc refactor do chọn giải pháp thiết kế/lập trình tạm bợ, thiếu tối ưu ở hiện tại."
+        },
+        {
+          "uid": "sp26-fe-q029",
+          "number": 29,
+          "file": "SP26 - FE_029.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is implicit animation?",
+          "code": null,
+          "options": {
+            "A": "Manual animation control",
+            "B": "Animation without controller",
+            "C": "API animation",
+            "D": "Navigation animation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Implicit animation (như `AnimatedContainer`, `AnimatedOpacity`) tự động nội suy hiệu ứng chuyển đổi khi giá trị thuộc tính thay đổi mà không cần lập trình viên khởi tạo và quản lý `AnimationController` thủ công."
+        },
+        {
+          "uid": "sp26-fe-q030",
+          "number": 30,
+          "file": "SP26 - FE_030.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Dart data structure is best suited for storing an ordered collection of items?",
+          "code": null,
+          "options": {
+            "A": "Set",
+            "B": "Map",
+            "C": "List",
+            "D": "Queue"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong Dart, `List` là cấu trúc dữ liệu chuẩn dùng để lưu trữ tập hợp các phần tử có thứ tự (ordered collection) và truy cập trực tiếp qua chỉ số index."
+        },
+        {
+          "uid": "sp26-fe-q031",
+          "number": 31,
+          "file": "SP26 - FE_031.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Flutter concept supports reactive UI updates?",
+          "code": null,
+          "options": {
+            "A": "Manual refresh",
+            "B": "Widget rebuilding",
+            "C": "Hot restart",
+            "D": "Native callbacks"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Flutter cập nhật giao diện theo hướng reactive/declarative thông qua cơ chế widget rebuilding: khi state thay đổi, framework gọi `build()` để tạo lại mô tả widget mới."
+        },
+        {
+          "uid": "sp26-fe-q032",
+          "number": 32,
+          "file": "SP26 - FE_032.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which type of test checks individual functions or classes?",
+          "code": null,
+          "options": {
+            "A": "Widget test",
+            "B": "Integration test",
+            "C": "Unit test",
+            "D": "System test"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Unit test kiểm thử từng đơn vị mã nguồn độc lập như một hàm (function), phương thức (method) hoặc lớp (class) riêng lẻ."
+        },
+        {
+          "uid": "sp26-fe-q033",
+          "number": 33,
+          "file": "SP26 - FE_033.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the role of events in BLoC?",
+          "code": null,
+          "options": {
+            "A": "Store UI",
+            "B": "Trigger state changes",
+            "C": "Render widgets",
+            "D": "Handle layout"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong kiến trúc BLoC, Events là đầu vào (thường từ tương tác người dùng trên UI) gửi tới BLoC để xử lý logic nghiệp vụ và kích hoạt thay đổi trạng thái (emit State mới)."
+        },
+        {
+          "uid": "sp26-fe-q034",
+          "number": 34,
+          "file": "SP26 - FE_034.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main purpose of hot reload in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Improve runtime performance",
+            "B": "Instantly reflect code changes in UI",
+            "C": "Publish apps faster",
+            "D": "Reduce memory usage"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Hot reload nạp mã nguồn vừa chỉnh sửa vào Dart VM đang chạy để cập nhật giao diện gần như tức thì mà vẫn giữ nguyên trạng thái hiện tại của ứng dụng."
+        },
+        {
+          "uid": "sp26-fe-q035",
+          "number": 35,
+          "file": "SP26 - FE_035.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why are forms important in mobile applications?",
+          "code": null,
+          "options": {
+            "A": "UI decoration",
+            "B": "User data collection",
+            "C": "State management",
+            "D": "Navigation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Form đóng vai trò thu thập và kiểm tra hợp lệ (validate) dữ liệu nhập từ người dùng như đăng nhập, đăng ký, tìm kiếm hoặc gửi biểu mẫu."
+        },
+        {
+          "uid": "sp26-fe-q036",
+          "number": 36,
+          "file": "SP26 - FE_036.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which method retrieves data from SharedPreferences?",
+          "code": null,
+          "options": {
+            "A": "get()",
+            "B": "read()",
+            "C": "fetch()",
+            "D": "load()"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "`SharedPreferences` cung cấp phương thức `get(key)` (cùng các hàm `getString()`, `getInt()`, `getBool()`,...) để đọc dữ liệu theo key, trong khi `read()`, `fetch()`, `load()` không tồn tại."
+        },
+        {
+          "uid": "sp26-fe-q037",
+          "number": 37,
+          "file": "SP26 - FE_037.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main benefit of Flutter's widget-based architecture?",
+          "code": null,
+          "options": {
+            "A": "Widgets are only used for layout design",
+            "B": "Widgets allow code reuse across platforms",
+            "C": "Widgets automatically manage databases",
+            "D": "Widgets replace backend services"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Kiến trúc dựa trên widget của Flutter giúp xây dựng các thành phần UI độc lập, dễ tái sử dụng từ một codebase duy nhất trên nhiều nền tảng (Android, iOS, Web, Desktop)."
+        },
+        {
+          "uid": "sp26-fe-q038",
+          "number": 38,
+          "file": "SP26 - FE_038.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why are widgets lightweight in Flutter?",
+          "code": null,
+          "options": {
+            "A": "They manage system resources",
+            "B": "They are immutable descriptions",
+            "C": "They store UI state",
+            "D": "They handle rendering directly"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Widget trong Flutter rất nhẹ vì chúng chỉ là các bản mô tả cấu hình bất biến (immutable descriptions) của giao diện; việc quản lý trạng thái và vẽ thực tế do Element và RenderObject đảm nhận."
+        },
+        {
+          "uid": "sp26-fe-q039",
+          "number": 39,
+          "file": "SP26 - FE_039.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should authentication state be centralized?",
+          "code": null,
+          "options": {
+            "A": "Reduce UI code",
+            "B": "Ensure consistent access control",
+            "C": "Improve animations",
+            "D": "Simplify layout"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Quản lý tập trung trạng thái xác thực (authentication state) giúp mọi màn hình và luồng điều hướng trong ứng dụng kiểm soát quyền truy cập đồng bộ, nhất quán."
+        },
+        {
+          "uid": "sp26-fe-q040",
+          "number": 40,
+          "file": "SP26 - FE_040.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget can hide user input text when configured for password entry?",
+          "code": null,
+          "options": {
+            "A": "TextField",
+            "B": "ObscureText",
+            "C": "SecureInput",
+            "D": "PasswordField"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Widget `TextField` (hoặc `TextFormField`) hỗ trợ ẩn ký tự nhập mật khẩu khi cấu hình thuộc tính `obscureText: true`; các lựa chọn còn lại không phải là widget có sẵn của Flutter."
+        },
+        {
+          "uid": "sp26-fe-q041",
+          "number": 41,
+          "file": "SP26 - FE_041.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is Flutter primarily used for?",
+          "code": null,
+          "options": {
+            "A": "Designing databases for mobile apps",
+            "B": "Creating native applications from a single codebase",
+            "C": "Developing server-side applications only",
+            "D": "Building operating systems for mobile devices"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Flutter là UI toolkit của Google dùng chủ yếu để xây dựng các ứng dụng biên dịch native đa nền tảng (mobile, web, desktop) từ một codebase duy nhất."
+        },
+        {
+          "uid": "sp26-fe-q042",
+          "number": 42,
+          "file": "SP26 - FE_042.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which method resets all form fields?",
+          "code": null,
+          "options": {
+            "A": "clear()",
+            "B": "reset()",
+            "C": "dispose()",
+            "D": "remove()"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Phương thức `reset()` của `FormState` (ví dụ `_formKey.currentState!.reset()`) đặt lại toàn bộ các `FormField` con về giá trị `initialValue` ban đầu và xóa thông báo lỗi."
+        },
+        {
+          "uid": "sp26-fe-q043",
+          "number": 43,
+          "file": "SP26 - FE_043.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Dart keyword is used to define a constant value at compile time?",
+          "code": null,
+          "options": {
+            "A": "final",
+            "B": "static",
+            "C": "const",
+            "D": "var"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Từ khóa `const` trong Dart định nghĩa hằng số có giá trị được xác định ngay tại thời điểm biên dịch (compile-time constant), khác với `final` được gán một lần tại runtime."
+        },
+        {
+          "uid": "sp26-fe-q044",
+          "number": 44,
+          "file": "SP26 - FE_044.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What happens after successful login?",
+          "code": null,
+          "options": {
+            "A": "App closes",
+            "B": "User session starts",
+            "C": "Theme changes",
+            "D": "Navigation resets"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Sau khi xác thực đăng nhập thành công, phiên làm việc của người dùng (user session) được khởi tạo (thường lưu trữ token/thông tin xác thực) để duy trì trạng thái đăng nhập."
+        },
+        {
+          "uid": "sp26-fe-q045",
+          "number": 45,
+          "file": "SP26 - FE_045.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which step is required before running a Flutter app for the first time?",
+          "code": null,
+          "options": {
+            "A": "Publishing the app",
+            "B": "Setting up the Flutter SDK",
+            "C": "Configuring a database",
+            "D": "Writing backend APIs"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trước khi có thể biên dịch và chạy ứng dụng Flutter lần đầu tiên, lập trình viên bắt buộc phải cài đặt và cấu hình môi trường Flutter SDK."
+        },
+        {
+          "uid": "sp26-fe-q046",
+          "number": 46,
+          "file": "SP26 - FE_046.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget reacts to async data from local storage?",
+          "code": null,
+          "options": {
+            "A": "FutureBuilder",
+            "B": "StreamBuilder",
+            "C": "ListView",
+            "D": "Provider"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Thao tác đọc dữ liệu bất đồng bộ từ bộ nhớ cục bộ (như `SharedPreferences`, file hoặc truy vấn SQLite một lần) trả về một `Future`, nên `FutureBuilder` được dùng để hiển thị giao diện tương ứng."
+        },
+        {
+          "uid": "sp26-fe-q047",
+          "number": 47,
+          "file": "SP26 - FE_047.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does golden testing verify?",
+          "code": null,
+          "options": {
+            "A": "API responses",
+            "B": "UI appearance consistency",
+            "C": "Database state",
+            "D": "Authentication"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Golden testing (visual regression testing) chụp ảnh giao diện của widget và so sánh từng pixel với ảnh mẫu chuẩn (golden file) để đảm bảo giao diện hiển thị nhất quán, không bị lệch ngoài ý muốn."
+        },
+        {
+          "uid": "sp26-fe-q048",
+          "number": 48,
+          "file": "SP26 - FE_048.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should state be kept as local as possible?",
+          "code": null,
+          "options": {
+            "A": "Better animations",
+            "B": "Reduce unnecessary rebuilds",
+            "C": "Simplify UI",
+            "D": "Improve navigation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Giữ state ở phạm vi cục bộ nhất có thể giúp khoanh vùng phần cây widget cần cập nhật khi state thay đổi, từ đó giảm thiểu việc rebuild không cần thiết và tối ưu hiệu năng."
+        },
+        {
+          "uid": "sp26-fe-q049",
+          "number": 49,
+          "file": "SP26 - FE_049.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the benefit of composing widgets in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Faster compilation",
+            "B": "Better code reuse and UI consistency",
+            "C": "Reduced memory usage",
+            "D": "Automatic navigation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Kết hợp (composition) các widget nhỏ thành widget lớn hơn giúp tái sử dụng mã nguồn hiệu quả và đảm bảo tính nhất quán về giao diện trong toàn bộ ứng dụng."
+        },
+        {
+          "uid": "sp26-fe-q050",
+          "number": 50,
+          "file": "SP26 - FE_050.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which status code indicates server error?",
+          "code": null,
+          "options": {
+            "A": "200",
+            "B": "301",
+            "C": "404",
+            "D": "500"
+          },
+          "answer": [
+            "D"
+          ],
+          "explanation": "Mã trạng thái HTTP 500 (Internal Server Error) thuộc nhóm 5xx biểu thị lỗi phía máy chủ (200 là thành công, 301 là chuyển hướng, 404 là không tìm thấy tài nguyên phía client)."
+        }
+      ]
+    },
+    {
+      "id": "su26-b5-fe",
+      "title": "PRM393 - SU26 - B5 - FE",
+      "shortTitle": "SU26 - B5 - FE",
+      "folder": "PRM393 - SU26 - B5 - FE",
+      "questions": [
+        {
+          "uid": "su26-b5-fe-q001",
+          "number": 1,
+          "file": "SU26 - B5 - FE_001.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which method saves an integer in SharedPreferences?",
+          "code": null,
+          "options": {
+            "A": "saveInt()",
+            "B": "putInt()",
+            "C": "setInt()",
+            "D": "writeInt()"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong package shared_preferences của Flutter, phương thức setInt(key, value) được dùng để lưu giá trị số nguyên (putInt() là của Android Native)."
+        },
+        {
+          "uid": "su26-b5-fe-q002",
+          "number": 2,
+          "file": "SU26 - B5 - FE_002.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the purpose of the Flutter SDK?",
+          "code": null,
+          "options": {
+            "A": "To store application data permanently",
+            "B": "To provide tools and libraries for Flutter development",
+            "C": "To deploy applications directly to app stores",
+            "D": "To replace the operating system of a device"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Flutter SDK cung cấp đầy đủ các công cụ (CLI, trình biên dịch, công cụ debug) và thư viện widget cần thiết để phát triển ứng dụng Flutter."
+        },
+        {
+          "uid": "su26-b5-fe-q003",
+          "number": 3,
+          "file": "SU26 - B5 - FE_003.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is rebuild scope optimization in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Reducing widget tree depth",
+            "B": "Limiting rebuild to affected widgets",
+            "C": "Caching API responses",
+            "D": "Using global state"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tối ưu phạm vi rebuild (rebuild scope optimization) trong Flutter là việc giới hạn quá trình build lại chỉ ở những widget thực sự bị ảnh hưởng bởi sự thay đổi state."
+        },
+        {
+          "uid": "su26-b5-fe-q004",
+          "number": 4,
+          "file": "SU26 - B5 - FE_004.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget enables custom scroll effects in Flutter?",
+          "code": null,
+          "options": {
+            "A": "ListView",
+            "B": "SingleChildScrollView",
+            "C": "CustomScrollView",
+            "D": "Column"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "CustomScrollView cho phép tạo các hiệu ứng cuộn tùy chỉnh bằng cách kết hợp trực tiếp các Sliver (như SliverAppBar, SliverList, SliverGrid)."
+        },
+        {
+          "uid": "su26-b5-fe-q005",
+          "number": 5,
+          "file": "SU26 - B5 - FE_005.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the primary role of widgets in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Managing databases",
+            "B": "Describing the user interface",
+            "C": "Handling network requests",
+            "D": "Compiling Dart code"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Flutter, widget là thành phần cơ bản dùng để mô tả cấu hình và giao diện người dùng (UI) dựa trên trạng thái hiện tại."
+        },
+        {
+          "uid": "su26-b5-fe-q006",
+          "number": 6,
+          "file": "SU26 - B5 - FE_006.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should animations be disposed properly?",
+          "code": null,
+          "options": {
+            "A": "Improve UI",
+            "B": "Prevent memory leaks",
+            "C": "Speed up builds",
+            "D": "Fix layout"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Gọi dispose() cho AnimationController khi widget bị hủy giúp dừng Ticker và giải phóng tài nguyên, tránh rò rỉ bộ nhớ (memory leaks)."
+        },
+        {
+          "uid": "su26-b5-fe-q007",
+          "number": 7,
+          "file": "SU26 - B5 - FE_007.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which package supports BLoC architecture?",
+          "code": null,
+          "options": {
+            "A": "provider",
+            "B": "flutter_bloc",
+            "C": "sqflite",
+            "D": "http"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Package flutter_bloc cung cấp các lớp và widget chuyên biệt (Bloc, Cubit, BlocProvider, BlocBuilder,...) để triển khai kiến trúc BLoC trong Flutter."
+        },
+        {
+          "uid": "su26-b5-fe-q008",
+          "number": 8,
+          "file": "SU26 - B5 - FE_008.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the role of events in BLoC?",
+          "code": null,
+          "options": {
+            "A": "Store UI",
+            "B": "Trigger state changes",
+            "C": "Render widgets",
+            "D": "Handle layout"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong BLoC, các sự kiện (Events) đóng vai trò là đầu vào được gửi từ UI để kích hoạt xử lý logic nghiệp vụ và tạo ra trạng thái (State) mới."
+        },
+        {
+          "uid": "su26-b5-fe-q009",
+          "number": 9,
+          "file": "SU26 - B5 - FE_009.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should database operations be asynchronous?",
+          "code": null,
+          "options": {
+            "A": "Simplify syntax",
+            "B": "Avoid blocking UI thread",
+            "C": "Reduce code",
+            "D": "Improve theme"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Thao tác đọc/ghi cơ sở dữ liệu tốn thời gian I/O nên cần thực hiện bất đồng bộ (async/await) để tránh làm đơ luồng giao diện chính (UI thread)."
+        },
+        {
+          "uid": "su26-b5-fe-q010",
+          "number": 10,
+          "file": "SU26 - B5 - FE_010.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is logout functionality important?",
+          "code": null,
+          "options": {
+            "A": "Free memory",
+            "B": "End user session securely",
+            "C": "Improve UI",
+            "D": "Change theme"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Chức năng đăng xuất (logout) giúp xóa token/thông tin xác thực cục bộ và kết thúc phiên làm việc của người dùng một cách an toàn."
+        },
+        {
+          "uid": "su26-b5-fe-q011",
+          "number": 11,
+          "file": "SU26 - B5 - FE_011.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is Cubit in BLoC?",
+          "code": null,
+          "options": {
+            "A": "UI widget",
+            "B": "Simplified BLoC without events",
+            "C": "Database layer",
+            "D": "Animation helper"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Cubit là phiên bản rút gọn của BLoC không sử dụng lớp Event mà gọi trực tiếp các hàm (methods) để phát ra (emit) trạng thái mới."
+        },
+        {
+          "uid": "su26-b5-fe-q012",
+          "number": 12,
+          "file": "SU26 - B5 - FE_012.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget helps avoid rebuilding unchanged UI parts?",
+          "code": null,
+          "options": {
+            "A": "Container",
+            "B": "RepaintBoundary",
+            "C": "Column",
+            "D": "FutureBuilder"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong 4 đáp án, RepaintBoundary là widget duy nhất dùng để cô lập phần UI không thay đổi nhằm tối ưu hiệu năng render (chính xác hơn ở tầng kỹ thuật là tránh vẽ lại - repainting - các phần UI không đổi)."
+        },
+        {
+          "uid": "su26-b5-fe-q013",
+          "number": 13,
+          "file": "SU26 - B5 - FE_013.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which keyword is used in Dart to pause execution until a Future completes?",
+          "code": null,
+          "options": {
+            "A": "async",
+            "B": "await",
+            "C": "future",
+            "D": "delay"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Từ khóa await (dùng bên trong hàm async) tạm dừng việc thực thi hàm hiện tại cho đến khi Future hoàn tất và trả về kết quả."
+        },
+        {
+          "uid": "su26-b5-fe-q014",
+          "number": 14,
+          "file": "SU26 - B5 - FE_014.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does an integration test verify?",
+          "code": null,
+          "options": {
+            "A": "Single function",
+            "B": "Widget rendering",
+            "C": "End-to-end app behavior",
+            "D": "Theme consistency"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Integration test kiểm thử hoạt động tổng thể từ đầu đến cuối (end-to-end) của toàn bộ ứng dụng hoặc một luồng tính năng hoàn chỉnh trên thiết bị/máy ảo."
+        },
+        {
+          "uid": "su26-b5-fe-q015",
+          "number": 15,
+          "file": "SU26 - B5 - FE_015.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Flutter service simplifies authentication implementation?",
+          "code": null,
+          "options": {
+            "A": "sqflite",
+            "B": "Firebase Authentication",
+            "C": "Provider",
+            "D": "http"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Firebase Authentication cung cấp sẵn dịch vụ backend và SDK giúp triển khai đăng nhập/xác thực người dùng nhanh chóng trong Flutter."
+        },
+        {
+          "uid": "su26-b5-fe-q016",
+          "number": 16,
+          "file": "SU26 - B5 - FE_016.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "How can data be passed to a new screen?",
+          "code": null,
+          "options": {
+            "A": "Using global variables",
+            "B": "Via constructor arguments",
+            "C": "Using ThemeData",
+            "D": "Using Scaffold"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Flutter, cách trực tiếp và an toàn kiểu dữ liệu phổ biến nhất để truyền dữ liệu sang màn hình mới là thông qua tham số hàm khởi tạo (constructor arguments) của widget màn hình đó."
+        },
+        {
+          "uid": "su26-b5-fe-q017",
+          "number": 17,
+          "file": "SU26 - B5 - FE_017.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which HTTP method is typically used to retrieve data?",
+          "code": null,
+          "options": {
+            "A": "POST",
+            "B": "PUT",
+            "C": "GET",
+            "D": "DELETE"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Phương thức HTTP GET được dùng để truy xuất/lấy dữ liệu từ server mà không làm thay đổi tài nguyên."
+        },
+        {
+          "uid": "su26-b5-fe-q018",
+          "number": 18,
+          "file": "SU26 - B5 - FE_018.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is implicit animation?",
+          "code": null,
+          "options": {
+            "A": "Manual animation control",
+            "B": "Animation without controller",
+            "C": "API animation",
+            "D": "Navigation animation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Implicit animation (như AnimatedContainer, AnimatedOpacity) tự động nội suy chuyển động khi thuộc tính thay đổi mà không cần lập trình viên tự quản lý AnimationController."
+        },
+        {
+          "uid": "su26-b5-fe-q019",
+          "number": 19,
+          "file": "SU26 - B5 - FE_019.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is one of the main advantages of Flutter?",
+          "code": null,
+          "options": {
+            "A": "Requires separate codebases for Android and iOS",
+            "B": "Uses JavaScript as its primary language",
+            "C": "Enables building apps from a single codebase for multiple platforms",
+            "D": "Only supports mobile platforms"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Ưu điểm nổi bật của Flutter là cho phép phát triển ứng dụng đa nền tảng (Android, iOS, Web, Desktop) chỉ từ một codebase duy nhất viết bằng Dart."
+        },
+        {
+          "uid": "su26-b5-fe-q020",
+          "number": 20,
+          "file": "SU26 - B5 - FE_020.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What role does the Flutter framework play in application development?",
+          "code": null,
+          "options": {
+            "A": "It manages database servers",
+            "B": "It provides UI components and rendering logic",
+            "C": "It replaces the operating system",
+            "D": "It runs backend business logic"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Flutter framework cung cấp hệ thống widget (UI components), layout, animation, gesture và logic hiển thị giao diện người dùng."
+        },
+        {
+          "uid": "su26-b5-fe-q021",
+          "number": 21,
+          "file": "SU26 - B5 - FE_021.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What format is most commonly used in REST APIs?",
+          "code": null,
+          "options": {
+            "A": "XML",
+            "B": "CSV",
+            "C": "JSON",
+            "D": "Binary"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "JSON (JavaScript Object Notation) là định dạng dữ liệu nhẹ, dễ đọc và phổ biến nhất trong giao tiếp REST API hiện nay."
+        },
+        {
+          "uid": "su26-b5-fe-q022",
+          "number": 22,
+          "file": "SU26 - B5 - FE_022.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main concept behind navigation in Flutter using the Navigator widget?",
+          "code": null,
+          "options": {
+            "A": "Screens are arranged in a grid layout",
+            "B": "Screens are managed using a stack (push and pop)",
+            "C": "Screens are loaded randomly",
+            "D": "Screens are replaced automatically without control"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Navigator trong Flutter quản lý các màn hình (Route) theo cấu trúc ngăn xếp (stack - LIFO) thông qua các thao tác push (thêm màn hình) và pop (quay lại)."
+        },
+        {
+          "uid": "su26-b5-fe-q023",
+          "number": 23,
+          "file": "SU26 - B5 - FE_023.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main limitation of SharedPreferences?",
+          "code": null,
+          "options": {
+            "A": "Cannot persist data",
+            "B": "Only works on web",
+            "C": "Not suitable for large or complex data",
+            "D": "Requires SQL queries"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "SharedPreferences chỉ thiết kế cho dữ liệu key-value nhỏ, đơn giản (như cài đặt người dùng), không phù hợp để lưu trữ dữ liệu lớn hoặc có cấu trúc quan hệ phức tạp."
+        },
+        {
+          "uid": "su26-b5-fe-q024",
+          "number": 24,
+          "file": "SU26 - B5 - FE_024.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does a Tween define?",
+          "code": null,
+          "options": {
+            "A": "Animation speed",
+            "B": "Value range for animation",
+            "C": "UI layout",
+            "D": "State logic"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tween (viết tắt của in-between) định nghĩa khoảng giá trị đầu và cuối (begin -> end) để ánh xạ tiến trình animation (0.0 -> 1.0) sang giá trị thực tế."
+        },
+        {
+          "uid": "su26-b5-fe-q025",
+          "number": 25,
+          "file": "SU26 - B5 - FE_025.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is pagination used for?",
+          "code": null,
+          "options": {
+            "A": "UI animation",
+            "B": "Handling large datasets efficiently",
+            "C": "Theme management",
+            "D": "Authentication"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Phân trang (pagination) chia nhỏ tập dữ liệu lớn thành từng trang/phần nhỏ để tải và hiển thị dần, giúp tiết kiệm băng thông và bộ nhớ."
+        },
+        {
+          "uid": "su26-b5-fe-q026",
+          "number": 26,
+          "file": "SU26 - B5 - FE_026.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main purpose of hot reload in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Improve runtime performance",
+            "B": "Instantly reflect code changes in UI",
+            "C": "Publish apps faster",
+            "D": "Reduce memory usage"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Hot reload trong Flutter nạp mã nguồn Dart mới vào máy ảo Dart đang chạy để cập nhật giao diện (UI) ngay lập tức mà vẫn giữ nguyên state hiện tại."
+        },
+        {
+          "uid": "su26-b5-fe-q027",
+          "number": 27,
+          "file": "SU26 - B5 - FE_027.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What design principle improves form usability?",
+          "code": null,
+          "options": {
+            "A": "Long forms",
+            "B": "Minimal validation",
+            "C": "Clear labels and feedback",
+            "D": "Hidden errors"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Nhãn (labels) rõ ràng và phản hồi (feedback) trực quan khi nhập liệu/báo lỗi giúp cải thiện đáng kể khả năng sử dụng (usability) của biểu mẫu."
+        },
+        {
+          "uid": "su26-b5-fe-q028",
+          "number": 28,
+          "file": "SU26 - B5 - FE_028.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does a Dart class primarily represent?",
+          "code": null,
+          "options": {
+            "A": "A UI widget only",
+            "B": "A blueprint for creating objects",
+            "C": "A database table",
+            "D": "A network request"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong lập trình hướng đối tượng với Dart, class đóng vai trò là bản thiết kế (blueprint) định nghĩa thuộc tính và phương thức để tạo ra các đối tượng (objects)."
+        },
+        {
+          "uid": "su26-b5-fe-q029",
+          "number": 29,
+          "file": "SU26 - B5 - FE_029.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which practice improves authentication security?",
+          "code": null,
+          "options": {
+            "A": "Storing passwords locally",
+            "B": "Encrypting credentials",
+            "C": "Using HTTP",
+            "D": "Hardcoding tokens"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Mã hóa thông tin xác thực (encrypting credentials) giúp bảo vệ dữ liệu nhạy cảm khi truyền tải và lưu trữ, trái ngược với việc lưu mật khẩu thuần, dùng HTTP không mã hóa hoặc hardcode token."
+        },
+        {
+          "uid": "su26-b5-fe-q030",
+          "number": 30,
+          "file": "SU26 - B5 - FE_030.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the role of BuildContext in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Store application data",
+            "B": "Locate widgets in the widget tree",
+            "C": "Manage navigation history",
+            "D": "Render UI pixels"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "BuildContext là tham chiếu xác định vị trí của một widget trong cây widget (widget/element tree), thường dùng để tra cứu InheritedWidget cha như Theme, MediaQuery hoặc Navigator."
+        },
+        {
+          "uid": "su26-b5-fe-q031",
+          "number": 31,
+          "file": "SU26 - B5 - FE_031.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does the Padding widget do?",
+          "code": null,
+          "options": {
+            "A": "Adds space inside a widget",
+            "B": "Adds space between widgets",
+            "C": "Aligns widgets",
+            "D": "Controls widget size"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Widget Padding tạo khoảng đệm (inset space) bên trong bao quanh widget con của nó."
+        },
+        {
+          "uid": "su26-b5-fe-q032",
+          "number": 32,
+          "file": "SU26 - B5 - FE_032.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is Hive mainly used for?",
+          "code": null,
+          "options": {
+            "A": "Remote database",
+            "B": "Lightweight local NoSQL storage",
+            "C": "State management",
+            "D": "Routing"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Hive là thư viện cơ sở dữ liệu NoSQL dạng key-value cục bộ (local storage) nhẹ và tốc độ cao viết thuần bằng Dart cho Flutter."
+        },
+        {
+          "uid": "su26-b5-fe-q033",
+          "number": 33,
+          "file": "SU26 - B5 - FE_033.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should navigation logic be well-structured?",
+          "code": null,
+          "options": {
+            "A": "Reduce UI size",
+            "B": "Improve maintainability",
+            "C": "Increase speed",
+            "D": "Avoid widgets"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tổ chức logic điều hướng (navigation/routing) rõ ràng và tập trung giúp mã nguồn dễ đọc, dễ mở rộng và dễ bảo trì (improve maintainability)."
+        },
+        {
+          "uid": "su26-b5-fe-q034",
+          "number": 34,
+          "file": "SU26 - B5 - FE_034.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the purpose of onSaved callback?",
+          "code": null,
+          "options": {
+            "A": "Validate input",
+            "B": "Store form values",
+            "C": "Reset form",
+            "D": "Display errors"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Callback `onSaved` của `FormField`/`TextFormField` được kích hoạt khi gọi `FormState.save()` nhằm lưu giá trị hiện tại của các trường vào biến hoặc model."
+        },
+        {
+          "uid": "su26-b5-fe-q035",
+          "number": 35,
+          "file": "SU26 - B5 - FE_035.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which feature of Dart helps prevent null reference errors at compile time?",
+          "code": null,
+          "options": {
+            "A": "Dynamic typing",
+            "B": "Hot reload",
+            "C": "Null safety",
+            "D": "Asynchronous execution"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Sound null safety trong Dart mặc định các kiểu dữ liệu là non-nullable trừ khi khai báo `?`, giúp phát hiện và ngăn chặn lỗi tham chiếu null ngay tại thời điểm biên dịch (compile time)."
+        },
+        {
+          "uid": "su26-b5-fe-q036",
+          "number": 36,
+          "file": "SU26 - B5 - FE_036.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which sliver is commonly used to display a scrolling list?",
+          "code": null,
+          "options": {
+            "A": "SliverGrid",
+            "B": "SliverList",
+            "C": "SliverAppBar",
+            "D": "SliverFillRemaining"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "`SliverList` được sử dụng bên trong `CustomScrollView` để hiển thị danh sách tuyến tính có thể cuộn (scrolling list)."
+        },
+        {
+          "uid": "su26-b5-fe-q037",
+          "number": 37,
+          "file": "SU26 - B5 - FE_037.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "In Flutter architecture, which layer is responsible for rendering and uses C++ with Skia?",
+          "code": null,
+          "options": {
+            "A": "Framework Layer",
+            "B": "Engine Layer",
+            "C": "Embedder Layer",
+            "D": "Widget Layer"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Engine Layer của Flutter được viết chủ yếu bằng C++ và chịu trách nhiệm kết xuất đồ họa mức thấp (thông qua Skia/Impeller), bố cục văn bản và chạy Dart runtime."
+        },
+        {
+          "uid": "su26-b5-fe-q038",
+          "number": 38,
+          "file": "SU26 - B5 - FE_038.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which curve creates a bounce effect?",
+          "code": null,
+          "options": {
+            "A": "linear",
+            "B": "easeIn",
+            "C": "bounceOut",
+            "D": "decelerate"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "`Curves.bounceOut` tạo hiệu ứng chuyển động nảy (bounce) giảm dần ở cuối animation."
+        },
+        {
+          "uid": "su26-b5-fe-q039",
+          "number": 39,
+          "file": "SU26 - B5 - FE_039.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which programming language is used to develop Flutter applications?",
+          "code": null,
+          "options": {
+            "A": "Kotlin",
+            "B": "Swift",
+            "C": "Dart",
+            "D": "JavaScript"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Ứng dụng Flutter được phát triển bằng ngôn ngữ lập trình Dart của Google."
+        },
+        {
+          "uid": "su26-b5-fe-q040",
+          "number": 40,
+          "file": "SU26 - B5 - FE_040.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "When does Flutter rebuild the widget tree?",
+          "code": null,
+          "options": {
+            "A": "On every frame",
+            "B": "When state changes",
+            "C": "Only when app restarts",
+            "D": "Only during hot restart"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Flutter đánh dấu các element là dirty và rebuild phần cây widget tương ứng khi state thay đổi (ví dụ qua `setState()`, `InheritedWidget`, hoặc các giải pháp quản lý state)."
+        },
+        {
+          "uid": "su26-b5-fe-q041",
+          "number": 41,
+          "file": "SU26 - B5 - FE_041.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main risk of improper state management?",
+          "code": null,
+          "options": {
+            "A": "UI inconsistency",
+            "B": "Longer compile time",
+            "C": "Package conflicts",
+            "D": "Build errors"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Quản lý state không đúng cách khiến các màn hình hoặc widget không đồng bộ với dữ liệu thực tế, dẫn đến sự thiếu nhất quán trên giao diện (UI inconsistency)."
+        },
+        {
+          "uid": "su26-b5-fe-q042",
+          "number": 42,
+          "file": "SU26 - B5 - FE_042.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "According to the testing pyramid, which type of test should be used the least?",
+          "code": null,
+          "options": {
+            "A": "Unit Tests",
+            "B": "Widget Tests",
+            "C": "Integration Tests",
+            "D": "Debug Tests"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Theo tháp kiểm thử (testing pyramid) trong Flutter, Unit Tests chiếm số lượng nhiều nhất ở đáy, tiếp theo là Widget Tests, và Integration Tests ở đỉnh có chi phí chạy cao nhất nên dùng số lượng ít nhất."
+        },
+        {
+          "uid": "su26-b5-fe-q043",
+          "number": 43,
+          "file": "SU26 - B5 - FE_043.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which approach helps reduce unnecessary widget rebuilds?",
+          "code": null,
+          "options": {
+            "A": "Using global variables",
+            "B": "Fine-grained state updates",
+            "C": "Hot restart",
+            "D": "Large widgets"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Cập nhật state có phạm vi nhỏ, chi tiết (fine-grained state updates, ví dụ dùng `Consumer`, `Selector`, `ValueListenableBuilder`, tách nhỏ widget) giúp chỉ rebuild đúng widget cần thiết."
+        },
+        {
+          "uid": "su26-b5-fe-q044",
+          "number": 44,
+          "file": "SU26 - B5 - FE_044.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which component is required to run and test Flutter applications on a local machine?",
+          "code": null,
+          "options": {
+            "A": "A cloud hosting service",
+            "B": "A physical server",
+            "C": "An emulator or physical device",
+            "D": "A database management system"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Để chạy và kiểm thử ứng dụng Flutter trên máy cục bộ, lập trình viên cần máy ảo/giả lập (emulator/simulator) hoặc thiết bị thật (physical device/target platform)."
+        },
+        {
+          "uid": "su26-b5-fe-q045",
+          "number": 45,
+          "file": "SU26 - B5 - FE_045.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Dart keyword is used to define a constant value at compile time?",
+          "code": null,
+          "options": {
+            "A": "final",
+            "B": "static",
+            "C": "const",
+            "D": "var"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Từ khóa `const` trong Dart định nghĩa hằng số có giá trị xác định ngay tại thời điểm biên dịch (compile-time constant), trong khi `final` chỉ gán một lần tại runtime."
+        },
+        {
+          "uid": "su26-b5-fe-q046",
+          "number": 46,
+          "file": "SU26 - B5 - FE_046.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget is primarily used as the structural foundation of a Material Design screen in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Container",
+            "B": "Scaffold",
+            "C": "Column",
+            "D": "ListView"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "`Scaffold` cung cấp khung cấu trúc cơ bản cho một màn hình Material Design (bao gồm `appBar`, `body`, `floatingActionButton`, `drawer`, `bottomNavigationBar`, v.v.)."
+        },
+        {
+          "uid": "su26-b5-fe-q047",
+          "number": 47,
+          "file": "SU26 - B5 - FE_047.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which status code indicates server error?",
+          "code": null,
+          "options": {
+            "A": "200",
+            "B": "301",
+            "C": "404",
+            "D": "500"
+          },
+          "answer": [
+            "D"
+          ],
+          "explanation": "Mã trạng thái HTTP 500 (Internal Server Error) thuộc nhóm 5xx chỉ lỗi phía máy chủ (server error); 200 là thành công, 301 là điều hướng, 404 là không tìm thấy tài nguyên."
+        },
+        {
+          "uid": "su26-b5-fe-q048",
+          "number": 48,
+          "file": "SU26 - B5 - FE_048.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should authentication state be centralized?",
+          "code": null,
+          "options": {
+            "A": "Reduce UI code",
+            "B": "Ensure consistent access control",
+            "C": "Improve animations",
+            "D": "Simplify layout"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tập trung hóa trạng thái xác thực (authentication state) đảm bảo kiểm soát quyền truy cập nhất quán (consistent access control) trên toàn bộ các màn hình và route của ứng dụng."
+        },
+        {
+          "uid": "su26-b5-fe-q049",
+          "number": 49,
+          "file": "SU26 - B5 - FE_049.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which package is commonly used for Flutter testing?",
+          "code": null,
+          "options": {
+            "A": "flutter_test",
+            "B": "provider",
+            "C": "http",
+            "D": "sqflite"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Gói `flutter_test` là thư viện kiểm thử cốt lõi đi kèm Flutter SDK để viết unit test và widget test."
+        },
+        {
+          "uid": "su26-b5-fe-q050",
+          "number": 50,
+          "file": "SU26 - B5 - FE_050.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why are const widgets recommended?",
+          "code": null,
+          "options": {
+            "A": "They improve readability",
+            "B": "They reduce rebuild cost",
+            "C": "They add state",
+            "D": "They handle navigation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Khai báo widget với `const` cho phép Flutter tái sử dụng cùng một instance bất biến tại thời điểm biên dịch và bỏ qua việc rebuild không cần thiết, từ đó giảm chi phí rebuild."
+        }
+      ]
+    },
+    {
+      "id": "su26-fe",
+      "title": "PRM393 - SU26 - FE",
+      "shortTitle": "SU26 - FE",
+      "folder": "PRM393 - SU26 - FE",
+      "questions": [
+        {
+          "uid": "su26-fe-q001",
+          "number": 1,
+          "file": "SU26 - FE_001.png",
+          "altFile": "SU26 - FE_001 (1).png",
+          "chooseCount": 1,
+          "question": "Which Dart feature supports object-oriented programming?",
+          "code": null,
+          "options": {
+            "A": "Widgets",
+            "B": "Classes and objects",
+            "C": "Hot reload",
+            "D": "Layout builders"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Dart là ngôn ngữ lập trình hướng đối tượng (OOP) hỗ trợ đầy đủ lớp và đối tượng (Classes and objects); các đáp án còn lại là thành phần/tính năng của Flutter framework và công cụ phát triển."
+        },
+        {
+          "uid": "su26-fe-q002",
+          "number": 2,
+          "file": "SU26 - FE_002.png",
+          "altFile": "SU26 - FE_002 (1).png",
+          "chooseCount": 1,
+          "question": "Which method retrieves data from SharedPreferences?",
+          "code": null,
+          "options": {
+            "A": "get()",
+            "B": "read()",
+            "C": "fetch()",
+            "D": "load()"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Trong thư viện shared_preferences của Flutter, phương thức get(String key) (cùng các hàm getString(), getInt(), getBool(),...) dùng để đọc dữ liệu đã lưu theo key; các hàm read(), fetch(), load() không thuộc API của SharedPreferences."
+        },
+        {
+          "uid": "su26-fe-q003",
+          "number": 3,
+          "file": "SU26 - FE_003.png",
+          "altFile": "SU26 - FE_003 (1).png",
+          "chooseCount": 1,
+          "question": "What is Flutter primarily used for?",
+          "code": null,
+          "options": {
+            "A": "Designing databases for mobile apps",
+            "B": "Creating native applications from a single codebase",
+            "C": "Developing server-side applications only",
+            "D": "Building operating systems for mobile devices"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Flutter là bộ UI toolkit đa nền tảng của Google dùng chủ yếu để xây dựng các ứng dụng biên dịch native (mobile, web, desktop) từ một codebase duy nhất."
+        },
+        {
+          "uid": "su26-fe-q004",
+          "number": 4,
+          "file": "SU26 - FE_004.png",
+          "altFile": "SU26 - FE_004 (1).png",
+          "chooseCount": 1,
+          "question": "Why should state be kept as local as possible?",
+          "code": null,
+          "options": {
+            "A": "Better animations",
+            "B": "Reduce unnecessary rebuilds",
+            "C": "Simplify UI",
+            "D": "Improve navigation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Giữ state càng cục bộ (local) trong cây widget càng giúp thu hẹp phạm vi widget bị đánh dấu dirty khi state thay đổi, từ đó giảm thiểu việc rebuild không cần thiết và tối ưu hiệu năng."
+        },
+        {
+          "uid": "su26-fe-q005",
+          "number": 5,
+          "file": "SU26 - FE_005.png",
+          "altFile": "SU26 - FE_005 (1).png",
+          "chooseCount": 1,
+          "question": "Which command builds a release APK?",
+          "code": null,
+          "options": {
+            "A": "flutter run",
+            "B": "flutter build apk",
+            "C": "flutter doctor",
+            "D": "flutter clean"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Lệnh `flutter build apk` mặc định biên dịch ứng dụng Flutter ra file cài đặt APK ở chế độ release (app-release.apk)."
+        },
+        {
+          "uid": "su26-fe-q006",
+          "number": 6,
+          "file": "SU26 - FE_006.png",
+          "altFile": "SU26 - FE_006 (1).png",
+          "chooseCount": 1,
+          "question": "What happens after successful login?",
+          "code": null,
+          "options": {
+            "A": "App closes",
+            "B": "User session starts",
+            "C": "Theme changes",
+            "D": "Navigation resets"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Sau khi đăng nhập (xác thực) thành công, phiên làm việc của người dùng (user session) được khởi tạo (thường lưu trữ token/thông tin phiên) để duy trì trạng thái đăng nhập trong ứng dụng."
+        },
+        {
+          "uid": "su26-fe-q007",
+          "number": 7,
+          "file": "SU26 - FE_007.png",
+          "altFile": "SU26 - FE_007 (1).png",
+          "chooseCount": 1,
+          "question": "Which widget is an example of implicit animation?",
+          "code": null,
+          "options": {
+            "A": "AnimatedContainer",
+            "B": "AnimationController",
+            "C": "Tween",
+            "D": "Ticker"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "AnimatedContainer kế thừa từ ImplicitlyAnimatedWidget, tự động tạo chuyển động mượt mà khi các thuộc tính (như kích thước, màu sắc, padding) thay đổi mà không cần quản lý AnimationController thủ công; trong khi AnimationController, Tween và Ticker là các lớp hỗ trợ explicit animation (không phải widget)."
+        },
+        {
+          "uid": "su26-fe-q008",
+          "number": 8,
+          "file": "SU26 - FE_008.png",
+          "altFile": "SU26 - FE_008 (1).png",
+          "chooseCount": 1,
+          "question": "What is the primary responsibility of the setState() method?",
+          "code": null,
+          "options": {
+            "A": "Persist data",
+            "B": "Trigger widget rebuild",
+            "C": "Navigate screens",
+            "D": "Handle async tasks"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Phương thức setState() trong StatefulWidget thông báo cho Flutter framework rằng trạng thái nội bộ đã thay đổi, đánh dấu widget cần được vẽ lại và kích hoạt gọi lại hàm build()."
+        },
+        {
+          "uid": "su26-fe-q009",
+          "number": 9,
+          "file": "SU26 - FE_009.png",
+          "altFile": "SU26 - FE_009 (1).png",
+          "chooseCount": 1,
+          "question": "Why is clean architecture beneficial?",
+          "code": null,
+          "options": {
+            "A": "Fewer files",
+            "B": "Easier maintenance and testing",
+            "C": "Better UI",
+            "D": "Faster builds"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Clean Architecture phân tách mã nguồn thành các tầng độc lập (Presentation, Domain, Data), giúp giảm sự phụ thuộc lẫn nhau, dễ bảo trì, mở rộng và viết unit test độc lập hơn (dù thường tạo nhiều file hơn)."
+        },
+        {
+          "uid": "su26-fe-q010",
+          "number": 10,
+          "file": "SU26 - FE_010.png",
+          "altFile": "SU26 - FE_010 (1).png",
+          "chooseCount": 1,
+          "question": "What is Dart primarily designed for in the Flutter ecosystem?",
+          "code": null,
+          "options": {
+            "A": "Database management",
+            "B": "User interface development",
+            "C": "General-purpose programming with UI focus",
+            "D": "Network security"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong hệ sinh thái Flutter, Dart là ngôn ngữ lập trình đa mục đích (general-purpose) để xử lý cả business logic, bất đồng bộ, mạng lẫn dữ liệu, đồng thời được tối ưu hóa đặc biệt cho việc xây dựng giao diện người dùng (client-optimized / UI focus)."
+        },
+        {
+          "uid": "su26-fe-q011",
+          "number": 11,
+          "file": "SU26 - FE_011.png",
+          "altFile": "SU26 - FE_011 (1).png",
+          "chooseCount": 1,
+          "question": "What does the build() method return in a widget?",
+          "code": null,
+          "options": {
+            "A": "A screen",
+            "B": "A widget tree describing the UI",
+            "C": "Application state",
+            "D": "Rendered pixels"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Hàm build(BuildContext context) có kiểu trả về là Widget, trả về một cây widget (widget tree) mô tả cấu hình giao diện người dùng, còn việc tính toán bố cục và vẽ pixel thực tế do tầng RenderObject đảm nhiệm."
+        },
+        {
+          "uid": "su26-fe-q012",
+          "number": 12,
+          "file": "SU26 - FE_012.png",
+          "altFile": "SU26 - FE_012 (1).png",
+          "chooseCount": 1,
+          "question": "Which Flutter test focuses on UI components?",
+          "code": null,
+          "options": {
+            "A": "Unit test",
+            "B": "Widget test",
+            "C": "Integration test",
+            "D": "Load test"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Flutter, Widget test (còn gọi là component test) chuyên kiểm thử giao diện, bố cục và tương tác của từng widget/UI component riêng lẻ mà không cần chạy toàn bộ ứng dụng trên thiết bị thật như Integration test."
+        },
+        {
+          "uid": "su26-fe-q013",
+          "number": 13,
+          "file": "SU26 - FE_013.png",
+          "altFile": "SU26 - FE_013 (1).png",
+          "chooseCount": 1,
+          "question": "What causes unnecessary widget rebuilds?",
+          "code": null,
+          "options": {
+            "A": "State changes",
+            "B": "Overusing setState()",
+            "C": "Using Provider",
+            "D": "Using const widgets"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Lạm dụng setState() (đặc biệt ở widget cha cấp cao hoặc gọi khi dữ liệu hiển thị không đổi) khiến toàn bộ cây widget con trong hàm build() bị đánh dấu dirty và rebuild không cần thiết, trong khi const widgets giúp tránh rebuild thừa."
+        },
+        {
+          "uid": "su26-fe-q014",
+          "number": 14,
+          "file": "SU26 - FE_014.png",
+          "altFile": "SU26 - FE_014 (1).png",
+          "chooseCount": 1,
+          "question": "What happens if a non-nullable variable is not initialized in Dart?",
+          "code": null,
+          "options": {
+            "A": "The app runs normally",
+            "B": "A runtime exception occurs",
+            "C": "A compile-time error occurs",
+            "D": "The value becomes null automatically"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Với cơ chế Sound Null Safety trong Dart, biến non-nullable (không dùng từ khóa late) bắt buộc phải được khởi tạo trước khi sử dụng, nếu không trình biên dịch sẽ báo lỗi ngay lúc compile-time."
+        },
+        {
+          "uid": "su26-fe-q015",
+          "number": 15,
+          "file": "SU26 - FE_015.png",
+          "altFile": "SU26 - FE_015 (1).png",
+          "chooseCount": 1,
+          "question": "Why is separating UI and state logic recommended?",
+          "code": null,
+          "options": {
+            "A": "Reduce code size",
+            "B": "Improve maintainability",
+            "C": "Faster execution",
+            "D": "Better animations"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tách biệt giao diện (UI) và logic quản lý trạng thái (state/business logic) tuân theo nguyên lý Separation of Concerns, giúp mã nguồn rõ ràng, dễ kiểm thử (unit test) và dễ bảo trì/mở rộng hơn."
+        },
+        {
+          "uid": "su26-fe-q016",
+          "number": 16,
+          "file": "SU26 - FE_016.png",
+          "altFile": "SU26 - FE_016 (1).png",
+          "chooseCount": 1,
+          "question": "Why should architecture be decided early?",
+          "code": null,
+          "options": {
+            "A": "Avoid UI work",
+            "B": "Reduce refactoring cost",
+            "C": "Improve animations",
+            "D": "Change theme"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Quyết định kiến trúc ứng dụng ngay từ đầu giúp thống nhất cách tổ chức tầng dữ liệu, nghiệp vụ và giao diện khi dự án mở rộng, giảm đáng kể chi phí đập đi viết lại (refactoring) về sau."
+        },
+        {
+          "uid": "su26-fe-q017",
+          "number": 17,
+          "file": "SU26 - FE_017.png",
+          "altFile": "SU26 - FE_017 (1).png",
+          "chooseCount": 1,
+          "question": "What does golden testing verify?",
+          "code": null,
+          "options": {
+            "A": "API responses",
+            "B": "UI appearance consistency",
+            "C": "Database state",
+            "D": "Authentication"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Flutter, Golden testing (sử dụng matchesGoldenFile) chụp lại hình ảnh render thực tế của widget và đối chiếu từng pixel với ảnh chuẩn (golden file) để kiểm chứng tính nhất quán về giao diện hiển thị (UI appearance consistency)."
+        },
+        {
+          "uid": "su26-fe-q018",
+          "number": 18,
+          "file": "SU26 - FE_018.png",
+          "altFile": "SU26 - FE_018 (1).png",
+          "chooseCount": 1,
+          "question": "Which Flutter tool helps debug network requests?",
+          "code": null,
+          "options": {
+            "A": "DevTools",
+            "B": "Inspector",
+            "C": "Emulator",
+            "D": "Hot reload"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Flutter DevTools cung cấp tab Network giúp theo dõi và debug chi tiết các HTTP/HTTPS/WebSocket requests. Flutter Inspector chỉ dùng để kiểm tra cây widget và bố cục giao diện."
+        },
+        {
+          "uid": "su26-fe-q019",
+          "number": 19,
+          "file": "SU26 - FE_019.png",
+          "altFile": "SU26 - FE_019 (1).png",
+          "chooseCount": 1,
+          "question": "Which platforms can Flutter applications target using a single codebase?",
+          "code": null,
+          "options": {
+            "A": "Android only",
+            "B": "iOS only",
+            "C": "Android, iOS, web, and desktop",
+            "D": "Web servers only"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Flutter là framework đa nền tảng cho phép biên dịch từ một codebase duy nhất ra ứng dụng Android, iOS, Web và Desktop (Windows, macOS, Linux)."
+        },
+        {
+          "uid": "su26-fe-q020",
+          "number": 20,
+          "file": "SU26 - FE_020.png",
+          "altFile": "SU26 - FE_020 (1).png",
+          "chooseCount": 1,
+          "question": "Which widget reacts to async data from local storage?",
+          "code": null,
+          "options": {
+            "A": "FutureBuilder",
+            "B": "StreamBuilder",
+            "C": "ListView",
+            "D": "Provider"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Các thao tác đọc dữ liệu bất đồng bộ từ local storage (như SharedPreferences, SQLite/sqflite hoặc đọc file) thường trả về một Future, nên FutureBuilder được dùng để lắng nghe và cập nhật UI khi Future hoàn tất."
+        },
+        {
+          "uid": "su26-fe-q021",
+          "number": 21,
+          "file": "SU26 - FE_021.png",
+          "altFile": "SU26 - FE_021 (1).png",
+          "chooseCount": 1,
+          "question": "Why are widgets lightweight in Flutter?",
+          "code": null,
+          "options": {
+            "A": "They manage system resources",
+            "B": "They are immutable descriptions",
+            "C": "They store UI state",
+            "D": "They handle rendering directly"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Flutter, Widget chỉ là các bản mô tả cấu hình bất biến (immutable descriptions) của giao diện nên rất nhẹ và có thể tạo lại thường xuyên; việc lưu trạng thái và render thực tế do Element và RenderObject đảm nhiệm."
+        },
+        {
+          "uid": "su26-fe-q022",
+          "number": 22,
+          "file": "SU26 - FE_022.png",
+          "altFile": "SU26 - FE_022 (1).png",
+          "chooseCount": 1,
+          "question": "What problem does state hoisting address?",
+          "code": null,
+          "options": {
+            "A": "API delay",
+            "B": "State duplication",
+            "C": "Theme conflict",
+            "D": "Navigation error"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "State hoisting (đưa state lên widget cha chung) giúp loại bỏ tình trạng trùng lặp trạng thái (state duplication) giữa các widget con và duy trì một nguồn dữ liệu duy nhất (Single Source of Truth)."
+        },
+        {
+          "uid": "su26-fe-q023",
+          "number": 23,
+          "file": "SU26 - FE_023.png",
+          "altFile": "SU26 - FE_023 (1).png",
+          "chooseCount": 1,
+          "question": "What happens when setState() is called in a StatefulWidget?",
+          "code": null,
+          "options": {
+            "A": "The app restarts",
+            "B": "The widget tree is rebuilt",
+            "C": "Data is saved permanently",
+            "D": "Navigation occurs"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Gọi setState() báo cho Flutter framework biết trạng thái nội bộ đã thay đổi, đánh dấu Element là dirty và kích hoạt gọi lại hàm build() để rebuild nhánh widget tương ứng."
+        },
+        {
+          "uid": "su26-fe-q024",
+          "number": 24,
+          "file": "SU26 - FE_024.png",
+          "altFile": "SU26 - FE_024 (1).png",
+          "chooseCount": 1,
+          "question": "Which pattern is commonly used for scalable state management?",
+          "code": null,
+          "options": {
+            "A": "MVC",
+            "B": "BLoC",
+            "C": "Singleton",
+            "D": "Factory"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "BLoC (Business Logic Component) là kiến trúc/pattern quản lý trạng thái phổ biến trong Flutter giúp tách biệt rõ ràng UI với nghiệp vụ thông qua luồng sự kiện (Events) và trạng thái (States), rất dễ mở rộng và kiểm thử."
+        },
+        {
+          "uid": "su26-fe-q025",
+          "number": 25,
+          "file": "SU26 - FE_025.png",
+          "altFile": "SU26 - FE_025 (1).png",
+          "chooseCount": 1,
+          "question": "Which input type improves user experience for emails?",
+          "code": null,
+          "options": {
+            "A": "TextInputType.number",
+            "B": "TextInputType.emailAddress",
+            "C": "TextInputType.text",
+            "D": "TextInputType.url"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Thiết lập keyboardType: TextInputType.emailAddress trên TextField/TextFormField sẽ hiển thị bàn phím ảo tối ưu cho việc nhập email (có sẵn phím '@' và '.')."
+        },
+        {
+          "uid": "su26-fe-q026",
+          "number": 26,
+          "file": "SU26 - FE_026.png",
+          "altFile": "SU26 - FE_026 (1).png",
+          "chooseCount": 1,
+          "question": "Which widget allows both scrolling and app bars to interact?",
+          "code": null,
+          "options": {
+            "A": "ListView",
+            "B": "CustomScrollView",
+            "C": "GridView",
+            "D": "Stack"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "CustomScrollView kết hợp các sliver (như SliverAppBar và SliverList/SliverGrid) trong cùng một vùng cuộn, cho phép thanh AppBar thu phóng, ẩn/hiện hoặc ghim (pin) tương tác mượt mà theo thao tác cuộn."
+        },
+        {
+          "uid": "su26-fe-q027",
+          "number": 27,
+          "file": "SU26 - FE_027.png",
+          "altFile": "SU26 - FE_027 (1).png",
+          "chooseCount": 1,
+          "question": "Which method resets all form fields?",
+          "code": null,
+          "options": {
+            "A": "clear()",
+            "B": "reset()",
+            "C": "dispose()",
+            "D": "remove()"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Phương thức FormState.reset() (gọi qua formKey.currentState!.reset()) đặt lại tất cả các FormField bên trong Form về giá trị khởi tạo (initialValue) và xóa các thông báo lỗi validation."
+        },
+        {
+          "uid": "su26-fe-q028",
+          "number": 28,
+          "file": "SU26 - FE_028.png",
+          "altFile": "SU26 - FE_028 (1).png",
+          "chooseCount": 1,
+          "question": "Why is secure authentication critical in mobile apps?",
+          "code": null,
+          "options": {
+            "A": "UI quality",
+            "B": "Protect user data",
+            "C": "Reduce code",
+            "D": "Improve speed"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Xác thực bảo mật (secure authentication) đảm bảo chỉ người dùng hợp lệ mới truy cập được tài khoản và tài nguyên, từ đó bảo vệ dữ liệu cá nhân và nhạy cảm của người dùng."
+        },
+        {
+          "uid": "su26-fe-q029",
+          "number": 29,
+          "file": "SU26 - FE_029.png",
+          "altFile": "SU26 - FE_029 (1).png",
+          "chooseCount": 1,
+          "question": "Which HTTP method is used to send new data to a server?",
+          "code": null,
+          "options": {
+            "A": "GET",
+            "B": "DELETE",
+            "C": "POST",
+            "D": "HEAD"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong chuẩn HTTP/REST, phương thức POST được dùng để gửi dữ liệu mới lên server nhằm tạo mới tài nguyên (create resource)."
+        },
+        {
+          "uid": "su26-fe-q030",
+          "number": 30,
+          "file": "SU26 - FE_030.png",
+          "altFile": "SU26 - FE_030 (1).png",
+          "chooseCount": 1,
+          "question": "What is the main goal of performance optimization in Flutter apps?",
+          "code": null,
+          "options": {
+            "A": "Improve UI colors",
+            "B": "Ensure smooth and responsive UI",
+            "C": "Reduce code size",
+            "D": "Add features"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Mục tiêu chính của tối ưu hiệu năng trong Flutter là đảm bảo giao diện mượt mà (đạt tốc độ khung hình ổn định 60fps/120fps, tránh jank) và phản hồi nhanh với thao tác người dùng."
+        },
+        {
+          "uid": "su26-fe-q031",
+          "number": 31,
+          "file": "SU26 - FE_031.png",
+          "altFile": "SU26 - FE_031 (1).png",
+          "chooseCount": 1,
+          "question": "Which widget pattern protects authenticated routes?",
+          "code": null,
+          "options": {
+            "A": "Navigator",
+            "B": "Guard",
+            "C": "Route protection",
+            "D": "Middleware"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Guard (Route Guard / Auth Guard) là mẫu thiết kế/widget pattern dùng để kiểm tra trạng thái đăng nhập trước khi cho phép truy cập các route yêu cầu xác thực, và tự động chuyển hướng về màn hình Login nếu chưa đăng nhập."
+        },
+        {
+          "uid": "su26-fe-q032",
+          "number": 32,
+          "file": "SU26 - FE_032.png",
+          "altFile": "SU26 - FE_032 (1).png",
+          "chooseCount": 1,
+          "question": "What does the final keyword indicate in Dart?",
+          "code": null,
+          "options": {
+            "A": "The variable can be reassigned later",
+            "B": "The variable value is fixed after assignment",
+            "C": "The variable is global",
+            "D": "The variable is private"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Dart, từ khóa final chỉ định biến chỉ được gán giá trị một lần duy nhất (tại thời điểm khai báo hoặc trong constructor) và không thể gán lại (reassign) sau đó."
+        },
+        {
+          "uid": "su26-fe-q033",
+          "number": 33,
+          "file": "SU26 - FE_033.png",
+          "altFile": "SU26 - FE_033 (1).png",
+          "chooseCount": 1,
+          "question": "What does status code 200 indicate?",
+          "code": null,
+          "options": {
+            "A": "Client error",
+            "B": "Server error",
+            "C": "Success",
+            "D": "Redirect"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Mã trạng thái HTTP 200 (OK) thuộc nhóm 2xx, biểu thị request đã được server tiếp nhận và xử lý thành công (Success)."
+        },
+        {
+          "uid": "su26-fe-q034",
+          "number": 34,
+          "file": "SU26 - FE_034.png",
+          "altFile": "SU26 - FE_034 (1).png",
+          "chooseCount": 1,
+          "question": "Why is immutability important in BLoC states?",
+          "code": null,
+          "options": {
+            "A": "UI speed",
+            "B": "Predictable state changes",
+            "C": "Memory usage",
+            "D": "Theme control"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tính bất biến (immutability) trong BLoC buộc mỗi thay đổi phải phát ra một đối tượng State mới thay vì sửa trực tiếp state cũ, giúp việc so sánh trạng thái chính xác, tránh side-effect ngoài ý muốn và đảm bảo luồng thay đổi trạng thái dễ dự đoán (predictable state changes)."
+        },
+        {
+          "uid": "su26-fe-q035",
+          "number": 35,
+          "file": "SU26 - FE_035.png",
+          "altFile": "SU26 - FE_035 (1).png",
+          "chooseCount": 1,
+          "question": "What does crossAxisAlignment control?",
+          "code": null,
+          "options": {
+            "A": "Vertical alignment in Column",
+            "B": "Horizontal alignment in Column",
+            "C": "Child order",
+            "D": "Widget size"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Column, trục chính (main axis) là chiều dọc nên trục phụ (crossAxisAlignment) điều khiển căn chỉnh theo chiều ngang (horizontal alignment)."
+        },
+        {
+          "uid": "su26-fe-q036",
+          "number": 36,
+          "file": "SU26 - FE_036.png",
+          "altFile": "SU26 - FE_036 (1).png",
+          "chooseCount": 1,
+          "question": "What is the role of v-sync in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Sync data",
+            "B": "Optimize animation resources",
+            "C": "Control layout",
+            "D": "Handle navigation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "vsync (TickerProvider) đồng bộ hóa animation với tần số làm tươi màn hình và ngăn các animation không hiển thị tiêu tốn tài nguyên CPU/GPU không cần thiết."
+        },
+        {
+          "uid": "su26-fe-q037",
+          "number": 37,
+          "file": "SU26 - FE_037.png",
+          "altFile": "SU26 - FE_037 (1).png",
+          "chooseCount": 1,
+          "question": "What is the main goal of testing in Flutter apps?",
+          "code": null,
+          "options": {
+            "A": "Improve UI design",
+            "B": "Ensure app quality and correctness",
+            "C": "Speed up builds",
+            "D": "Manage state"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Mục tiêu chính của kiểm thử (unit, widget, integration test) trong Flutter là đảm bảo chất lượng, độ tin cậy và tính đúng đắn của ứng dụng trước khi phát hành."
+        },
+        {
+          "uid": "su26-fe-q038",
+          "number": 38,
+          "file": "SU26 - FE_038.png",
+          "altFile": "SU26 - FE_038 (1).png",
+          "chooseCount": 1,
+          "question": "Why is understanding the widget lifecycle important?",
+          "code": null,
+          "options": {
+            "A": "Improve API performance",
+            "B": "Manage UI updates correctly",
+            "C": "Deploy apps faster",
+            "D": "Reduce file size"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Hiểu rõ vòng đời của widget (initState, build, didUpdateWidget, dispose) giúp lập trình viên khởi tạo dữ liệu, quản lý cập nhật UI và giải phóng tài nguyên chính xác."
+        },
+        {
+          "uid": "su26-fe-q039",
+          "number": 39,
+          "file": "SU26 - FE_039.png",
+          "altFile": "SU26 - FE_039 (1).png",
+          "chooseCount": 1,
+          "question": "Why are forms important in mobile applications?",
+          "code": null,
+          "options": {
+            "A": "UI decoration",
+            "B": "User data collection",
+            "C": "State management",
+            "D": "Navigation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Form đóng vai trò thu thập, kiểm tra tính hợp lệ (validation) và gửi dữ liệu đầu vào từ người dùng (như đăng nhập, đăng ký, thanh toán)."
+        },
+        {
+          "uid": "su26-fe-q040",
+          "number": 40,
+          "file": "SU26 - FE_040.png",
+          "altFile": "SU26 - FE_040 (1).png",
+          "chooseCount": 1,
+          "question": "Which Flutter plugin provides SQLite support?",
+          "code": null,
+          "options": {
+            "A": "hive",
+            "B": "moor",
+            "C": "sqflite",
+            "D": "shared_preferences"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "sqflite là plugin chuẩn phổ biến trong Flutter cung cấp khả năng truy cập và thao tác trực tiếp với cơ sở dữ liệu cục bộ SQLite."
+        },
+        {
+          "uid": "su26-fe-q041",
+          "number": 41,
+          "file": "SU26 - FE_041.png",
+          "altFile": "SU26 - FE_041 (1).png",
+          "chooseCount": 1,
+          "question": "When is it most appropriate to customize themes in a Flutter app?",
+          "code": null,
+          "options": {
+            "A": "After API integration",
+            "B": "During UI/UX design phase",
+            "C": "Only at deployment",
+            "D": "Only for testing"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Việc tùy chỉnh ThemeData (màu sắc, kiểu chữ, style chung) phù hợp nhất trong giai đoạn thiết kế UI/UX để đảm bảo tính nhất quán trên toàn bộ ứng dụng ngay từ đầu."
+        },
+        {
+          "uid": "su26-fe-q042",
+          "number": 42,
+          "file": "SU26 - FE_042.png",
+          "altFile": "SU26 - FE_042 (1).png",
+          "chooseCount": 1,
+          "question": "Which HTTP header is commonly used for authorization?",
+          "code": null,
+          "options": {
+            "A": "Content-Type",
+            "B": "Accept",
+            "C": "Authorization",
+            "D": "Cache-Control"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Header HTTP 'Authorization' (ví dụ: 'Bearer <token>') được sử dụng tiêu chuẩn để gửi thông tin xác thực/phân quyền lên máy chủ API."
+        },
+        {
+          "uid": "su26-fe-q043",
+          "number": 43,
+          "file": "SU26 - FE_043.png",
+          "altFile": "SU26 - FE_043 (1).png",
+          "chooseCount": 1,
+          "question": "Why is passing context important in navigation?",
+          "code": null,
+          "options": {
+            "A": "Access theme",
+            "B": "Access Navigator",
+            "C": "Access state",
+            "D": "Access layout"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Truyền BuildContext vào các hàm điều hướng (như Navigator.of(context) hoặc Navigator.push(context, ...)) giúp Flutter tìm đúng NavigatorState gần nhất trong widget tree."
+        },
+        {
+          "uid": "su26-fe-q044",
+          "number": 44,
+          "file": "SU26 - FE_044.png",
+          "altFile": "SU26 - FE_044 (1).png",
+          "chooseCount": 1,
+          "question": "What is the main benefit of Flutter's widget-based architecture?",
+          "code": null,
+          "options": {
+            "A": "Widgets are only used for layout design",
+            "B": "Widgets allow code reuse across platforms",
+            "C": "Widgets automatically manage databases",
+            "D": "Widgets replace backend services"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Kiến trúc dựa trên widget của Flutter cho phép xây dựng giao diện theo hướng module hóa, dễ kết hợp và tái sử dụng cùng một codebase trên nhiều nền tảng."
+        },
+        {
+          "uid": "su26-fe-q045",
+          "number": 45,
+          "file": "SU26 - FE_045.png",
+          "altFile": "SU26 - FE_045 (1).png",
+          "chooseCount": 1,
+          "question": "Which Dart data structure is best suited for storing an ordered collection of items?",
+          "code": null,
+          "options": {
+            "A": "Set",
+            "B": "Map",
+            "C": "List",
+            "D": "Queue"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong Dart, List là cấu trúc dữ liệu chuẩn dùng để lưu trữ tập hợp các phần tử có thứ tự (truy cập theo chỉ mục index từ 0) và cho phép trùng lặp."
+        },
+        {
+          "uid": "su26-fe-q046",
+          "number": 46,
+          "file": "SU26 - FE_046.png",
+          "altFile": "SU26 - FE_046 (1).png",
+          "chooseCount": 1,
+          "question": "Which Flutter widget reacts to authentication state changes?",
+          "code": null,
+          "options": {
+            "A": "FutureBuilder",
+            "B": "StreamBuilder",
+            "C": "ListView",
+            "D": "Form"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "StreamBuilder lắng nghe luồng sự kiện liên tục (Stream), rất phù hợp để phản ứng tức thời khi trạng thái đăng nhập thay đổi (như FirebaseAuth.instance.authStateChanges())."
+        },
+        {
+          "uid": "su26-fe-q047",
+          "number": 47,
+          "file": "SU26 - FE_047.png",
+          "altFile": "SU26 - FE_047 (1).png",
+          "chooseCount": 1,
+          "question": "Which widget rebuilds automatically during animation?",
+          "code": null,
+          "options": {
+            "A": "AnimatedBuilder",
+            "B": "FutureBuilder",
+            "C": "StreamBuilder",
+            "D": "LayoutBuilder"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "AnimatedBuilder lắng nghe đối tượng Listenable/Animation và tự động gọi lại hàm builder để vẽ lại giao diện mỗi khi giá trị animation thay đổi."
+        },
+        {
+          "uid": "su26-fe-q048",
+          "number": 48,
+          "file": "SU26 - FE_048.png",
+          "altFile": "SU26 - FE_048 (1).png",
+          "chooseCount": 1,
+          "question": "What is the main purpose of the Container widget?",
+          "code": null,
+          "options": {
+            "A": "Navigation",
+            "B": "Layout, styling, and positioning",
+            "C": "State management",
+            "D": "Network requests"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Container là widget đa năng kết hợp bố cục kích thước (width, height, constraints), trang trí (color, decoration) và căn chỉnh/khoảng cách (padding, margin, alignment)."
+        },
+        {
+          "uid": "su26-fe-q049",
+          "number": 49,
+          "file": "SU26 - FE_049.png",
+          "altFile": "SU26 - FE_049 (1).png",
+          "chooseCount": 1,
+          "question": "Which step is required before running a Flutter app for the first time?",
+          "code": null,
+          "options": {
+            "A": "Publishing the app",
+            "B": "Setting up the Flutter SDK",
+            "C": "Configuring a database",
+            "D": "Writing backend APIs"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trước khi tạo và chạy ứng dụng Flutter lần đầu tiên, lập trình viên bắt buộc phải tải, cài đặt và cấu hình môi trường cho Flutter SDK."
+        },
+        {
+          "uid": "su26-fe-q050",
+          "number": 50,
+          "file": "SU26 - FE_050.png",
+          "altFile": "SU26 - FE_050 (1).png",
+          "chooseCount": 1,
+          "question": "Which practice improves API security?",
+          "code": null,
+          "options": {
+            "A": "Hardcoding keys",
+            "B": "Using HTTPS",
+            "C": "Ignoring errors",
+            "D": "Using globals"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Sử dụng giao thức HTTPS giúp mã hóa dữ liệu truyền tải qua mạng (TLS/SSL), bảo vệ thông tin nhạy cảm và token khỏi bị nghe lén hoặc tấn công trung gian (MITM)."
+        }
+      ]
+    },
+    {
+      "id": "su26-fe-re",
+      "title": "PRM393 - SU26 - FE - RE",
+      "shortTitle": "SU26 - FE - RE",
+      "folder": "PRM393 - SU26 - FE - RE",
+      "questions": [
+        {
+          "uid": "su26-fe-re-q001",
+          "number": 1,
+          "file": "SU26 - FE - RE_001.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does a Dart class primarily represent?",
+          "code": null,
+          "options": {
+            "A": "A UI widget only",
+            "B": "A blueprint for creating objects",
+            "C": "A database table",
+            "D": "A network request"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong lập trình hướng đối tượng với Dart, class là bản thiết kế (blueprint) định nghĩa thuộc tính và phương thức để tạo ra các đối tượng (objects)."
+        },
+        {
+          "uid": "su26-fe-re-q002",
+          "number": 2,
+          "file": "SU26 - FE - RE_002.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What type of data is SharedPreferences best suited for?",
+          "code": null,
+          "options": {
+            "A": "Large datasets",
+            "B": "Simple primitive values",
+            "C": "Images",
+            "D": "Complex objects"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "SharedPreferences lưu trữ dữ liệu dạng key-value cục bộ và phù hợp nhất cho các giá trị nguyên thủy đơn giản (int, double, bool, String, List<String>)."
+        },
+        {
+          "uid": "su26-fe-re-q003",
+          "number": 3,
+          "file": "SU26 - FE - RE_003.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main purpose of app architecture?",
+          "code": null,
+          "options": {
+            "A": "UI design",
+            "B": "Organize code structure",
+            "C": "Improve animations",
+            "D": "Handle API"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Mục đích chính của kiến trúc ứng dụng (app architecture) là tổ chức cấu trúc code rõ ràng, phân tách trách nhiệm để dễ bảo trì, mở rộng và kiểm thử."
+        },
+        {
+          "uid": "su26-fe-re-q004",
+          "number": 4,
+          "file": "SU26 - FE - RE_004.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which component is required to run and test Flutter applications on a local machine?",
+          "code": null,
+          "options": {
+            "A": "A cloud hosting service",
+            "B": "A physical server",
+            "C": "An emulator or physical device",
+            "D": "A database management system"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Để chạy và kiểm thử ứng dụng Flutter trên máy cục bộ, lập trình viên cần máy ảo (emulator/simulator) hoặc thiết bị vật lý (hoặc target platform tương ứng)."
+        },
+        {
+          "uid": "su26-fe-re-q005",
+          "number": 5,
+          "file": "SU26 - FE - RE_005.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does REST stand for?",
+          "code": null,
+          "options": {
+            "A": "Remote State Transfer",
+            "B": "Representational State Transfer",
+            "C": "Reactive Service Transport",
+            "D": "Request State Transfer"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "REST là viết tắt của Representational State Transfer, kiểu kiến trúc phổ biến để thiết kế các dịch vụ web giao tiếp qua HTTP."
+        },
+        {
+          "uid": "su26-fe-re-q006",
+          "number": 6,
+          "file": "SU26 - FE - RE_006.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is pagination used for?",
+          "code": null,
+          "options": {
+            "A": "UI animation",
+            "B": "Handling large datasets efficiently",
+            "C": "Theme management",
+            "D": "Authentication"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Phân trang (pagination) chia dữ liệu lớn thành từng phần nhỏ để tải dần, giúp tối ưu băng thông mạng, bộ nhớ và tốc độ hiển thị."
+        },
+        {
+          "uid": "su26-fe-re-q007",
+          "number": 7,
+          "file": "SU26 - FE - RE_007.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does Navigator.pop() do?",
+          "code": null,
+          "options": {
+            "A": "Open a new screen",
+            "B": "Close current screen",
+            "C": "Restart app",
+            "D": "Clear stack"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Navigator.pop() lấy route trên cùng ra khỏi ngăn xếp điều hướng (navigation stack), tức là đóng màn hình hiện tại và quay về màn hình trước đó."
+        },
+        {
+          "uid": "su26-fe-re-q008",
+          "number": 8,
+          "file": "SU26 - FE - RE_008.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is rebuild scope optimization in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Reducing widget tree depth",
+            "B": "Limiting rebuild to affected widgets",
+            "C": "Caching API responses",
+            "D": "Using global state"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tối ưu phạm vi rebuild (rebuild scope optimization) là kỹ thuật giới hạn việc vẽ lại chỉ ở những widget thực sự phụ thuộc vào state bị thay đổi, tránh rebuild toàn màn hình."
+        },
+        {
+          "uid": "su26-fe-re-q009",
+          "number": 9,
+          "file": "SU26 - FE - RE_009.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which pattern separates storage logic from UI?",
+          "code": null,
+          "options": {
+            "A": "MVC",
+            "B": "Repository pattern",
+            "C": "Singleton",
+            "D": "Factory"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Repository pattern đóng vai trò lớp trung gian trừu tượng hóa nguồn dữ liệu (API, database cục bộ, bộ nhớ đệm), giúp tách biệt hoàn toàn logic lưu trữ khỏi UI."
+        },
+        {
+          "uid": "su26-fe-re-q010",
+          "number": 10,
+          "file": "SU26 - FE - RE_010.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the purpose of building a release version of a Flutter app?",
+          "code": null,
+          "options": {
+            "A": "Debug code",
+            "B": "Prepare app for distribution",
+            "C": "Test UI",
+            "D": "Change theme"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Bản build release biên dịch AOT tối ưu hiệu năng, loại bỏ công cụ debug và thu gọn kích thước để chuẩn bị phát hành ứng dụng cho người dùng cuối (App Store, Google Play)."
+        },
+        {
+          "uid": "su26-fe-re-q011",
+          "number": 11,
+          "file": "SU26 - FE - RE_011.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should navigation logic be well-structured?",
+          "code": null,
+          "options": {
+            "A": "Reduce UI size",
+            "B": "Improve maintainability",
+            "C": "Increase speed",
+            "D": "Avoid widgets"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tổ chức logic điều hướng (navigation) rõ ràng giúp quản lý các route tập trung, truyền tham số nhất quán và cải thiện khả năng bảo trì khi ứng dụng mở rộng."
+        },
+        {
+          "uid": "su26-fe-re-q012",
+          "number": 12,
+          "file": "SU26 - FE - RE_012.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is logout functionality important?",
+          "code": null,
+          "options": {
+            "A": "Free memory",
+            "B": "End user session securely",
+            "C": "Improve UI",
+            "D": "Change theme"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Chức năng đăng xuất (logout) xóa token xác thực, dữ liệu nhạy cảm cục bộ và kết thúc phiên làm việc của người dùng một cách an toàn."
+        },
+        {
+          "uid": "su26-fe-re-q013",
+          "number": 13,
+          "file": "SU26 - FE - RE_013.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget animates between two widgets?",
+          "code": null,
+          "options": {
+            "A": "AnimatedSwitcher",
+            "B": "AnimatedOpacity",
+            "C": "AnimatedAlign",
+            "D": "AnimatedSize"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "AnimatedSwitcher tự động tạo hiệu ứng chuyển cảnh (mặc định là fade) khi widget con của nó được thay thế bằng một widget khác kiểu hoặc khác Key."
+        },
+        {
+          "uid": "su26-fe-re-q014",
+          "number": 14,
+          "file": "SU26 - FE - RE_014.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which method is used to update the UI when state changes?",
+          "code": null,
+          "options": {
+            "A": "build()",
+            "B": "setState()",
+            "C": "initState()",
+            "D": "dispose()"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong StatefulWidget, gọi setState() thông báo cho Flutter framework rằng trạng thái nội bộ đã thay đổi để lên lịch gọi lại hàm build() cập nhật UI."
+        },
+        {
+          "uid": "su26-fe-re-q015",
+          "number": 15,
+          "file": "SU26 - FE - RE_015.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which programming language is used to develop Flutter applications?",
+          "code": null,
+          "options": {
+            "A": "Kotlin",
+            "B": "Swift",
+            "C": "Dart",
+            "D": "JavaScript"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Flutter sử dụng ngôn ngữ lập trình Dart (do Google phát triển) để xây dựng giao diện và logic ứng dụng đa nền tảng."
+        },
+        {
+          "uid": "su26-fe-re-q016",
+          "number": 16,
+          "file": "SU26 - FE - RE_016.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why is the widget tree considered immutable?",
+          "code": null,
+          "options": {
+            "A": "Widgets cannot be removed",
+            "B": "Widgets are recreated instead of modified",
+            "C": "Widgets are stored permanently",
+            "D": "Widgets cannot contain data"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Các thuộc tính của Widget đều là final (bất biến); khi giao diện cần thay đổi, Flutter tạo ra các thực thể Widget mới thay vì sửa đổi trực tiếp thực thể cũ."
+        },
+        {
+          "uid": "su26-fe-re-q017",
+          "number": 17,
+          "file": "SU26 - FE - RE_017.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why are const widgets recommended?",
+          "code": null,
+          "options": {
+            "A": "They improve readability",
+            "B": "They reduce rebuild cost",
+            "C": "They add state",
+            "D": "They handle navigation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Sử dụng từ khóa const giúp tạo hằng số lúc biên dịch (compile-time constant), cho phép Flutter tái sử dụng thực thể widget cũ và bỏ qua việc rebuild không cần thiết."
+        },
+        {
+          "uid": "su26-fe-re-q018",
+          "number": 18,
+          "file": "SU26 - FE - RE_018.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which feature of Dart helps prevent null reference errors at compile time?",
+          "code": null,
+          "options": {
+            "A": "Dynamic typing",
+            "B": "Hot reload",
+            "C": "Null safety",
+            "D": "Asynchronous execution"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Sound null safety trong Dart mặc định các kiểu dữ liệu là non-nullable trừ khi khai báo dấu '?', giúp phát hiện và ngăn chặn lỗi tham chiếu null ngay lúc biên dịch."
+        },
+        {
+          "uid": "su26-fe-re-q019",
+          "number": 19,
+          "file": "SU26 - FE - RE_019.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "When should you prefer Provider over setState()?",
+          "code": null,
+          "options": {
+            "A": "For simple UI updates",
+            "B": "For global or shared state",
+            "C": "For animations",
+            "D": "For navigation"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Provider được ưu tiên hơn setState() khi cần quản lý trạng thái dùng chung (shared/global state) giữa nhiều màn hình hoặc nhiều nhánh khác nhau trên cây widget."
+        },
+        {
+          "uid": "su26-fe-re-q020",
+          "number": 20,
+          "file": "SU26 - FE - RE_020.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What advantage does a single codebase provide in Flutter development?",
+          "code": null,
+          "options": {
+            "A": "Higher memory usage",
+            "B": "Simpler UI customization",
+            "C": "Reduced development and maintenance effort",
+            "D": "Automatic database synchronization"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Một codebase duy nhất trong Flutter cho phép triển khai ứng dụng trên nhiều nền tảng (Android, iOS, Web, Desktop), giúp giảm đáng kể chi phí, thời gian phát triển và bảo trì."
+        },
+        {
+          "uid": "su26-fe-re-q021",
+          "number": 21,
+          "file": "SU26 - FE - RE_021.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget is commonly used as the root of a Flutter app?",
+          "code": null,
+          "options": {
+            "A": "Scaffold",
+            "B": "MaterialApp",
+            "C": "Container",
+            "D": "Column"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "MaterialApp thường được dùng làm widget gốc (root) của ứng dụng Flutter để cung cấp cấu hình cấp ứng dụng như Navigator, Theme, Localization và Material Design."
+        },
+        {
+          "uid": "su26-fe-re-q022",
+          "number": 22,
+          "file": "SU26 - FE - RE_022.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should setState() be called sparingly?",
+          "code": null,
+          "options": {
+            "A": "It increases app size",
+            "B": "It may trigger unnecessary rebuilds",
+            "C": "It blocks UI thread",
+            "D": "It causes memory leaks"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Gọi setState() quá thường xuyên hoặc ở widget cha cấp cao sẽ kích hoạt việc rebuild lại toàn bộ nhánh widget con bên dưới một cách không cần thiết, gây giảm hiệu năng."
+        },
+        {
+          "uid": "su26-fe-re-q023",
+          "number": 23,
+          "file": "SU26 - FE - RE_023.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What triggers a rebuild of a widget?",
+          "code": null,
+          "options": {
+            "A": "Navigation only",
+            "B": "Calling setState()",
+            "C": "Restarting the IDE",
+            "D": "Changing the SDK"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Gọi setState() đánh dấu Element của StatefulWidget là 'dirty', khiến Flutter gọi lại phương thức build() ở khung hình tiếp theo để rebuild widget."
+        },
+        {
+          "uid": "su26-fe-re-q024",
+          "number": 24,
+          "file": "SU26 - FE - RE_024.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What does BLoC stand for?",
+          "code": null,
+          "options": {
+            "A": "Business Logic Component",
+            "B": "Backend Logic Controller",
+            "C": "Build Logic Component",
+            "D": "Basic Logic Controller"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "BLoC là viết tắt của Business Logic Component, mô hình quản lý trạng thái dùng Stream/Event/State để tách biệt nghiệp vụ khỏi giao diện người dùng trong Flutter."
+        },
+        {
+          "uid": "su26-fe-re-q025",
+          "number": 25,
+          "file": "SU26 - FE - RE_025.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget can hide user input text when configured for password entry?",
+          "code": null,
+          "options": {
+            "A": "TextField",
+            "B": "ObscureText",
+            "C": "SecureInput",
+            "D": "PasswordField"
+          },
+          "answer": [
+            "A"
+          ],
+          "explanation": "Trong Flutter, widget TextField (hoặc TextFormField) hỗ trợ ẩn ký tự nhập mật khẩu thông qua việc cấu hình thuộc tính obscureText: true."
+        },
+        {
+          "uid": "su26-fe-re-q026",
+          "number": 26,
+          "file": "SU26 - FE - RE_026.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which sliver is commonly used to display a scrolling list?",
+          "code": null,
+          "options": {
+            "A": "SliverGrid",
+            "B": "SliverList",
+            "C": "SliverAppBar",
+            "D": "SliverFillRemaining"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "SliverList được sử dụng phổ biến bên trong CustomScrollView để hiển thị danh sách cuộn theo trục tuyến tính (dọc hoặc ngang)."
+        },
+        {
+          "uid": "su26-fe-re-q027",
+          "number": 27,
+          "file": "SU26 - FE - RE_027.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What happens if form validation fails?",
+          "code": null,
+          "options": {
+            "A": "Form submits",
+            "B": "Error messages are shown",
+            "C": "App crashes",
+            "D": "Data is saved"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Khi gọi FormState.validate() và có trường không hợp lệ, hàm trả về false đồng thời hiển thị chuỗi thông báo lỗi từ validator ngay dưới các TextFormField tương ứng."
+        },
+        {
+          "uid": "su26-fe-re-q028",
+          "number": 28,
+          "file": "SU26 - FE - RE_028.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which HTTP method is typically used to retrieve data?",
+          "code": null,
+          "options": {
+            "A": "POST",
+            "B": "PUT",
+            "C": "GET",
+            "D": "DELETE"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong giao thức HTTP/REST, phương thức GET được dùng để truy xuất (đọc) dữ liệu từ server mà không làm thay đổi trạng thái tài nguyên."
+        },
+        {
+          "uid": "su26-fe-re-q029",
+          "number": 29,
+          "file": "SU26 - FE - RE_029.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should authentication state be centralized?",
+          "code": null,
+          "options": {
+            "A": "Reduce UI code",
+            "B": "Ensure consistent access control",
+            "C": "Improve animations",
+            "D": "Simplify layout"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Tập trung hóa trạng thái xác thực (authentication state) giúp toàn bộ ứng dụng và hệ thống điều hướng (route guards) kiểm soát quyền truy cập một cách nhất quán."
+        },
+        {
+          "uid": "su26-fe-re-q030",
+          "number": 30,
+          "file": "SU26 - FE - RE_030.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Dart keyword is used to define a constant value at compile time?",
+          "code": null,
+          "options": {
+            "A": "final",
+            "B": "static",
+            "C": "const",
+            "D": "var"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong Dart, từ khóa const dùng để khai báo hằng số tại thời điểm biên dịch (compile-time constant), trong khi final chỉ gán một lần tại thời điểm chạy (runtime)."
+        },
+        {
+          "uid": "su26-fe-re-q031",
+          "number": 31,
+          "file": "SU26 - FE - RE_031.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which status code indicates resource not found?",
+          "code": null,
+          "options": {
+            "A": "200",
+            "B": "301",
+            "C": "404",
+            "D": "500"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Mã trạng thái HTTP 404 (Not Found) cho biết server không tìm thấy tài nguyên được yêu cầu."
+        },
+        {
+          "uid": "su26-fe-re-q032",
+          "number": 32,
+          "file": "SU26 - FE - RE_032.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What represents the output of a BLoC?",
+          "code": null,
+          "options": {
+            "A": "Events",
+            "B": "Widgets",
+            "C": "States",
+            "D": "Controllers"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong mô hình BLoC, Events là đầu vào (input) từ UI và States là đầu ra (output) được phát ra qua stream để UI lắng nghe và cập nhật."
+        },
+        {
+          "uid": "su26-fe-re-q033",
+          "number": 33,
+          "file": "SU26 - FE - RE_033.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget is most commonly used to arrange children vertically?",
+          "code": null,
+          "options": {
+            "A": "Row",
+            "B": "Stack",
+            "C": "Column",
+            "D": "Expanded"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Widget Column sắp xếp danh sách các widget con theo chiều dọc, trong khi Row sắp xếp theo chiều ngang và Stack xếp chồng lên nhau."
+        },
+        {
+          "uid": "su26-fe-re-q034",
+          "number": 34,
+          "file": "SU26 - FE - RE_034.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which curve creates a bounce effect?",
+          "code": null,
+          "options": {
+            "A": "linear",
+            "B": "easeIn",
+            "C": "bounceOut",
+            "D": "decelerate"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Trong Flutter, Curves.bounceOut tạo hiệu ứng chuyển động nảy (bounce) dần về trạng thái kết thúc của animation."
+        },
+        {
+          "uid": "su26-fe-re-q035",
+          "number": 35,
+          "file": "SU26 - FE - RE_035.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which test runs fastest?",
+          "code": null,
+          "options": {
+            "A": "Integration test",
+            "B": "Widget test",
+            "C": "Unit test",
+            "D": "Manual test"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Unit test kiểm thử từng hàm/lớp độc lập trong bộ nhớ mà không cần dựng giao diện hay chạy thiết bị ảo nên có tốc độ thực thi nhanh nhất."
+        },
+        {
+          "uid": "su26-fe-re-q036",
+          "number": 36,
+          "file": "SU26 - FE - RE_036.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main purpose of hot reload in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Improve runtime performance",
+            "B": "Instantly reflect code changes in UI",
+            "C": "Publish apps faster",
+            "D": "Reduce memory usage"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Hot reload nạp mã nguồn Dart vừa chỉnh sửa vào Dart VM đang chạy để phản ánh ngay thay đổi lên giao diện mà vẫn giữ nguyên state hiện tại."
+        },
+        {
+          "uid": "su26-fe-re-q037",
+          "number": 37,
+          "file": "SU26 - FE - RE_037.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should database operations be asynchronous?",
+          "code": null,
+          "options": {
+            "A": "Simplify syntax",
+            "B": "Avoid blocking UI thread",
+            "C": "Reduce code",
+            "D": "Improve theme"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Các thao tác đọc/ghi cơ sở dữ liệu là tác vụ I/O tốn thời gian nên cần thực hiện bất đồng bộ (async/await) để tránh làm đơ luồng giao diện chính (UI thread)."
+        },
+        {
+          "uid": "su26-fe-re-q038",
+          "number": 38,
+          "file": "SU26 - FE - RE_038.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the primary purpose of ThemeData in Flutter?",
+          "code": null,
+          "options": {
+            "A": "Manage navigation",
+            "B": "Define application-wide visual styles",
+            "C": "Handle state changes",
+            "D": "Control animations"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "ThemeData định nghĩa màu sắc, kiểu chữ và giao diện trực quan thống nhất cho toàn bộ ứng dụng MaterialApp (hoặc một nhánh widget thông qua Theme)."
+        },
+        {
+          "uid": "su26-fe-re-q039",
+          "number": 39,
+          "file": "SU26 - FE - RE_039.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should API responses be mapped to models?",
+          "code": null,
+          "options": {
+            "A": "Reduce JSON size",
+            "B": "Ensure type safety",
+            "C": "Speed up UI",
+            "D": "Improve theme"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Ánh xạ (mapping) phản hồi JSON từ API sang các lớp model trong Dart giúp đảm bảo an toàn kiểu dữ liệu (type safety), phát hiện lỗi sớm lúc biên dịch và hỗ trợ gợi ý code tốt hơn thay vì truy cập Map động dễ lỗi."
+        },
+        {
+          "uid": "su26-fe-re-q040",
+          "number": 40,
+          "file": "SU26 - FE - RE_040.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "How can data be passed to a new screen?",
+          "code": null,
+          "options": {
+            "A": "Using global variables",
+            "B": "Via constructor arguments",
+            "C": "Using ThemeData",
+            "D": "Using Scaffold"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Flutter, cách chuẩn và trực tiếp nhất để truyền dữ liệu sang màn hình mới (khi dùng Navigator.push với MaterialPageRoute) là truyền thông qua các tham số hàm khởi tạo (constructor arguments) của widget màn hình đích."
+        },
+        {
+          "uid": "su26-fe-re-q041",
+          "number": 41,
+          "file": "SU26 - FE - RE_041.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What role does the Flutter framework play in application development?",
+          "code": null,
+          "options": {
+            "A": "It manages database servers",
+            "B": "It provides UI components and rendering logic",
+            "C": "It replaces the operating system",
+            "D": "It runs backend business logic"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Flutter framework là bộ khung UI (UI toolkit) viết bằng Dart, cung cấp hệ thống các thành phần giao diện (widgets), bố cục, hoạt ảnh, cử chỉ và logic kết xuất (rendering logic) cho ứng dụng."
+        },
+        {
+          "uid": "su26-fe-re-q042",
+          "number": 42,
+          "file": "SU26 - FE - RE_042.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main benefit of using Maps in Dart?",
+          "code": null,
+          "options": {
+            "A": "Storing values without keys",
+            "B": "Storing key-value pairs",
+            "C": "Rendering UI components",
+            "D": "Managing asynchronous tasks"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Trong Dart, Map<K, V> là cấu trúc dữ liệu tập hợp dùng để lưu trữ và tra cứu nhanh dữ liệu theo các cặp khóa - giá trị (key-value pairs), trong đó mỗi khóa là duy nhất."
+        },
+        {
+          "uid": "su26-fe-re-q043",
+          "number": 43,
+          "file": "SU26 - FE - RE_043.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Flutter service simplifies authentication implementation?",
+          "code": null,
+          "options": {
+            "A": "sqflite",
+            "B": "Firebase Authentication",
+            "C": "Provider",
+            "D": "http"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Firebase Authentication (thông qua gói firebase_auth) cung cấp sẵn dịch vụ backend và SDK giúp triển khai xác thực người dùng (email/mật khẩu, Google, số điện thoại,...) nhanh chóng và an toàn."
+        },
+        {
+          "uid": "su26-fe-re-q044",
+          "number": 44,
+          "file": "SU26 - FE - RE_044.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Why should animations be disposed properly?",
+          "code": null,
+          "options": {
+            "A": "Improve UI",
+            "B": "Prevent memory leaks",
+            "C": "Speed up builds",
+            "D": "Fix layout"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Các AnimationController đăng ký Ticker và listener liên tục; gọi controller.dispose() trong phương thức dispose() của State giúp giải phóng tài nguyên và ngăn ngừa rò rỉ bộ nhớ (memory leaks) cũng như lỗi cập nhật widget đã bị hủy."
+        },
+        {
+          "uid": "su26-fe-re-q045",
+          "number": 45,
+          "file": "SU26 - FE - RE_045.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget is best used to add fixed empty space?",
+          "code": null,
+          "options": {
+            "A": "Padding",
+            "B": "Expanded",
+            "C": "SizedBox",
+            "D": "Container"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "SizedBox (ví dụ const SizedBox(height: 16) hoặc const SizedBox(width: 8)) là widget nhẹ và tối ưu nhất (hỗ trợ const constructor) trong Flutter để tạo khoảng trống cố định giữa các widget."
+        },
+        {
+          "uid": "su26-fe-re-q046",
+          "number": 46,
+          "file": "SU26 - FE - RE_046.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the purpose of the Flutter SDK?",
+          "code": null,
+          "options": {
+            "A": "To store application data permanently",
+            "B": "To provide tools and libraries for Flutter development",
+            "C": "To deploy applications directly to app stores",
+            "D": "To replace the operating system of a device"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Flutter SDK (Software Development Kit) cung cấp bộ công cụ dòng lệnh (biên dịch, debug, test, hot reload), Dart SDK, rendering engine và các thư viện cốt lõi phục vụ phát triển ứng dụng Flutter."
+        },
+        {
+          "uid": "su26-fe-re-q047",
+          "number": 47,
+          "file": "SU26 - FE - RE_047.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "What is the main goal of performance optimization in Flutter apps?",
+          "code": null,
+          "options": {
+            "A": "Improve UI colors",
+            "B": "Ensure smooth and responsive UI",
+            "C": "Reduce code size",
+            "D": "Add features"
+          },
+          "answer": [
+            "B"
+          ],
+          "explanation": "Mục tiêu chính của tối ưu hiệu năng trong Flutter là đảm bảo giao diện mượt mà (đạt tốc độ khung hình 60fps/120fps ổn định, tránh hiện tượng giật lag/jank) và phản hồi nhanh với thao tác người dùng."
+        },
+        {
+          "uid": "su26-fe-re-q048",
+          "number": 48,
+          "file": "SU26 - FE - RE_048.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which widget is suitable for displaying items in a grid layout?",
+          "code": null,
+          "options": {
+            "A": "ListView",
+            "B": "Column",
+            "C": "GridView",
+            "D": "Stack"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "GridView là widget cuộn 2 chiều chuyên dụng trong Flutter để sắp xếp và hiển thị danh sách các phần tử theo bố cục dạng lưới (hàng và cột)."
+        },
+        {
+          "uid": "su26-fe-re-q049",
+          "number": 49,
+          "file": "SU26 - FE - RE_049.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which platforms can Flutter applications target using a single codebase?",
+          "code": null,
+          "options": {
+            "A": "Android only",
+            "B": "iOS only",
+            "C": "Android, iOS, web, and desktop",
+            "D": "Web servers only"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "Từ một codebase duy nhất, Flutter hỗ trợ biên dịch và xây dựng ứng dụng đa nền tảng cho thiết bị di động (Android, iOS), trình duyệt web và máy tính để bàn (Windows, macOS, Linux)."
+        },
+        {
+          "uid": "su26-fe-re-q050",
+          "number": 50,
+          "file": "SU26 - FE - RE_050.png",
+          "altFile": null,
+          "chooseCount": 1,
+          "question": "Which Flutter plugin provides SQLite support?",
+          "code": null,
+          "options": {
+            "A": "hive",
+            "B": "moor",
+            "C": "sqflite",
+            "D": "shared_preferences"
+          },
+          "answer": [
+            "C"
+          ],
+          "explanation": "sqflite là plugin chuẩn phổ biến nhất trong Flutter cung cấp kết nối và hỗ trợ trực tiếp cơ sở dữ liệu quan hệ SQLite (trong khi hive và shared_preferences lưu dạng key-value/NoSQL, còn moor/drift là thư viện ORM bậc cao)."
+        }
+      ]
+    }
+  ]
+}
