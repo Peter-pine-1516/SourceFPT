@@ -1,6 +1,8 @@
-# PRM393 FE Quiz — Rust (`Axum` + `Serde`)
+# PRM393 FE Quiz & Tài Liệu Ôn Tập Toàn Diện
 
-Ứng dụng luyện đề trắc nghiệm **PRM393 (Flutter & Dart)** giao diện tối giản, viết lại theo chuẩn cấu trúc **Rust (Cargo)** để vừa ôn thi FE vừa làm quen dần với ngôn ngữ Rust thực tế.
+👉 **ĐỌC LÝ THUYẾT PRM393 TRƯỚC KHI LÀM ĐỀ TẠI ĐÂY:** **[TAI_LIEU_ON_TAP_PRM393.md](./TAI_LIEU_ON_TAP_PRM393.md)** *(hoặc bấm ngay tab **📖 Lý thuyết** đầu tiên trên giao diện Web App `http://127.0.0.1:3000`)*.
+
+Ứng dụng luyện đề trắc nghiệm **PRM393 (Flutter & Dart)** giao diện tối giản (kèm đủ 5 bộ đề `SP26` & `SU26` đã kiểm chứng 100%).
 
 ---
 

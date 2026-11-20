@@ -43,6 +43,7 @@ async fn main() {
         .route("/api/reset-question", post(handlers::reset_question))
         .route("/api/reset-exam", post(handlers::reset_exam))
         .route("/api/image/:uid", get(handlers::serve_question_image))
+        .route("/api/guide", get(handlers::get_study_guide))
         .fallback_service(ServeDir::new(static_dir))
         .with_state(store);
 

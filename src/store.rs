@@ -355,6 +355,14 @@ impl AppStore {
         Ok(full_path)
     }
 
+    /// Đọc nội dung file `TAI_LIEU_ON_TAP_PRM393.md` để hiển thị tab "Đọc lý thuyết" trên Web App.
+    pub fn read_study_guide(&self) -> Result<String, AppError> {
+        let path = self.base_dir.join("TAI_LIEU_ON_TAP_PRM393.md");
+        fs::read_to_string(&path).map_err(|e| {
+            AppError::NotFound(format!("Không đọc được tài liệu {:?}: {}", path, e))
+        })
+    }
+
     // ========================================================================
     // Các hàm nội bộ (Private helper methods)
     // ========================================================================

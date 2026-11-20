@@ -11,7 +11,8 @@
 
   const state = {
     exams: [],
-    examId: prefs.examId || "sp26-b5-fe",
+    examId: prefs.examId || "guide",
+    guideMarkdown: null,
     examTitle: "",
     stats: { correct: 0, wrong: 0, answered: 0, total: 0, accuracyPercent: 0 },
     questions: [],
@@ -89,12 +90,28 @@
 
   async function loadExamList() {
     state.exams = await apiGet("/api/exams");
-    if (!state.exams.some((e) => e.id === state.examId) && state.exams[0]) {
+    if (
+      state.examId !== "guide" &&
+      !state.exams.some((e) => e.id === state.examId) &&
+      state.exams[0]
+    ) {
       state.examId = state.exams[0].id;
     }
   }
 
+  async function loadGuideIfNeeded() {
+    if (state.guideMarkdown !== null) return;
+    const res = await fetch("/api/guide");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    state.guideMarkdown = await res.text();
+  }
+
   async function loadCurrentExamQuestions() {
+    if (state.examId === "guide") {
+      await loadGuideIfNeeded();
+      render();
+      return;
+    }
     const params = new URLSearchParams();
     if (state.wrongOnly) params.set("wrongOnly", "true");
     if (state.searchQuery.trim()) params.set("search", state.searchQuery.trim());
@@ -215,6 +232,19 @@
   function renderTabs() {
     const wrap = document.getElementById("examTabs");
     wrap.innerHTML = "";
+
+    // Tab đầu tiên: Đọc lý thuyết trước khi làm đề
+    const guideBtn = document.createElement("button");
+    guideBtn.type = "button";
+    guideBtn.className = "tab-btn" + (state.examId === "guide" ? " active" : "");
+    guideBtn.innerHTML = `📖 Lý thuyết<span class="tab-count">12 chương</span>`;
+    guideBtn.addEventListener("click", async () => {
+      state.examId = "guide";
+      savePrefs();
+      await loadCurrentExamQuestions();
+    });
+    wrap.appendChild(guideBtn);
+
     for (const ex of state.exams) {
       const btn = document.createElement("button");
       btn.type = "button";
@@ -232,13 +262,24 @@
   }
 
   function renderStatsAndControls() {
+    const isGuide = state.examId === "guide";
     const s = state.stats;
-    document.getElementById("statsBar").innerHTML = `
-      <span class="stat-item stat-correct">Đúng: <strong>${s.correct}</strong></span>
-      <span class="stat-item stat-wrong">Sai: <strong>${s.wrong}</strong></span>
-      <span class="stat-item">Đã làm: <strong>${s.answered}/${s.total}</strong></span>
-      <span class="stat-item">Chính xác: <strong>${s.accuracyPercent}%</strong></span>
-    `;
+
+    if (isGuide) {
+      document.getElementById("statsBar").innerHTML =
+        `<span class="stat-item">Tóm tắt toàn bộ <strong>158 khái niệm</strong> từ 5 bộ đề PRM393 FE</span>`;
+    } else {
+      document.getElementById("statsBar").innerHTML = `
+        <span class="stat-item stat-correct">Đúng: <strong>${s.correct}</strong></span>
+        <span class="stat-item stat-wrong">Sai: <strong>${s.wrong}</strong></span>
+        <span class="stat-item">Đã làm: <strong>${s.answered}/${s.total}</strong></span>
+        <span class="stat-item">Chính xác: <strong>${s.accuracyPercent}%</strong></span>
+      `;
+    }
+
+    for (const id of ["btnViewMode", "btnWrongOnly", "btnShuffleQ", "btnShuffleOpt", "btnResetExam"]) {
+      document.getElementById(id).style.display = isGuide ? "none" : "";
+    }
 
     const btnView = document.getElementById("btnViewMode");
     btnView.textContent = state.viewMode === "single" ? "Chế độ: Từng câu" : "Chế độ: Danh sách";
@@ -251,7 +292,116 @@
     document.getElementById("btnShuffleQ").classList.toggle("active", state.shuffleQuestions);
     document.getElementById("btnShuffleOpt").classList.toggle("active", state.shuffleOptions);
     document.getElementById("shortcutHint").style.display =
-      state.viewMode === "single" ? "block" : "none";
+      !isGuide && state.viewMode === "single" ? "block" : "none";
+  }
+
+  function formatInlineMd(text) {
+    let out = escapeHtml(text);
+    // Giữ thẻ <br> trong bảng markdown
+    out = out.replace(/&lt;br&gt;/gi, "<br/>");
+    out = out.replace(/`([^`]+)`/g, "<code>$1</code>");
+    out = out.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    out = out.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+    return out;
+  }
+
+  function renderStudyGuideView() {
+    const col = document.getElementById("questionsCol");
+    const grid = document.getElementById("paletteGrid");
+    const summary = document.getElementById("paletteSummary");
+    const palTitle = document.querySelector(".palette-title span:first-child");
+    if (palTitle) palTitle.textContent = "Mục lục nhanh";
+
+    const raw = state.guideMarkdown || "";
+    const kw = state.searchQuery.trim().toLowerCase();
+    const lines = raw.split(/\r?\n/);
+
+    const toc = [];
+    let html = '<article class="guide-card">';
+    let inUl = false;
+    let inOl = false;
+    let tableRows = [];
+
+    function closeLists() {
+      if (inUl) { html += "</ul>"; inUl = false; }
+      if (inOl) { html += "</ol>"; inOl = false; }
+    }
+    function flushTable() {
+      if (!tableRows.length) return;
+      html += '<div class="guide-table-wrap"><table class="guide-table">';
+      tableRows.forEach((row, idx) => {
+        if (idx === 1 && row.every((c) => /^:?-+:?$/.test(c.trim()))) return;
+        const tag = idx === 0 ? "th" : "td";
+        html += "<tr>" + row.map((c) => `<${tag}>${formatInlineMd(c.trim())}</${tag}>`).join("") + "</tr>";
+      });
+      html += "</table></div>";
+      tableRows = [];
+    }
+
+    lines.forEach((line) => {
+      if (kw && line.trim() && !line.startsWith("#") && !line.toLowerCase().includes(kw)) {
+        return;
+      }
+      const trimmed = line.trim();
+      if (trimmed.startsWith("|") && trimmed.endsWith("|")) {
+        closeLists();
+        const cells = trimmed.slice(1, -1).split("|");
+        tableRows.push(cells);
+        return;
+      }
+      flushTable();
+
+      if (!trimmed || trimmed === "---") {
+        closeLists();
+        return;
+      }
+      if (trimmed.startsWith("# ")) {
+        closeLists();
+        html += `<h1>${formatInlineMd(trimmed.slice(2))}</h1>`;
+      } else if (trimmed.startsWith("## ")) {
+        closeLists();
+        const title = trimmed.slice(3);
+        const id = `chap-${toc.length + 1}`;
+        toc.push({ id, title });
+        html += `<h2 id="${id}">${formatInlineMd(title)}</h2>`;
+      } else if (trimmed.startsWith("### ")) {
+        closeLists();
+        html += `<h3>${formatInlineMd(trimmed.slice(4))}</h3>`;
+      } else if (trimmed.startsWith("> ")) {
+        closeLists();
+        html += `<blockquote>${formatInlineMd(trimmed.slice(2))}</blockquote>`;
+      } else if (/^[-*]\s+/.test(trimmed)) {
+        if (inOl) { html += "</ol>"; inOl = false; }
+        if (!inUl) { html += "<ul>"; inUl = true; }
+        html += `<li>${formatInlineMd(trimmed.replace(/^[-*]\s+/, ""))}</li>`;
+      } else if (/^\d+\.\s+/.test(trimmed)) {
+        if (inUl) { html += "</ul>"; inUl = false; }
+        if (!inOl) { html += "<ol>"; inOl = true; }
+        html += `<li>${formatInlineMd(trimmed.replace(/^\d+\.\s+/, ""))}</li>`;
+      } else {
+        closeLists();
+        html += `<p>${formatInlineMd(trimmed)}</p>`;
+      }
+    });
+    closeLists();
+    flushTable();
+    html += "</article>";
+
+    col.innerHTML = html;
+    summary.textContent = `${toc.length} mục`;
+    grid.className = "toc-list";
+    grid.innerHTML = "";
+    toc.forEach((item) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "toc-btn";
+      b.textContent = item.title;
+      b.addEventListener("click", () => {
+        const el = document.getElementById(item.id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      grid.appendChild(b);
+    });
   }
 
   function buildQuestionCard(q, idxInList, totalInList) {
@@ -367,9 +517,18 @@
   }
 
   function renderQuestionsAndPalette() {
+    if (state.examId === "guide") {
+      renderStudyGuideView();
+      return;
+    }
+
+    const palTitle = document.querySelector(".palette-title span:first-child");
+    if (palTitle) palTitle.textContent = "Danh sách câu";
+
     const list = getOrderedQuestions();
     const col = document.getElementById("questionsCol");
     const grid = document.getElementById("paletteGrid");
+    grid.className = "palette-grid";
     const summary = document.getElementById("paletteSummary");
 
     col.innerHTML = "";

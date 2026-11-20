@@ -82,3 +82,15 @@ pub async fn serve_question_image(
 
     Ok((StatusCode::OK, [(header::CONTENT_TYPE, "image/png")], bytes))
 }
+
+/// `GET /api/guide` — Đọc nội dung tài liệu `TAI_LIEU_ON_TAP_PRM393.md` để hiển thị ngay trên Web App.
+pub async fn get_study_guide(
+    State(store): State<SharedStore>,
+) -> Result<impl IntoResponse, AppError> {
+    let md_text = store.read_study_guide()?;
+    Ok((
+        StatusCode::OK,
+        [(header::CONTENT_TYPE, "text/plain; charset=utf-8")],
+        md_text,
+    ))
+}
