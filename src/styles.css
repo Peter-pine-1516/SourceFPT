@@ -88,13 +88,6 @@ button, input, select {
   flex-wrap: wrap;
 }
 
-.topbar-right {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
 .brand {
   display: flex;
   align-items: center;
@@ -120,15 +113,6 @@ button, input, select {
 .brand-sub {
   font-size: 12px;
   color: var(--text-muted);
-}
-
-.progress-actions {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  padding-left: 12px;
-  border-left: 1px solid var(--border);
 }
 
 .exam-tabs {
@@ -243,11 +227,6 @@ button, input, select {
 @media (max-width: 860px) {
   .layout {
     grid-template-columns: 1fr;
-  }
-
-  .progress-actions {
-    padding-left: 0;
-    border-left: none;
   }
 }
 

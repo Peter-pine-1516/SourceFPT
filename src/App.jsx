@@ -52,7 +52,6 @@ export function App() {
 
   const [toast, setToast] = useState("");
   const toastTimerRef = useRef(null);
-  const importInputRef = useRef(null);
   const pendingRef = useRef(pendingByUid);
   pendingRef.current = pendingByUid;
   const answersRef = useRef(answers);
@@ -263,72 +262,6 @@ export function App() {
     showToast(`Đã đặt lại tiến độ của "${currentExam.shortTitle}".`);
   }, [currentExam, stats.answered, showToast]);
 
-  const handleExportProgress = useCallback(() => {
-    const payload = {
-      version: 1,
-      exportedAt: new Date().toISOString(),
-      answers: answersRef.current,
-    };
-    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "prm393-progress.json";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-    showToast("Đã xuất file sao lưu tiến độ.");
-  }, [showToast]);
-
-  const handleImportProgressChange = useCallback(
-    (e) => {
-      const file = e.target.files && e.target.files[0];
-      e.target.value = "";
-      if (!file || !bankData) return;
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        try {
-          const parsed = JSON.parse(String(reader.result || "{}"));
-          const rawAnswers = parsed && typeof parsed.answers === "object" ? parsed.answers : null;
-          if (!rawAnswers || Array.isArray(rawAnswers)) {
-            throw new Error("Cấu trúc file JSON không hợp lệ.");
-          }
-
-          const sanitized = {};
-          for (const [uid, picked] of Object.entries(rawAnswers)) {
-            if (!bankData.questionsByUid.has(uid) || !Array.isArray(picked)) continue;
-            const cleanPicked = Array.from(
-              new Set(picked.map((x) => String(x).trim().toUpperCase()).filter(Boolean))
-            ).sort();
-            if (cleanPicked.length > 0) sanitized[uid] = cleanPicked;
-          }
-
-          const importCount = Object.keys(sanitized).length;
-          const existingCount = Object.keys(answersRef.current).length;
-          if (
-            existingCount > 0 &&
-            !window.confirm(
-              `Thay thế tiến độ hiện tại (${existingCount} câu) bằng file nhập (${importCount} câu)?`
-            )
-          ) {
-            return;
-          }
-
-          saveProgress(sanitized);
-          setAnswers(sanitized);
-          setPendingByUid({});
-          showToast(`Đã khôi phục tiến độ (${importCount} câu đã làm).`);
-        } catch (err) {
-          showToast(`Lỗi nhập tiến độ: ${err instanceof Error ? err.message : "File không hợp lệ."}`);
-        }
-      };
-      reader.readAsText(file);
-    },
-    [bankData, showToast]
-  );
-
   // Phím tắt 1-4 / A-D và Trái / Phải ở chế độ từng câu
   useEffect(() => {
     if (activeExamId === "guide" || prefs.viewMode !== "single") return;
@@ -385,55 +318,27 @@ export function App() {
               <span className="brand-sub">Làm câu nào chấm ngay câu đó</span>
             </div>
 
-            <div className="topbar-right">
-              <div className="stats-bar">
-                {isGuide ? (
-                  <span className="stat-item">
-                    Tóm tắt toàn bộ <strong>158 khái niệm</strong> từ 5 bộ đề PRM393 FE
+            <div className="stats-bar">
+              {isGuide ? (
+                <span className="stat-item">
+                  Tóm tắt toàn bộ <strong>158 khái niệm</strong> từ 5 bộ đề PRM393 FE
+                </span>
+              ) : (
+                <>
+                  <span className="stat-item stat-correct">
+                    Đúng: <strong>{stats.correct}</strong>
                   </span>
-                ) : (
-                  <>
-                    <span className="stat-item stat-correct">
-                      Đúng: <strong>{stats.correct}</strong>
-                    </span>
-                    <span className="stat-item stat-wrong">
-                      Sai: <strong>{stats.wrong}</strong>
-                    </span>
-                    <span className="stat-item">
-                      Đã làm: <strong>{stats.answered}/{stats.total}</strong>
-                    </span>
-                    <span className="stat-item">
-                      Chính xác: <strong>{stats.accuracyPercent}%</strong>
-                    </span>
-                  </>
-                )}
-              </div>
-
-              <div className="progress-actions">
-                <button
-                  type="button"
-                  className="chip-btn"
-                  onClick={handleExportProgress}
-                  title="Tải xuống file JSON sao lưu tiến độ"
-                >
-                  Xuất tiến độ
-                </button>
-                <button
-                  type="button"
-                  className="chip-btn"
-                  onClick={() => importInputRef.current && importInputRef.current.click()}
-                  title="Khôi phục tiến độ từ file JSON"
-                >
-                  Nhập tiến độ
-                </button>
-                <input
-                  ref={importInputRef}
-                  type="file"
-                  accept=".json,application/json"
-                  hidden
-                  onChange={handleImportProgressChange}
-                />
-              </div>
+                  <span className="stat-item stat-wrong">
+                    Sai: <strong>{stats.wrong}</strong>
+                  </span>
+                  <span className="stat-item">
+                    Đã làm: <strong>{stats.answered}/{stats.total}</strong>
+                  </span>
+                  <span className="stat-item">
+                    Chính xác: <strong>{stats.accuracyPercent}%</strong>
+                  </span>
+                </>
+              )}
             </div>
           </div>
 

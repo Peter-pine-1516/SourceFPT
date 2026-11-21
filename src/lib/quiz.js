@@ -2,6 +2,37 @@ const DISPLAY_LABELS = ["A", "B", "C", "D", "E", "F"];
 const TABLE_SEP_RE = /^:?-+:?$/;
 const UL_RE = /^[-*]\s+/;
 const OL_RE = /^\d+\.\s+/;
+const FPT_TERM_RANK = { SP: 1, SU: 2, FA: 3 };
+const FPT_TERM_RE = /\b(SP|SU|FA)(\d{2})\b/i;
+
+function getFptExamSortTuple(rawExam) {
+  const label = `${rawExam.shortTitle || ""} ${rawExam.title || ""} ${rawExam.id || ""}`;
+  const match = label.match(FPT_TERM_RE);
+  const term = match ? FPT_TERM_RANK[match[1].toUpperCase()] || 99 : 99;
+  const year = match ? parseInt(match[2], 10) : 99;
+
+  // Thứ tự chuẩn trong 1 học kỳ FPT:
+  // 1. Kỳ chính (10 tuần) - FE
+  // 2. Kỳ chính - RE (thi lại sau FE)
+  // 3. Block 5 (cuối kỳ) - B5 - FE
+  // 4. Block 5 - RE
+  const isB5 = /\bB5\b/i.test(label) || /(^|-)b5(-|$)/i.test(rawExam.id || "");
+  const isRe = /\bRE\b/i.test(label) || /(^|-)re(-|$)/i.test(rawExam.id || "");
+  const stage = (isB5 ? 3 : 1) + (isRe ? 1 : 0);
+
+  return [year, term, stage];
+}
+
+function sortExamsChronologically(rawExams) {
+  return (rawExams || []).slice().sort((a, b) => {
+    const [ya, ta, sa] = getFptExamSortTuple(a);
+    const [yb, tb, sb] = getFptExamSortTuple(b);
+    if (ya !== yb) return ya - yb;
+    if (ta !== tb) return ta - tb;
+    if (sa !== sb) return sa - sb;
+    return String(a.shortTitle || a.id).localeCompare(String(b.shortTitle || b.id));
+  });
+}
 
 export function shuffleArray(arr) {
   const copy = arr.slice();
@@ -27,7 +58,7 @@ export function buildQuestionBank(raw) {
   const uniqueIndexByKey = new Map();
   const uniqueQuestions = [];
 
-  for (const rawExam of raw.exams || []) {
+  for (const rawExam of sortExamsChronologically(raw.exams)) {
     const examUids = [];
 
     for (const rq of rawExam.questions || []) {
