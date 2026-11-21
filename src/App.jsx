@@ -1,5 +1,4 @@
 import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
-import { AuthView } from "./components/AuthView";
 import { QuestionCard } from "./components/QuestionCard";
 import { StudyGuide } from "./components/StudyGuide";
 import {
@@ -11,17 +10,11 @@ import {
   shuffleArray,
 } from "./lib/quiz";
 import {
-  loadGlobalTheme,
-  loadSessionUserKey,
-  loadUserPrefs,
-  loadUserProgress,
-  loadUsers,
-  progressStorageKey,
-  saveGlobalTheme,
-  saveSessionUserKey,
-  saveUserPrefs,
-  saveUserProgress,
-  SESSION_KEY,
+  loadPrefs,
+  loadProgress,
+  PROGRESS_KEY,
+  savePrefs,
+  saveProgress,
 } from "./lib/storage";
 
 const KEY_TO_INDEX = {
@@ -40,26 +33,8 @@ const KEY_TO_INDEX = {
 };
 
 export function App() {
-  const [theme, setTheme] = useState(() => loadGlobalTheme());
-  const [session, setSession] = useState(() => {
-    const key = loadSessionUserKey();
-    if (!key) return null;
-    const users = loadUsers();
-    return users[key] ? { usernameKey: key, user: users[key] } : null;
-  });
-
-  const [answers, setAnswers] = useState(() =>
-    session ? loadUserProgress(session.usernameKey) : {}
-  );
-  const [prefs, setPrefs] = useState(() => {
-    const p = session ? loadUserPrefs(session.usernameKey) : {};
-    return {
-      examId: p.examId || "guide",
-      viewMode: p.viewMode === "list" ? "list" : "single",
-      shuffleQuestions: Boolean(p.shuffleQuestions),
-      shuffleOptions: Boolean(p.shuffleOptions),
-    };
-  });
+  const [answers, setAnswers] = useState(() => loadProgress());
+  const [prefs, setPrefs] = useState(() => loadPrefs());
 
   const [bankData, setBankData] = useState(null);
   const [guideMarkdown, setGuideMarkdown] = useState("");
@@ -82,8 +57,6 @@ export function App() {
   pendingRef.current = pendingByUid;
   const answersRef = useRef(answers);
   answersRef.current = answers;
-  const prefsRef = useRef(prefs);
-  prefsRef.current = prefs;
 
   const showToast = useCallback((message) => {
     setToast(message);
@@ -91,11 +64,10 @@ export function App() {
     toastTimerRef.current = setTimeout(() => setToast(""), 3000);
   }, []);
 
-  // Áp dụng theme sáng/tối
+  // Áp dụng giao diện Sáng / Tối
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    saveGlobalTheme(theme);
-  }, [theme]);
+    document.documentElement.setAttribute("data-theme", prefs.theme);
+  }, [prefs.theme]);
 
   // Nạp song song ngân hàng đề và tài liệu lý thuyết 1 lần duy nhất
   useEffect(() => {
@@ -129,90 +101,24 @@ export function App() {
     };
   }, []);
 
-  // Đồng bộ dữ liệu nếu người dùng mở nhiều tab cùng lúc
+  // Đồng bộ tiến độ tự động nếu mở nhiều tab trên cùng trình duyệt
   useEffect(() => {
     function handleStorageChange(e) {
-      if (e.key === SESSION_KEY) {
-        const nextKey = loadSessionUserKey();
-        if (!nextKey) {
-          setSession(null);
-          setAnswers({});
-          return;
-        }
-        const users = loadUsers();
-        if (users[nextKey]) {
-          setSession({ usernameKey: nextKey, user: users[nextKey] });
-          setAnswers(loadUserProgress(nextKey));
-        }
-        return;
-      }
-
-      if (session && e.key === progressStorageKey(session.usernameKey)) {
-        setAnswers(loadUserProgress(session.usernameKey));
+      if (e.key === PROGRESS_KEY) {
+        setAnswers(loadProgress());
       }
     }
-
     window.addEventListener("storage", handleStorageChange);
     return () => window.removeEventListener("storage", handleStorageChange);
-  }, [session]);
+  }, []);
 
-  const updatePrefs = useCallback(
-    (updater) => {
-      setPrefs((prev) => {
-        const next = typeof updater === "function" ? updater(prev) : { ...prev, ...updater };
-        if (session) {
-          saveUserPrefs(session.usernameKey, { ...next, theme });
-        }
-        return next;
-      });
-    },
-    [session, theme]
-  );
-
-  const handleToggleTheme = useCallback(() => {
-    setTheme((prev) => {
-      const next = prev === "dark" ? "light" : "dark";
-      if (session) {
-        saveUserPrefs(session.usernameKey, { ...prefsRef.current, theme: next });
-      }
+  const updatePrefs = useCallback((updater) => {
+    setPrefs((prev) => {
+      const next = typeof updater === "function" ? updater(prev) : { ...prev, ...updater };
+      savePrefs(next);
       return next;
     });
-  }, [session]);
-
-  const handleAuthSuccess = useCallback(
-    (usernameKey, user, welcomeMsg) => {
-      const savedPrefs = loadUserPrefs(usernameKey);
-      setSession({ usernameKey, user });
-      setAnswers(loadUserProgress(usernameKey));
-      setPrefs({
-        examId: savedPrefs.examId || "guide",
-        viewMode: savedPrefs.viewMode === "list" ? "list" : "single",
-        shuffleQuestions: Boolean(savedPrefs.shuffleQuestions),
-        shuffleOptions: Boolean(savedPrefs.shuffleOptions),
-      });
-      if (savedPrefs.theme === "dark" || savedPrefs.theme === "light") {
-        setTheme(savedPrefs.theme);
-      }
-      setWrongOnly(false);
-      setSearchQuery("");
-      setCurrentIndex(0);
-      setPendingByUid({});
-      setOpenImages({});
-      setQuestionOrderMap({});
-      setOptionOrderMap({});
-      showToast(welcomeMsg);
-    },
-    [showToast]
-  );
-
-  const handleLogout = useCallback(() => {
-    saveSessionUserKey(null);
-    setSession(null);
-    setAnswers({});
-    setPendingByUid({});
-    setOpenImages({});
-    showToast("Đã đăng xuất.");
-  }, [showToast]);
+  }, []);
 
   const activeExamId = useMemo(() => {
     if (prefs.examId === "guide") return "guide";
@@ -249,7 +155,11 @@ export function App() {
     const rank = new Map(savedOrder.map((uid, idx) => [uid, idx]));
     return filteredQuestions
       .slice()
-      .sort((a, b) => (rank.get(a.uid) ?? Number.MAX_SAFE_INTEGER) - (rank.get(b.uid) ?? Number.MAX_SAFE_INTEGER));
+      .sort(
+        (a, b) =>
+          (rank.get(a.uid) ?? Number.MAX_SAFE_INTEGER) -
+          (rank.get(b.uid) ?? Number.MAX_SAFE_INTEGER)
+      );
   }, [filteredQuestions, prefs.shuffleQuestions, currentExam, questionOrderMap]);
 
   const parsedGuide = useMemo(() => {
@@ -257,7 +167,6 @@ export function App() {
     return parseStudyGuide(guideMarkdown, deferredSearch);
   }, [activeExamId, guideMarkdown, deferredSearch]);
 
-  // Đảm bảo thứ tự trộn câu & trộn đáp án được sinh khi bật tính năng
   useEffect(() => {
     if (!prefs.shuffleQuestions || !currentExam) return;
     setQuestionOrderMap((prev) => {
@@ -283,68 +192,61 @@ export function App() {
       ? 0
       : Math.min(currentIndex, orderedQuestions.length - 1);
 
-  const handleSelectOption = useCallback(
-    (q, origKey) => {
-      if (!session || q.attempt) return;
-      const need = q.chooseCount || 1;
+  const handleSelectOption = useCallback((q, origKey) => {
+    if (q.attempt) return;
+    const need = q.chooseCount || 1;
 
-      if (need === 1) {
-        const picked = [String(origKey).trim().toUpperCase()];
-        const nextAns = { ...answersRef.current, [q.uid]: picked };
-        saveUserProgress(session.usernameKey, nextAns);
-        setAnswers(nextAns);
-        return;
-      }
-
-      const cur = new Set(pendingRef.current[q.uid] || []);
-      if (cur.has(origKey)) cur.delete(origKey);
-      else cur.add(origKey);
-      const arr = Array.from(cur);
-
-      if (arr.length < need) {
-        setPendingByUid((prev) => ({ ...prev, [q.uid]: arr }));
-        return;
-      }
-
-      const normalized = Array.from(
-        new Set(arr.map((s) => String(s).trim().toUpperCase()))
-      ).sort();
-
-      const nextAns = { ...answersRef.current, [q.uid]: normalized };
-      saveUserProgress(session.usernameKey, nextAns);
+    if (need === 1) {
+      const picked = [String(origKey).trim().toUpperCase()];
+      const nextAns = { ...answersRef.current, [q.uid]: picked };
+      saveProgress(nextAns);
       setAnswers(nextAns);
-      setPendingByUid((prev) => {
-        const nextPending = { ...prev };
-        delete nextPending[q.uid];
-        return nextPending;
-      });
-    },
-    [session]
-  );
+      return;
+    }
 
-  const handleResetQuestion = useCallback(
-    (uid) => {
-      if (!session) return;
-      const nextAns = { ...answersRef.current };
-      delete nextAns[uid];
-      saveUserProgress(session.usernameKey, nextAns);
-      setAnswers(nextAns);
-      setPendingByUid((prev) => {
-        if (!(uid in prev)) return prev;
-        const next = { ...prev };
-        delete next[uid];
-        return next;
-      });
-    },
-    [session]
-  );
+    const cur = new Set(pendingRef.current[q.uid] || []);
+    if (cur.has(origKey)) cur.delete(origKey);
+    else cur.add(origKey);
+    const arr = Array.from(cur);
+
+    if (arr.length < need) {
+      setPendingByUid((prev) => ({ ...prev, [q.uid]: arr }));
+      return;
+    }
+
+    const normalized = Array.from(
+      new Set(arr.map((s) => String(s).trim().toUpperCase()))
+    ).sort();
+
+    const nextAns = { ...answersRef.current, [q.uid]: normalized };
+    saveProgress(nextAns);
+    setAnswers(nextAns);
+    setPendingByUid((prev) => {
+      const nextPending = { ...prev };
+      delete nextPending[q.uid];
+      return nextPending;
+    });
+  }, []);
+
+  const handleResetQuestion = useCallback((uid) => {
+    const nextAns = { ...answersRef.current };
+    delete nextAns[uid];
+    saveProgress(nextAns);
+    setAnswers(nextAns);
+    setPendingByUid((prev) => {
+      if (!(uid in prev)) return prev;
+      const next = { ...prev };
+      delete next[uid];
+      return next;
+    });
+  }, []);
 
   const handleToggleImage = useCallback((uid) => {
     setOpenImages((prev) => ({ ...prev, [uid]: !prev[uid] }));
   }, []);
 
   const handleResetExam = useCallback(() => {
-    if (!session || !currentExam || stats.answered === 0) return;
+    if (!currentExam || stats.answered === 0) return;
     if (!window.confirm(`Xoá kết quả đã làm (${stats.answered} câu) của "${currentExam.title}"?`)) {
       return;
     }
@@ -353,39 +255,37 @@ export function App() {
     for (const uid of currentExam.questionUids) {
       delete nextAns[uid];
     }
-    saveUserProgress(session.usernameKey, nextAns);
+    saveProgress(nextAns);
     setAnswers(nextAns);
     setPendingByUid({});
     setWrongOnly(false);
     setCurrentIndex(0);
     showToast(`Đã đặt lại tiến độ của "${currentExam.shortTitle}".`);
-  }, [session, currentExam, stats.answered, showToast]);
+  }, [currentExam, stats.answered, showToast]);
 
   const handleExportProgress = useCallback(() => {
-    if (!session) return;
     const payload = {
       version: 1,
-      username: session.user.username,
       exportedAt: new Date().toISOString(),
-      answers,
+      answers: answersRef.current,
     };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `prm393-progress-${session.usernameKey}.json`;
+    a.download = "prm393-progress.json";
     document.body.appendChild(a);
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
     showToast("Đã xuất file sao lưu tiến độ.");
-  }, [session, answers, showToast]);
+  }, [showToast]);
 
   const handleImportProgressChange = useCallback(
     (e) => {
       const file = e.target.files && e.target.files[0];
       e.target.value = "";
-      if (!file || !session || !bankData) return;
+      if (!file || !bankData) return;
 
       const reader = new FileReader();
       reader.onload = () => {
@@ -406,7 +306,7 @@ export function App() {
           }
 
           const importCount = Object.keys(sanitized).length;
-          const existingCount = Object.keys(answers).length;
+          const existingCount = Object.keys(answersRef.current).length;
           if (
             existingCount > 0 &&
             !window.confirm(
@@ -416,7 +316,7 @@ export function App() {
             return;
           }
 
-          saveUserProgress(session.usernameKey, sanitized);
+          saveProgress(sanitized);
           setAnswers(sanitized);
           setPendingByUid({});
           showToast(`Đã khôi phục tiến độ (${importCount} câu đã làm).`);
@@ -426,12 +326,12 @@ export function App() {
       };
       reader.readAsText(file);
     },
-    [session, bankData, answers, showToast]
+    [bankData, showToast]
   );
 
   // Phím tắt 1-4 / A-D và Trái / Phải ở chế độ từng câu
   useEffect(() => {
-    if (!session || activeExamId === "guide" || prefs.viewMode !== "single") return;
+    if (activeExamId === "guide" || prefs.viewMode !== "single") return;
 
     function handleKeyDown(e) {
       if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
@@ -463,7 +363,6 @@ export function App() {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [
-    session,
     activeExamId,
     prefs.viewMode,
     prefs.shuffleOptions,
@@ -472,25 +371,6 @@ export function App() {
     optionOrderMap,
     handleSelectOption,
   ]);
-
-  if (!session) {
-    const hasUsers = Object.keys(loadUsers()).length > 0;
-    return (
-      <>
-        <AuthView
-          defaultTab={hasUsers ? "login" : "register"}
-          theme={theme}
-          onToggleTheme={handleToggleTheme}
-          onAuthSuccess={handleAuthSuccess}
-        />
-        {toast ? (
-          <div className="status-toast" role="status" aria-live="polite">
-            {toast}
-          </div>
-        ) : null}
-      </>
-    );
-  }
 
   const isGuide = activeExamId === "guide";
 
@@ -529,8 +409,7 @@ export function App() {
                 )}
               </div>
 
-              <div className="user-bar">
-                <span className="user-name">{session.user.displayName || session.user.username}</span>
+              <div className="progress-actions">
                 <button
                   type="button"
                   className="chip-btn"
@@ -554,9 +433,6 @@ export function App() {
                   hidden
                   onChange={handleImportProgressChange}
                 />
-                <button type="button" className="chip-btn danger" onClick={handleLogout}>
-                  Đăng xuất
-                </button>
               </div>
             </div>
           </div>
@@ -566,9 +442,7 @@ export function App() {
               <button
                 type="button"
                 className={`tab-btn${isGuide ? " active" : ""}`}
-                onClick={() => {
-                  updatePrefs({ examId: "guide" });
-                }}
+                onClick={() => updatePrefs({ examId: "guide" })}
               >
                 Lý thuyết<span className="tab-count">12 chương</span>
               </button>
@@ -664,10 +538,15 @@ export function App() {
               <button
                 type="button"
                 className="chip-btn"
-                onClick={handleToggleTheme}
+                onClick={() =>
+                  updatePrefs((prev) => ({
+                    ...prev,
+                    theme: prev.theme === "dark" ? "light" : "dark",
+                  }))
+                }
                 title="Đổi giao diện Sáng / Tối"
               >
-                {theme === "dark" ? "Giao diện: Sáng" : "Giao diện: Tối"}
+                {prefs.theme === "dark" ? "Giao diện: Sáng" : "Giao diện: Tối"}
               </button>
             </div>
           </div>

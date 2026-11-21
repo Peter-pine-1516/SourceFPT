@@ -2,7 +2,7 @@
 
 Đọc tài liệu lý thuyết PRM393 tại [TAI_LIEU_ON_TAP_PRM393.md](./public/data/TAI_LIEU_ON_TAP_PRM393.md) hoặc xem trực tiếp trên tab **Lý thuyết** của ứng dụng.
 
-Ứng dụng luyện đề trắc nghiệm **PRM393 (Flutter & Dart)** viết bằng **React + Vite**, tối ưu để deploy tĩnh lên **Vercel**, xử lý đăng nhập/đăng ký cơ bản và lưu bộ nhớ đệm hoàn toàn trên máy tính của từng người dùng.
+Ứng dụng luyện đề trắc nghiệm **PRM393 (Flutter & Dart)** viết bằng **React + Vite**, tối ưu để deploy tĩnh lên **Vercel** — vào học và làm bài ngay không cần đăng nhập, tự động lưu tiến độ và bộ nhớ đệm trực tiếp trên trình duyệt của từng người dùng.
 
 ---
 
@@ -10,9 +10,9 @@
 
 - **5 bộ đề FE SP26 & SU26** (248 câu hỏi gốc, 158 câu đã lọc trùng) kèm ảnh chụp đề gốc và giải thích chi tiết.
 - **Tab Lý thuyết 12 chương** có mục lục nhanh và tìm kiếm theo từ khoá.
-- **Đăng nhập / Đăng ký cục bộ**: mỗi tài khoản lưu riêng tiến độ làm bài và cấu hình giao diện trong `localStorage` của trình duyệt (mật khẩu băm SHA-256).
-- **Sao lưu & Khôi phục tiến độ**: hỗ trợ xuất/nhập tiến độ dưới dạng file `.json`.
-- **Bộ nhớ đệm trên thiết bị người dùng**: kết hợp HTTP `Cache-Control` (Vercel CDN) và Service Worker (`public/sw.js`) giúp cache đề thi, tài liệu và 300 ảnh đề gốc ngay trên trình duyệt.
+- **Tự lưu tiến độ trên máy từng người dùng**: mọi câu đã làm và cài đặt hiển thị được lưu tự động trong `localStorage`, đồng bộ khi mở nhiều tab.
+- **Sao lưu & Khôi phục tiến độ**: hỗ trợ xuất/nhập tiến độ dưới dạng file `.json` khi cần chuyển thiết bị hoặc trình duyệt.
+- **Bộ nhớ đệm cục bộ**: kết hợp HTTP `Cache-Control` (Vercel CDN) và Service Worker (`public/sw.js`) giúp cache đề thi, tài liệu và 300 ảnh đề gốc ngay trên máy người dùng.
 
 ---
 
@@ -41,44 +41,27 @@ PRM393/
     ├── App.jsx                          # Giao diện chính, bộ lọc, phím tắt & đồng bộ tab
     ├── styles.css                       # Giao diện tối giản Sáng / Tối
     ├── components/
-    │   ├── AuthView.jsx                 # Form đăng nhập / đăng ký cục bộ
     │   ├── QuestionCard.jsx             # Thẻ câu hỏi, chấm điểm & xem ảnh đề gốc
     │   └── StudyGuide.jsx               # Trình đọc tài liệu lý thuyết
     └── lib/
         ├── quiz.js                      # Xử lý ngân hàng đề, lọc trùng, chấm điểm
-        └── storage.js                   # Quản lý tài khoản & tiến độ trong localStorage
+        └── storage.js                   # Lưu tiến độ & cài đặt trong localStorage
 ```
 
 ---
 
-## 3. Chạy local
+## 3. Chạy local & Deploy lên Vercel
 
 ```powershell
 # Cài đặt thư viện
 npm install
 
-# Khởi chạy môi trường phát triển (http://localhost:5173)
+# Chạy local (http://localhost:5173)
 npm run dev
 
 # Build bản production vào thư mục dist/
 npm run build
 
-# Xem thử bản build production
-npm run preview
-```
-
----
-
-## 4. Deploy lên Vercel
-
-### Cách 1: Kết nối GitHub (Khuyên dùng)
-1. Push mã nguồn lên GitHub.
-2. Vào [vercel.com/new](https://vercel.com/new), chọn repository và bấm **Deploy**.
-3. Vercel tự nhận diện framework **Vite** và áp dụng cấu hình từ `vercel.json`.
-
-### Cách 2: Vercel CLI
-```powershell
-npm install -g vercel
-vercel login
+# Deploy bằng Vercel CLI (hoặc push GitHub để Vercel tự deploy)
 vercel --prod
 ```
