@@ -1,2 +1,5 @@
+/node_modules
+/dist
+/.vercel
 /target
-/data/progress.json
+/data

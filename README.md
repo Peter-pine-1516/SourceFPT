@@ -1,70 +1,84 @@
 # PRM393 FE Quiz & Tài Liệu Ôn Tập Toàn Diện
 
-👉 **ĐỌC LÝ THUYẾT PRM393 TRƯỚC KHI LÀM ĐỀ TẠI ĐÂY:** **[TAI_LIEU_ON_TAP_PRM393.md](./TAI_LIEU_ON_TAP_PRM393.md)** *(hoặc bấm ngay tab **📖 Lý thuyết** đầu tiên trên giao diện Web App `http://127.0.0.1:3000`)*.
+Đọc tài liệu lý thuyết PRM393 tại [TAI_LIEU_ON_TAP_PRM393.md](./public/data/TAI_LIEU_ON_TAP_PRM393.md) hoặc xem trực tiếp trên tab **Lý thuyết** của ứng dụng.
 
-Ứng dụng luyện đề trắc nghiệm **PRM393 (Flutter & Dart)** giao diện tối giản (kèm đủ 5 bộ đề `SP26` & `SU26` đã kiểm chứng 100%).
-
----
-
-## 1. Cách chạy ứng dụng
-
-### Cách nhanh nhất (Windows)
-Double-click vào file `run.bat` — ứng dụng sẽ tự chạy `cargo run` và mở trình duyệt tại `http://127.0.0.1:3000`.
-
-### Các lệnh Cargo cơ bản (nên gõ trong Terminal để quen tay với Rust)
-```powershell
-# 1. Kiểm tra cú pháp & kiểu dữ liệu cực nhanh (không sinh file .exe)
-cargo check
-
-# 2. Chạy bộ kiểm thử tự động (kiểm tra đủ 248 câu hỏi, 158 câu lọc trùng & toàn bộ file ảnh gốc)
-cargo test
-
-# 3. Biên dịch & khởi chạy Web Server tại http://127.0.0.1:3000
-cargo run
-
-# 4. (Tuỳ chọn) Để trình gợi ý Clippy rà soát code chuẩn phong cách Rust (idiomatic Rust)
-cargo clippy
-```
+Ứng dụng luyện đề trắc nghiệm **PRM393 (Flutter & Dart)** viết bằng **React + Vite**, tối ưu để deploy tĩnh lên **Vercel**, xử lý đăng nhập/đăng ký cơ bản và lưu bộ nhớ đệm hoàn toàn trên máy tính của từng người dùng.
 
 ---
 
-## 2. Cấu trúc thư mục chuẩn Cargo
+## 1. Tính năng chính
+
+- **5 bộ đề FE SP26 & SU26** (248 câu hỏi gốc, 158 câu đã lọc trùng) kèm ảnh chụp đề gốc và giải thích chi tiết.
+- **Tab Lý thuyết 12 chương** có mục lục nhanh và tìm kiếm theo từ khoá.
+- **Đăng nhập / Đăng ký cục bộ**: mỗi tài khoản lưu riêng tiến độ làm bài và cấu hình giao diện trong `localStorage` của trình duyệt (mật khẩu băm SHA-256).
+- **Sao lưu & Khôi phục tiến độ**: hỗ trợ xuất/nhập tiến độ dưới dạng file `.json`.
+- **Bộ nhớ đệm trên thiết bị người dùng**: kết hợp HTTP `Cache-Control` (Vercel CDN) và Service Worker (`public/sw.js`) giúp cache đề thi, tài liệu và 300 ảnh đề gốc ngay trên trình duyệt.
+
+---
+
+## 2. Cấu trúc thư mục
 
 ```text
 PRM393/
-├── Cargo.toml                  # Khai báo tên package và các thư viện (crates): axum, tokio, serde...
-├── run.bat                     # Script khởi chạy nhanh trên Windows
-├── data/
-│   ├── questions.json          # 248 câu hỏi đã kiểm chứng từ 300 ảnh gốc của 5 bộ đề
-│   └── progress.json           # Tự động sinh ra khi làm bài để lưu kết quả đúng/sai
-├── static/                     # Giao diện Web tối giản (gọi REST API tới Backend Rust)
-│   ├── index.html
-│   ├── styles.css
-│   └── app.js
-├── src/                        # Toàn bộ mã nguồn ngôn ngữ Rust (.rs)
-│   ├── main.rs                 # Điểm vào chương trình (Entry point), cấu hình Router & mở cổng 3000
-│   ├── models.rs               # Khai báo Struct, Option<T>, BTreeMap & ánh xạ JSON bằng Serde
-│   ├── error.rs                # Định nghĩa Enum lỗi riêng (AppError) & chuyển thành HTTP status
-│   ├── store.rs                # Logic nghiệp vụ: nạp đề, lọc trùng, chấm đúng/sai, lưu file & Unit Tests
-│   └── handlers.rs             # Các hàm async nhận HTTP Request và trả JSON/ảnh về trình duyệt
-└── PRM393 - ... (5 thư mục ảnh gốc phục vụ nút "Xem ảnh đề gốc")
+├── index.html                           # Trang gốc Vite
+├── package.json                         # Khai báo React, Vite và scripts
+├── vite.config.js                       # Cấu hình Vite
+├── vercel.json                          # Cấu hình deploy & Cache-Control cho Vercel
+├── .vercelignore                        # Loại trừ file cục bộ khi deploy
+├── public/
+│   ├── sw.js                            # Service Worker cache dữ liệu & ảnh đề gốc
+│   ├── data/
+│   │   ├── questions.json               # Ngân hàng 248 câu hỏi (5 bộ đề)
+│   │   └── TAI_LIEU_ON_TAP_PRM393.md    # Tài liệu ôn tập 12 chương
+│   └── images/                          # 5 thư mục chứa 300 ảnh chụp đề gốc
+│       ├── PRM393 - SP26 - B5 - FE/
+│       ├── PRM393 - SP26 - FE/
+│       ├── PRM393 - SU26 - B5 - FE/
+│       ├── PRM393 - SU26 - FE/
+│       └── PRM393 - SU26 - FE - RE/
+└── src/
+    ├── main.jsx                         # Điểm khởi chạy React & đăng ký Service Worker
+    ├── App.jsx                          # Giao diện chính, bộ lọc, phím tắt & đồng bộ tab
+    ├── styles.css                       # Giao diện tối giản Sáng / Tối
+    ├── components/
+    │   ├── AuthView.jsx                 # Form đăng nhập / đăng ký cục bộ
+    │   ├── QuestionCard.jsx             # Thẻ câu hỏi, chấm điểm & xem ảnh đề gốc
+    │   └── StudyGuide.jsx               # Trình đọc tài liệu lý thuyết
+    └── lib/
+        ├── quiz.js                      # Xử lý ngân hàng đề, lọc trùng, chấm điểm
+        └── storage.js                   # Quản lý tài khoản & tiến độ trong localStorage
 ```
 
 ---
 
-## 3. Lộ trình đọc code để học Rust nhanh nhất
+## 3. Chạy local
 
-1. **`src/models.rs` — Làm quen kiểu dữ liệu trong Rust**
-   - Học cách khai báo `struct` với trường `pub`.
-   - Hiểu vì sao Rust **không có `null`** mà dùng `Option<String>` (`Some(...)` hoặc `None`).
-   - Hiểu macro `#[derive(Debug, Clone, Serialize, Deserialize)]` tự động sinh code chuyển đổi JSON.
-2. **`src/error.rs` — Xử lý lỗi không dùng `try/catch`**
-   - Học `enum AppError` (Enum trong Rust mang theo được dữ liệu bên trong như `NotFound(String)`).
-   - Học cách `match` (Pattern Matching) yêu cầu xử lý vét cạn mọi trường hợp lỗi.
-3. **`src/store.rs` — Trái tim của Rust: Ownership, Borrowing & Concurrency**
-   - Phân biệt `String` (sở hữu vùng nhớ) và `&str` (mượn tham chiếu chỉ đọc, không tốn chi phí copy).
-   - Hiểu `RwLock<ProgressData>` giúp nhiều request đọc điểm cùng lúc và khoá an toàn khi ghi file.
-   - Đọc phần `#[cfg(test)] mod tests` ở cuối file để thấy cách viết Unit Test ngay trong cùng file `.rs`.
-4. **`src/handlers.rs` & `src/main.rs` — Lập trình bất đồng bộ (`async/await`)**
-   - Học `Arc<AppStore>` để chia sẻ state giữa các luồng của Tokio runtime.
-   - Học toán tử `?` giúp truyền lỗi ngắn gọn thay vì viết nhiều tầng `if/else`.
+```powershell
+# Cài đặt thư viện
+npm install
+
+# Khởi chạy môi trường phát triển (http://localhost:5173)
+npm run dev
+
+# Build bản production vào thư mục dist/
+npm run build
+
+# Xem thử bản build production
+npm run preview
+```
+
+---
+
+## 4. Deploy lên Vercel
+
+### Cách 1: Kết nối GitHub (Khuyên dùng)
+1. Push mã nguồn lên GitHub.
+2. Vào [vercel.com/new](https://vercel.com/new), chọn repository và bấm **Deploy**.
+3. Vercel tự nhận diện framework **Vite** và áp dụng cấu hình từ `vercel.json`.
+
+### Cách 2: Vercel CLI
+```powershell
+npm install -g vercel
+vercel login
+vercel --prod
+```
