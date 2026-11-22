@@ -73,9 +73,11 @@ export function App() {
     let cancelled = false;
     async function loadStaticData() {
       try {
+        const v = typeof __APP_DATA_VERSION__ !== "undefined" ? __APP_DATA_VERSION__ : "";
+        const qs = v ? `?v=${encodeURIComponent(v)}` : "";
         const [qRes, gRes] = await Promise.all([
-          fetch("/data/questions.json"),
-          fetch("/data/TAI_LIEU_ON_TAP_PRM393.md"),
+          fetch(`/data/questions.json${qs}`),
+          fetch(`/data/TAI_LIEU_ON_TAP_PRM393.md${qs}`),
         ]);
         if (!qRes.ok) throw new Error(`Không tải được dữ liệu đề thi (HTTP ${qRes.status})`);
         if (!gRes.ok) throw new Error(`Không tải được tài liệu ôn tập (HTTP ${gRes.status})`);

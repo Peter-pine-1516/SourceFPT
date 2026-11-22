@@ -1,19 +1,8 @@
-const DATA_CACHE = "prm393-data-v2";
+const DATA_CACHE = "prm393-data-v3";
 const IMAGE_CACHE = "prm393-images-v1";
 
-const PRECACHE_URLS = [
-  "/data/questions.json",
-  "/data/TAI_LIEU_ON_TAP_PRM393.md",
-];
-
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches
-      .open(DATA_CACHE)
-      .then((cache) => cache.addAll(PRECACHE_URLS))
-      .catch(() => {})
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener("activate", (event) => {
@@ -46,7 +35,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Ảnh đề gốc: Cache-First ngay trên máy người dùng
+  // Ảnh đề gốc: Cache-First ngay trên máy người dùng (ảnh không thay đổi)
   if (url.pathname.startsWith("/images/")) {
     event.respondWith(
       caches.open(IMAGE_CACHE).then(async (cache) => {
@@ -62,23 +51,24 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Ngân hàng câu hỏi & tài liệu ôn tập: Stale-While-Revalidate
+  // Ngân hàng câu hỏi & tài liệu lý thuyết: Network-First để luôn nhận bản mới nhất, mất mạng mới dùng cache
   if (
     url.pathname === "/data/questions.json" ||
     url.pathname === "/data/TAI_LIEU_ON_TAP_PRM393.md"
   ) {
     event.respondWith(
       caches.open(DATA_CACHE).then(async (cache) => {
-        const cached = await cache.match(req);
-        const networkPromise = fetch(req)
-          .then((fresh) => {
-            if (fresh && fresh.ok) {
-              cache.put(req, fresh.clone());
-            }
-            return fresh;
-          })
-          .catch(() => cached);
-        return cached || networkPromise;
+        try {
+          const fresh = await fetch(req, { cache: "no-cache" });
+          if (fresh && fresh.ok) {
+            cache.put(url.pathname, fresh.clone());
+          }
+          return fresh;
+        } catch {
+          const cached = await cache.match(url.pathname);
+          if (cached) return cached;
+          throw new Error("Offline and no cached data available");
+        }
       })
     );
   }
