@@ -1,4 +1,4 @@
-const DATA_CACHE = "prm393-data-v1";
+const DATA_CACHE = "prm393-data-v2";
 const IMAGE_CACHE = "prm393-images-v1";
 
 const PRECACHE_URLS = [

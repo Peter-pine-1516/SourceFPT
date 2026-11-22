@@ -1,4 +1,4 @@
-# PRM393 FE Quiz & Tài Liệu Ôn Tập Toàn Diện
+# PRM393 FE Quiz & Tài Liệu Lý Thuyết
 
 Đọc tài liệu lý thuyết PRM393 tại [TAI_LIEU_ON_TAP_PRM393.md](./public/data/TAI_LIEU_ON_TAP_PRM393.md) hoặc xem trực tiếp trên tab **Lý thuyết** của ứng dụng.
 
@@ -9,7 +9,7 @@
 ## 1. Tính năng chính
 
 - **5 bộ đề FE SP26 & SU26** (248 câu hỏi gốc, 158 câu đã lọc trùng) sắp xếp theo đúng trình tự kỳ học FPT (`SP26 - FE` -> `SP26 - B5 - FE` -> `SU26 - FE` -> `SU26 - FE - RE` -> `SU26 - B5 - FE`), kèm ảnh chụp đề gốc và giải thích chi tiết.
-- **Tab Lý thuyết 12 chương** có mục lục nhanh và tìm kiếm theo từ khoá.
+- **Tab Lý thuyết 13 chương (Flutter & Dart)** có mục lục nhanh và tìm kiếm theo từ khoá.
 - **Tự lưu tiến độ trên máy từng người dùng**: mọi câu đã làm và cài đặt hiển thị được lưu tự động trong `localStorage`, đồng bộ khi mở nhiều tab.
 - **Bộ nhớ đệm cục bộ**: kết hợp HTTP `Cache-Control` (Vercel CDN) và Service Worker (`public/sw.js`) giúp cache đề thi, tài liệu và 300 ảnh đề gốc ngay trên máy người dùng.
 
@@ -28,7 +28,7 @@ PRM393/
 │   ├── sw.js                            # Service Worker cache dữ liệu & ảnh đề gốc
 │   ├── data/
 │   │   ├── questions.json               # Ngân hàng 248 câu hỏi (5 bộ đề)
-│   │   └── TAI_LIEU_ON_TAP_PRM393.md    # Tài liệu ôn tập 12 chương
+│   │   └── TAI_LIEU_ON_TAP_PRM393.md    # Tài liệu ôn tập 13 chương (12 Module Slide + 5 đề FE)
 │   └── images/                          # 5 thư mục chứa 300 ảnh chụp đề gốc
 │       ├── PRM393 - SP26 - B5 - FE/
 │       ├── PRM393 - SP26 - FE/

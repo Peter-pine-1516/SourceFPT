@@ -321,7 +321,7 @@ export function App() {
             <div className="stats-bar">
               {isGuide ? (
                 <span className="stat-item">
-                  Tóm tắt toàn bộ <strong>158 khái niệm</strong> từ 5 bộ đề PRM393 FE
+                  Tài liệu lý thuyết <strong>PRM393</strong> (Flutter &amp; Dart)
                 </span>
               ) : (
                 <>
@@ -349,7 +349,7 @@ export function App() {
                 className={`tab-btn${isGuide ? " active" : ""}`}
                 onClick={() => updatePrefs({ examId: "guide" })}
               >
-                Lý thuyết<span className="tab-count">12 chương</span>
+                Lý thuyết<span className="tab-count">{parsedGuide.toc.length || 13} chương</span>
               </button>
 
               {(bankData ? bankData.exams : []).map((ex) => (
