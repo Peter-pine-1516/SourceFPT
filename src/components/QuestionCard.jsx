@@ -123,11 +123,19 @@ export const QuestionCard = memo(function QuestionCard({
           </div>
           {isImageOpen ? (
             <div className="orig-img-wrap">
-              <img
-                src={attempt.imageUrl}
-                alt={`Ảnh gốc câu ${question.number}`}
-                loading="lazy"
-              />
+              <a
+                href={attempt.imageUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="orig-img-link"
+                title="Mở ảnh gốc kích thước đầy đủ trong tab mới"
+              >
+                <img
+                  src={attempt.imageUrl}
+                  alt={`Ảnh gốc câu ${question.number}`}
+                  loading="lazy"
+                />
+              </a>
             </div>
           ) : null}
         </div>

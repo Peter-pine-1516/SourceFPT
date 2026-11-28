@@ -1,4 +1,4 @@
-const DATA_CACHE = "quiz-data-v4";
+const DATA_CACHE = "quiz-data-v5";
 const IMAGE_CACHE = "prm393-images-v1";
 
 self.addEventListener("install", (event) => {

@@ -46,6 +46,8 @@ export function shuffleArray(arr) {
 function normalizeText(input) {
   return String(input || "")
     .trim()
+    .replace(/_{2,}/g, "___")
+    .replace(/[?.:…]+$/g, "")
     .split(/\s+/)
     .join(" ")
     .toLowerCase();

@@ -478,6 +478,11 @@ button, input, select {
   background: #000;
 }
 
+.orig-img-link {
+  display: block;
+  cursor: zoom-in;
+}
+
 .orig-img-wrap img {
   display: block;
   width: 100%;

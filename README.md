@@ -7,7 +7,7 @@
 ## 1. Môn học hiện có
 
 - **PRM393**: 5 bộ đề FE SP26 & SU26 (248 câu hỏi gốc, 158 câu đã lọc trùng), kèm ảnh chụp đề gốc, giải thích chi tiết và tab **Lý thuyết 13 chương (Flutter & Dart)**.
-- **ITE302c**: 11 bộ đề FE & RE từ SP24 đến SU26 (660 câu hỏi gốc, 373 câu đã lọc trùng), tự động sắp xếp theo trình tự kỳ học FPT, kèm ảnh chụp đề gốc và giải thích chi tiết.
+- **ITE302c**: 11 bộ đề FE & RE từ SP24 đến SU26 (660 câu hỏi gốc, 367 câu đã lọc trùng), tự động sắp xếp theo trình tự kỳ học FPT, kèm ảnh chụp đề gốc, giải thích chi tiết và tab **Lý thuyết 10 chương (Ethics in IT)**.
 
 ---
 
@@ -32,7 +32,8 @@
 │   ├── data/
 │   │   ├── questions.json               # Ngân hàng đề PRM393 (5 bộ đề)
 │   │   ├── ite302c-questions.json       # Ngân hàng đề ITE302c (11 bộ đề)
-│   │   └── TAI_LIEU_ON_TAP_PRM393.md    # Tài liệu ôn tập PRM393 (13 chương)
+│   │   ├── TAI_LIEU_ON_TAP_PRM393.md    # Tài liệu ôn tập PRM393 (13 chương)
+│   │   └── TAI_LIEU_ON_TAP_ITE302C.md   # Tài liệu ôn tập ITE302c (10 chương)
 │   └── images/                          # Ảnh chụp đề gốc PRM393 & ITE302c
 └── src/
     ├── main.jsx                         # Điểm khởi chạy React & đăng ký Service Worker

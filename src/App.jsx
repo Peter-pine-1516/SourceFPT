@@ -193,6 +193,12 @@ function SubjectWorkspace({ subject, theme, onToggleTheme, onBackToHome }) {
     return parseStudyGuide(guideMarkdown, deferredSearch);
   }, [hasGuide, activeExamId, guideMarkdown, deferredSearch]);
 
+  const totalGuideChapters = useMemo(() => {
+    if (!hasGuide || !guideMarkdown) return 0;
+    const matches = guideMarkdown.match(/^## /gm);
+    return matches ? matches.length : 0;
+  }, [hasGuide, guideMarkdown]);
+
   useEffect(() => {
     if (!prefs.shuffleQuestions || !currentExam) return;
     setQuestionOrderMap((prev) => {
@@ -392,7 +398,10 @@ function SubjectWorkspace({ subject, theme, onToggleTheme, onBackToHome }) {
                   className={`tab-btn${isGuide ? " active" : ""}`}
                   onClick={() => updatePrefs({ examId: "guide" })}
                 >
-                  Lý thuyết<span className="tab-count">{parsedGuide.toc.length || 13} chương</span>
+                  Lý thuyết
+                  {totalGuideChapters > 0 ? (
+                    <span className="tab-count">{totalGuideChapters} chương</span>
+                  ) : null}
                 </button>
               ) : null}
 
