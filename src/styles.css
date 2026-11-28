@@ -304,6 +304,21 @@ button, input, select {
   white-space: pre;
 }
 
+.q-figure {
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #ffffff;
+  max-width: 480px;
+}
+
+.q-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .options-list {
   display: flex;
   flex-direction: column;
@@ -716,4 +731,79 @@ button, input, select {
   color: var(--text);
   font-size: 13px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Minimalist Subject Landing */
+.landing-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  position: relative;
+}
+
+.landing-theme-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.landing-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  max-width: 720px;
+  width: 100%;
+}
+
+.subject-card {
+  min-width: 220px;
+  height: 124px;
+  padding: 24px 32px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.subject-card:hover {
+  border-color: var(--text);
+  background: var(--surface-subtle);
+  transform: translateY(-2px);
+}
+
+.subject-card:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
+}
+
+.back-home-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+  background: var(--surface-subtle);
 }

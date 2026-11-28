@@ -14,7 +14,7 @@
       ]
     },
     {
-      "source": "/data/(questions\\.json|TAI_LIEU_ON_TAP_PRM393\\.md)",
+      "source": "/data/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

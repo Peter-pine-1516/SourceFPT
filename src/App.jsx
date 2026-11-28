@@ -1,4 +1,5 @@
 import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { LandingPage } from "./components/LandingPage";
 import { QuestionCard } from "./components/QuestionCard";
 import { StudyGuide } from "./components/StudyGuide";
 import {
@@ -10,12 +11,14 @@ import {
   shuffleArray,
 } from "./lib/quiz";
 import {
-  loadPrefs,
   loadProgress,
-  PROGRESS_KEY,
-  savePrefs,
+  loadSubjectPrefs,
+  loadTheme,
   saveProgress,
+  saveSubjectPrefs,
+  saveTheme,
 } from "./lib/storage";
+import { getSubjectById, SUBJECTS } from "./lib/subjects";
 
 const KEY_TO_INDEX = {
   "1": 0,
@@ -32,9 +35,15 @@ const KEY_TO_INDEX = {
   F: 5,
 };
 
-export function App() {
-  const [answers, setAnswers] = useState(() => loadProgress());
-  const [prefs, setPrefs] = useState(() => loadPrefs());
+function readSubjectIdFromHash() {
+  const raw = window.location.hash.replace(/^#\/?/, "").trim();
+  const matched = getSubjectById(raw);
+  return matched ? matched.id : null;
+}
+
+function SubjectWorkspace({ subject, theme, onToggleTheme, onBackToHome }) {
+  const [answers, setAnswers] = useState(() => loadProgress(subject));
+  const [prefs, setPrefs] = useState(() => loadSubjectPrefs(subject));
 
   const [bankData, setBankData] = useState(null);
   const [guideMarkdown, setGuideMarkdown] = useState("");
@@ -63,26 +72,37 @@ export function App() {
     toastTimerRef.current = setTimeout(() => setToast(""), 3000);
   }, []);
 
-  // Áp dụng giao diện Sáng / Tối
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", prefs.theme);
-  }, [prefs.theme]);
+    return () => {
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    };
+  }, []);
 
-  // Nạp song song ngân hàng đề và tài liệu lý thuyết 1 lần duy nhất
+  useEffect(() => {
+    document.title = `${subject.title} — Ôn tập trắc nghiệm`;
+  }, [subject.title]);
+
+  // Nạp dữ liệu đề thi (và tài liệu lý thuyết nếu môn có)
   useEffect(() => {
     let cancelled = false;
     async function loadStaticData() {
       try {
         const v = typeof __APP_DATA_VERSION__ !== "undefined" ? __APP_DATA_VERSION__ : "";
         const qs = v ? `?v=${encodeURIComponent(v)}` : "";
-        const [qRes, gRes] = await Promise.all([
-          fetch(`/data/questions.json${qs}`),
-          fetch(`/data/TAI_LIEU_ON_TAP_PRM393.md${qs}`),
-        ]);
-        if (!qRes.ok) throw new Error(`Không tải được dữ liệu đề thi (HTTP ${qRes.status})`);
-        if (!gRes.ok) throw new Error(`Không tải được tài liệu ôn tập (HTTP ${gRes.status})`);
 
-        const [rawBank, mdText] = await Promise.all([qRes.json(), gRes.text()]);
+        const fetches = [fetch(`${subject.questionsPath}${qs}`)];
+        if (subject.guidePath) {
+          fetches.push(fetch(`${subject.guidePath}${qs}`));
+        }
+
+        const [qRes, gRes] = await Promise.all(fetches);
+        if (!qRes.ok) throw new Error(`Không tải được dữ liệu đề thi (HTTP ${qRes.status})`);
+        if (gRes && !gRes.ok) {
+          throw new Error(`Không tải được tài liệu ôn tập (HTTP ${gRes.status})`);
+        }
+
+        const rawBank = await qRes.json();
+        const mdText = gRes ? await gRes.text() : "";
         if (cancelled) return;
 
         setBankData(buildQuestionBank(rawBank));
@@ -100,34 +120,39 @@ export function App() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [subject.questionsPath, subject.guidePath]);
 
   // Đồng bộ tiến độ tự động nếu mở nhiều tab trên cùng trình duyệt
   useEffect(() => {
     function handleStorageChange(e) {
-      if (e.key === PROGRESS_KEY) {
-        setAnswers(loadProgress());
+      if (e.key === subject.progressKey) {
+        setAnswers(loadProgress(subject));
       }
     }
     window.addEventListener("storage", handleStorageChange);
     return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
+  }, [subject]);
 
-  const updatePrefs = useCallback((updater) => {
-    setPrefs((prev) => {
-      const next = typeof updater === "function" ? updater(prev) : { ...prev, ...updater };
-      savePrefs(next);
-      return next;
-    });
-  }, []);
+  const updatePrefs = useCallback(
+    (updater) => {
+      setPrefs((prev) => {
+        const next = typeof updater === "function" ? updater(prev) : { ...prev, ...updater };
+        saveSubjectPrefs(subject, next);
+        return next;
+      });
+    },
+    [subject]
+  );
+
+  const hasGuide = Boolean(subject.guidePath);
 
   const activeExamId = useMemo(() => {
-    if (prefs.examId === "guide") return "guide";
+    if (hasGuide && prefs.examId === "guide") return "guide";
     if (!bankData) return prefs.examId;
     return bankData.exams.some((e) => e.id === prefs.examId)
       ? prefs.examId
-      : bankData.exams[0]?.id || "guide";
-  }, [prefs.examId, bankData]);
+      : bankData.exams[0]?.id || (hasGuide ? "guide" : "");
+  }, [hasGuide, prefs.examId, bankData]);
 
   const currentExam = useMemo(() => {
     if (!bankData || activeExamId === "guide") return null;
@@ -164,9 +189,9 @@ export function App() {
   }, [filteredQuestions, prefs.shuffleQuestions, currentExam, questionOrderMap]);
 
   const parsedGuide = useMemo(() => {
-    if (activeExamId !== "guide") return { blocks: [], toc: [] };
+    if (!hasGuide || activeExamId !== "guide") return { blocks: [], toc: [] };
     return parseStudyGuide(guideMarkdown, deferredSearch);
-  }, [activeExamId, guideMarkdown, deferredSearch]);
+  }, [hasGuide, activeExamId, guideMarkdown, deferredSearch]);
 
   useEffect(() => {
     if (!prefs.shuffleQuestions || !currentExam) return;
@@ -193,54 +218,60 @@ export function App() {
       ? 0
       : Math.min(currentIndex, orderedQuestions.length - 1);
 
-  const handleSelectOption = useCallback((q, origKey) => {
-    if (q.attempt) return;
-    const need = q.chooseCount || 1;
+  const handleSelectOption = useCallback(
+    (q, origKey) => {
+      if (q.attempt) return;
+      const need = q.chooseCount || 1;
 
-    if (need === 1) {
-      const picked = [String(origKey).trim().toUpperCase()];
-      const nextAns = { ...answersRef.current, [q.uid]: picked };
-      saveProgress(nextAns);
+      if (need === 1) {
+        const picked = [String(origKey).trim().toUpperCase()];
+        const nextAns = { ...answersRef.current, [q.uid]: picked };
+        saveProgress(subject, nextAns);
+        setAnswers(nextAns);
+        return;
+      }
+
+      const cur = new Set(pendingRef.current[q.uid] || []);
+      if (cur.has(origKey)) cur.delete(origKey);
+      else cur.add(origKey);
+      const arr = Array.from(cur);
+
+      if (arr.length < need) {
+        setPendingByUid((prev) => ({ ...prev, [q.uid]: arr }));
+        return;
+      }
+
+      const normalized = Array.from(
+        new Set(arr.map((s) => String(s).trim().toUpperCase()))
+      ).sort();
+
+      const nextAns = { ...answersRef.current, [q.uid]: normalized };
+      saveProgress(subject, nextAns);
       setAnswers(nextAns);
-      return;
-    }
+      setPendingByUid((prev) => {
+        const nextPending = { ...prev };
+        delete nextPending[q.uid];
+        return nextPending;
+      });
+    },
+    [subject]
+  );
 
-    const cur = new Set(pendingRef.current[q.uid] || []);
-    if (cur.has(origKey)) cur.delete(origKey);
-    else cur.add(origKey);
-    const arr = Array.from(cur);
-
-    if (arr.length < need) {
-      setPendingByUid((prev) => ({ ...prev, [q.uid]: arr }));
-      return;
-    }
-
-    const normalized = Array.from(
-      new Set(arr.map((s) => String(s).trim().toUpperCase()))
-    ).sort();
-
-    const nextAns = { ...answersRef.current, [q.uid]: normalized };
-    saveProgress(nextAns);
-    setAnswers(nextAns);
-    setPendingByUid((prev) => {
-      const nextPending = { ...prev };
-      delete nextPending[q.uid];
-      return nextPending;
-    });
-  }, []);
-
-  const handleResetQuestion = useCallback((uid) => {
-    const nextAns = { ...answersRef.current };
-    delete nextAns[uid];
-    saveProgress(nextAns);
-    setAnswers(nextAns);
-    setPendingByUid((prev) => {
-      if (!(uid in prev)) return prev;
-      const next = { ...prev };
-      delete next[uid];
-      return next;
-    });
-  }, []);
+  const handleResetQuestion = useCallback(
+    (uid) => {
+      const nextAns = { ...answersRef.current };
+      delete nextAns[uid];
+      saveProgress(subject, nextAns);
+      setAnswers(nextAns);
+      setPendingByUid((prev) => {
+        if (!(uid in prev)) return prev;
+        const next = { ...prev };
+        delete next[uid];
+        return next;
+      });
+    },
+    [subject]
+  );
 
   const handleToggleImage = useCallback((uid) => {
     setOpenImages((prev) => ({ ...prev, [uid]: !prev[uid] }));
@@ -256,13 +287,13 @@ export function App() {
     for (const uid of currentExam.questionUids) {
       delete nextAns[uid];
     }
-    saveProgress(nextAns);
+    saveProgress(subject, nextAns);
     setAnswers(nextAns);
     setPendingByUid({});
     setWrongOnly(false);
     setCurrentIndex(0);
     showToast(`Đã đặt lại tiến độ của "${currentExam.shortTitle}".`);
-  }, [currentExam, stats.answered, showToast]);
+  }, [subject, currentExam, stats.answered, showToast]);
 
   // Phím tắt 1-4 / A-D và Trái / Phải ở chế độ từng câu
   useEffect(() => {
@@ -307,7 +338,7 @@ export function App() {
     handleSelectOption,
   ]);
 
-  const isGuide = activeExamId === "guide";
+  const isGuide = hasGuide && activeExamId === "guide";
 
   return (
     <>
@@ -315,15 +346,24 @@ export function App() {
         <div className="topbar-inner">
           <div className="topbar-row">
             <div className="brand">
-              <span className="brand-title">PRM393 FE</span>
-              <span className="brand-badge">5 bộ đề SP26 &amp; SU26</span>
-              <span className="brand-sub">Làm câu nào chấm ngay câu đó</span>
+              <button
+                type="button"
+                className="back-home-btn"
+                onClick={onBackToHome}
+                title="Quay lại chọn môn học"
+                aria-label="Quay lại chọn môn học"
+              >
+                ←
+              </button>
+              <span className="brand-title">{subject.title}</span>
+              <span className="brand-badge">{subject.badge}</span>
+              <span className="brand-sub">{subject.subtitle}</span>
             </div>
 
             <div className="stats-bar">
               {isGuide ? (
                 <span className="stat-item">
-                  Tài liệu lý thuyết <strong>PRM393</strong> (Flutter &amp; Dart)
+                  {subject.guideLabel} <strong>{subject.guideSubject}</strong> {subject.guideExtra}
                 </span>
               ) : (
                 <>
@@ -346,13 +386,15 @@ export function App() {
 
           <div className="topbar-row">
             <nav className="exam-tabs" aria-label="Chọn bộ đề">
-              <button
-                type="button"
-                className={`tab-btn${isGuide ? " active" : ""}`}
-                onClick={() => updatePrefs({ examId: "guide" })}
-              >
-                Lý thuyết<span className="tab-count">{parsedGuide.toc.length || 13} chương</span>
-              </button>
+              {hasGuide ? (
+                <button
+                  type="button"
+                  className={`tab-btn${isGuide ? " active" : ""}`}
+                  onClick={() => updatePrefs({ examId: "guide" })}
+                >
+                  Lý thuyết<span className="tab-count">{parsedGuide.toc.length || 13} chương</span>
+                </button>
+              ) : null}
 
               {(bankData ? bankData.exams : []).map((ex) => (
                 <button
@@ -445,15 +487,10 @@ export function App() {
               <button
                 type="button"
                 className="chip-btn"
-                onClick={() =>
-                  updatePrefs((prev) => ({
-                    ...prev,
-                    theme: prev.theme === "dark" ? "light" : "dark",
-                  }))
-                }
+                onClick={onToggleTheme}
                 title="Đổi giao diện Sáng / Tối"
               >
-                {prefs.theme === "dark" ? "Giao diện: Sáng" : "Giao diện: Tối"}
+                {theme === "dark" ? "Giao diện: Sáng" : "Giao diện: Tối"}
               </button>
             </div>
           </div>
@@ -605,5 +642,77 @@ export function App() {
         </div>
       ) : null}
     </>
+  );
+}
+
+export function App() {
+  const [theme, setTheme] = useState(() => loadTheme());
+  const [selectedSubjectId, setSelectedSubjectId] = useState(() => readSubjectIdFromHash());
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  useEffect(() => {
+    function handleHashChange() {
+      setSelectedSubjectId(readSubjectIdFromHash());
+    }
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const selectedSubject = useMemo(
+    () => getSubjectById(selectedSubjectId),
+    [selectedSubjectId]
+  );
+
+  useEffect(() => {
+    if (!selectedSubject) {
+      document.title = "Ôn tập trắc nghiệm FE";
+    }
+  }, [selectedSubject]);
+
+  const handleToggleTheme = useCallback(() => {
+    setTheme((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
+      saveTheme(next);
+      return next;
+    });
+  }, []);
+
+  const handleSelectSubject = useCallback((subjectId) => {
+    setSelectedSubjectId(subjectId);
+    const nextHash = `#/${subjectId}`;
+    if (window.location.hash !== nextHash) {
+      window.location.hash = nextHash;
+    }
+  }, []);
+
+  const handleBackToHome = useCallback(() => {
+    setSelectedSubjectId(null);
+    if (window.location.hash) {
+      window.history.pushState(null, "", window.location.pathname + window.location.search);
+    }
+  }, []);
+
+  if (!selectedSubject) {
+    return (
+      <LandingPage
+        subjects={SUBJECTS}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+        onSelectSubject={handleSelectSubject}
+      />
+    );
+  }
+
+  return (
+    <SubjectWorkspace
+      key={selectedSubject.id}
+      subject={selectedSubject}
+      theme={theme}
+      onToggleTheme={handleToggleTheme}
+      onBackToHome={handleBackToHome}
+    />
   );
 }

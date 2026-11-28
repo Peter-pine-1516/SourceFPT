@@ -1,4 +1,4 @@
-const DATA_CACHE = "prm393-data-v3";
+const DATA_CACHE = "quiz-data-v4";
 const IMAGE_CACHE = "prm393-images-v1";
 
 self.addEventListener("install", (event) => {
@@ -52,10 +52,7 @@ self.addEventListener("fetch", (event) => {
   }
 
   // Ngân hàng câu hỏi & tài liệu lý thuyết: Network-First để luôn nhận bản mới nhất, mất mạng mới dùng cache
-  if (
-    url.pathname === "/data/questions.json" ||
-    url.pathname === "/data/TAI_LIEU_ON_TAP_PRM393.md"
-  ) {
+  if (url.pathname.startsWith("/data/")) {
     event.respondWith(
       caches.open(DATA_CACHE).then(async (cache) => {
         try {

@@ -53,6 +53,12 @@ export const QuestionCard = memo(function QuestionCard({
         </pre>
       ) : null}
 
+      {question.image ? (
+        <div className="q-figure">
+          <img src={question.image} alt={`Minh hoạ câu ${question.number}`} loading="lazy" />
+        </div>
+      ) : null}
+
       <div className="options-list">
         {displayedOptions.map((opt) => {
           let cls = "opt-btn";

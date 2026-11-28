@@ -1,24 +1,27 @@
-# PRM393 FE Quiz & Tài Liệu Lý Thuyết
+# Ôn tập trắc nghiệm FE (PRM393 & ITE302c)
 
-Đọc tài liệu lý thuyết PRM393 tại [TAI_LIEU_ON_TAP_PRM393.md](./public/data/TAI_LIEU_ON_TAP_PRM393.md) hoặc xem trực tiếp trên tab **Lý thuyết** của ứng dụng.
-
-Ứng dụng luyện đề trắc nghiệm **PRM393 (Flutter & Dart)** viết bằng **React + Vite**, tối ưu để deploy tĩnh lên **Vercel** — vào học và làm bài ngay không cần đăng nhập, tự động lưu tiến độ và bộ nhớ đệm trực tiếp trên trình duyệt của từng người dùng.
+Ứng dụng luyện đề trắc nghiệm đa môn viết bằng **React + Vite**, tối ưu để deploy tĩnh lên **Vercel** — vào chọn môn và làm bài ngay không cần đăng nhập, tự động lưu tiến độ và bộ nhớ đệm trực tiếp trên trình duyệt của từng người dùng.
 
 ---
 
-## 1. Tính năng chính
+## 1. Môn học hiện có
 
-- **5 bộ đề FE SP26 & SU26** (248 câu hỏi gốc, 158 câu đã lọc trùng) sắp xếp theo đúng trình tự kỳ học FPT (`SP26 - FE` -> `SP26 - B5 - FE` -> `SU26 - FE` -> `SU26 - FE - RE` -> `SU26 - B5 - FE`), kèm ảnh chụp đề gốc và giải thích chi tiết.
-- **Tab Lý thuyết 13 chương (Flutter & Dart)** có mục lục nhanh và tìm kiếm theo từ khoá.
-- **Tự lưu tiến độ trên máy từng người dùng**: mọi câu đã làm và cài đặt hiển thị được lưu tự động trong `localStorage`, đồng bộ khi mở nhiều tab.
-- **Bộ nhớ đệm cục bộ**: kết hợp HTTP `Cache-Control` (Vercel CDN) và Service Worker (`public/sw.js`) giúp cache đề thi, tài liệu và 300 ảnh đề gốc ngay trên máy người dùng.
+- **PRM393**: 5 bộ đề FE SP26 & SU26 (248 câu hỏi gốc, 158 câu đã lọc trùng), kèm ảnh chụp đề gốc, giải thích chi tiết và tab **Lý thuyết 13 chương (Flutter & Dart)**.
+- **ITE302c**: 11 bộ đề FE & RE từ SP24 đến SU26 (660 câu hỏi gốc, 373 câu đã lọc trùng), tự động sắp xếp theo trình tự kỳ học FPT, kèm ảnh chụp đề gốc và giải thích chi tiết.
 
 ---
 
-## 2. Cấu trúc thư mục
+## 2. Tính năng chính
+
+- **Landing page tối giản**: chọn môn học trực tiếp qua thẻ mã môn (`PRM393`, `ITE302c`).
+- **Tự lưu tiến độ theo từng môn trên máy người dùng**: mọi câu đã làm và cài đặt hiển thị được lưu tự động trong `localStorage`, đồng bộ khi mở nhiều tab.
+- **Bộ nhớ đệm cục bộ**: kết hợp HTTP `Cache-Control` (Vercel CDN) và Service Worker (`public/sw.js`) giúp cache đề thi, tài liệu và ảnh đề gốc ngay trên máy người dùng.
+
+---
+
+## 3. Cấu trúc thư mục
 
 ```text
-PRM393/
 ├── index.html                           # Trang gốc Vite
 ├── package.json                         # Khai báo React, Vite và scripts
 ├── vite.config.js                       # Cấu hình Vite
@@ -27,29 +30,27 @@ PRM393/
 ├── public/
 │   ├── sw.js                            # Service Worker cache dữ liệu & ảnh đề gốc
 │   ├── data/
-│   │   ├── questions.json               # Ngân hàng 248 câu hỏi (5 bộ đề)
-│   │   └── TAI_LIEU_ON_TAP_PRM393.md    # Tài liệu ôn tập 13 chương (12 Module Slide + 5 đề FE)
-│   └── images/                          # 5 thư mục chứa 300 ảnh chụp đề gốc
-│       ├── PRM393 - SP26 - B5 - FE/
-│       ├── PRM393 - SP26 - FE/
-│       ├── PRM393 - SU26 - B5 - FE/
-│       ├── PRM393 - SU26 - FE/
-│       └── PRM393 - SU26 - FE - RE/
+│   │   ├── questions.json               # Ngân hàng đề PRM393 (5 bộ đề)
+│   │   ├── ite302c-questions.json       # Ngân hàng đề ITE302c (11 bộ đề)
+│   │   └── TAI_LIEU_ON_TAP_PRM393.md    # Tài liệu ôn tập PRM393 (13 chương)
+│   └── images/                          # Ảnh chụp đề gốc PRM393 & ITE302c
 └── src/
     ├── main.jsx                         # Điểm khởi chạy React & đăng ký Service Worker
-    ├── App.jsx                          # Giao diện chính, bộ lọc, phím tắt & đồng bộ tab
+    ├── App.jsx                          # Điều hướng chọn môn & không gian luyện đề
     ├── styles.css                       # Giao diện tối giản Sáng / Tối
     ├── components/
+    │   ├── LandingPage.jsx              # Trang chọn môn tối giản dạng card mã môn
     │   ├── QuestionCard.jsx             # Thẻ câu hỏi, chấm điểm & xem ảnh đề gốc
     │   └── StudyGuide.jsx               # Trình đọc tài liệu lý thuyết
     └── lib/
+        ├── subjects.js                  # Cấu hình danh sách môn học
         ├── quiz.js                      # Xử lý ngân hàng đề, lọc trùng, chấm điểm
-        └── storage.js                   # Lưu tiến độ & cài đặt trong localStorage
+        └── storage.js                   # Lưu tiến độ & cài đặt theo từng môn
 ```
 
 ---
 
-## 3. Chạy local & Deploy lên Vercel
+## 4. Chạy local & Deploy lên Vercel
 
 ```powershell
 # Cài đặt thư viện

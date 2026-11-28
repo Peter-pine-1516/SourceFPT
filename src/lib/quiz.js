@@ -85,6 +85,7 @@ export function buildQuestionBank(raw) {
           chooseCount: rq.chooseCount || 1,
           question: rq.question,
           code: rq.code || null,
+          image: rq.image || null,
           options: rq.options || {},
           answer,
           explanation: rq.explanation || "",
@@ -102,6 +103,7 @@ export function buildQuestionBank(raw) {
         chooseCount: rq.chooseCount || 1,
         question: rq.question,
         code: rq.code || null,
+        image: rq.image || null,
         options: rq.options || {},
         answer,
         explanation: rq.explanation || "",
@@ -211,6 +213,7 @@ export function getFilteredQuestions(exam, questionsByUid, answers, { wrongOnly,
       chooseCount: q.chooseCount,
       question: q.question,
       code: q.code,
+      image: q.image,
       options: q.options,
       attempt: hasAttempt
         ? {
